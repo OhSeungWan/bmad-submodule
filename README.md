@@ -18,7 +18,7 @@ Submodule은 다른 git 저장소에 대한 포인터입니다. 실제 파일이
 ### 1. 프로젝트에 Submodule 추가
 
 ```bash
-git submodule add <repository-url> bmad-submodule
+git submodule add https://github.com/OhSeungWan/bmad-submodule.git bmad-submodule
 git submodule init
 git submodule update
 git config -f .gitmodules submodule.bmad-submodule.ignore dirty
