@@ -46,6 +46,7 @@ git config -f .gitmodules submodule.bmad-submodule.ignore dirty
 .DS_Store
 **/.DS_Store
 .claude/commands/bmad
+_bmad
 ```
 
 ## Submodule과 함께 Clone
@@ -73,11 +74,13 @@ git push
 ## 스크립트 설명
 
 ### install.sh
-- 루트 프로젝트의 `.claude/commands/bmad`에 심볼릭 링크 생성
+- 루트 프로젝트에 심볼릭 링크 생성:
+  - `.claude/commands/bmad` → submodule의 `.claude/commands/bmad`
+  - `_bmad` → submodule의 `_bmad`
 - 기존 폴더/링크가 있으면 삭제 후 재생성
 
 ### uninstall.sh
-- 심볼릭 링크 제거
+- 위 심볼릭 링크 제거
 - 일반 디렉토리인 경우 확인 후 삭제
 
 
