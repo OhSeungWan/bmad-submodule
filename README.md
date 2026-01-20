@@ -43,8 +43,6 @@ git config -f .gitmodules submodule.bmad-submodule.ignore dirty
 루트 프로젝트의 `.gitignore`에 추가:
 
 ```
-.DS_Store
-**/.DS_Store
 .claude/commands/bmad
 _bmad
 ```
