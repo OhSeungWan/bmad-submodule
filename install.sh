@@ -13,8 +13,12 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Get the root project path (parent of submodule)
 ROOT_PROJECT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
+# Get the submodule directory name (for relative paths)
+SUBMODULE_NAME="$(basename "$SCRIPT_DIR")"
+
 # === 1. .claude/commands/bmad symlink ===
 SOURCE_COMMANDS="$SCRIPT_DIR/.claude/commands/bmad"
+RELATIVE_SOURCE_COMMANDS="../../$SUBMODULE_NAME/.claude/commands/bmad"
 TARGET_COMMANDS_DIR="$ROOT_PROJECT/.claude/commands"
 TARGET_COMMANDS="$TARGET_COMMANDS_DIR/bmad"
 
@@ -30,11 +34,12 @@ if [ -e "$TARGET_COMMANDS" ] || [ -L "$TARGET_COMMANDS" ]; then
     rm -rf "$TARGET_COMMANDS"
 fi
 
-ln -s "$SOURCE_COMMANDS" "$TARGET_COMMANDS"
-echo "Created symlink: $TARGET_COMMANDS -> $SOURCE_COMMANDS"
+ln -s "$RELATIVE_SOURCE_COMMANDS" "$TARGET_COMMANDS"
+echo "Created symlink: $TARGET_COMMANDS -> $RELATIVE_SOURCE_COMMANDS"
 
 # === 2. _bmad symlink ===
 SOURCE_BMAD="$SCRIPT_DIR/_bmad"
+RELATIVE_SOURCE_BMAD="$SUBMODULE_NAME/_bmad"
 TARGET_BMAD="$ROOT_PROJECT/_bmad"
 
 if [ ! -d "$SOURCE_BMAD" ]; then
@@ -47,8 +52,8 @@ if [ -e "$TARGET_BMAD" ] || [ -L "$TARGET_BMAD" ]; then
     rm -rf "$TARGET_BMAD"
 fi
 
-ln -s "$SOURCE_BMAD" "$TARGET_BMAD"
-echo "Created symlink: $TARGET_BMAD -> $SOURCE_BMAD"
+ln -s "$RELATIVE_SOURCE_BMAD" "$TARGET_BMAD"
+echo "Created symlink: $TARGET_BMAD -> $RELATIVE_SOURCE_BMAD"
 
 echo ""
 echo "BMAD installation complete!"
