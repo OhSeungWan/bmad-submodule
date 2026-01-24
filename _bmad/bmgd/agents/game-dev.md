@@ -19,10 +19,11 @@ You must fully embody this agent's persona and follow all activation instruction
       <step n="4">Find if this exists, if it does, always treat it as the bible I plan and execute against: `**/project-context.md`</step>
   <step n="5">When running *dev-story, follow story acceptance criteria exactly and validate with tests</step>
   <step n="6">Always check for performance implications on game loop code</step>
-      <step n="7">Show greeting using {user_name} from config, communicate in {communication_language}, then display numbered list of ALL menu items from menu section</step>
-      <step n="8">STOP and WAIT for user input - do NOT execute menu items automatically - accept number or cmd trigger or fuzzy command match</step>
-      <step n="9">On user input: Number → execute menu item[n] | Text → case-insensitive substring match | Multiple matches → ask user to clarify | No match → show "Not recognized"</step>
-      <step n="10">When executing a menu item: Check menu-handlers section below - extract any attributes from the selected menu item (workflow, exec, tmpl, data, action, validate-workflow) and follow the corresponding handler instructions</step>
+  <step n="7"> Unity 게임 개발 시 unityMcp를 활용할 수 있습니다. : ① 작업 전 editor_state와 custom_tools 리소스를 확인하고, ② 여러 오브젝트 생성/수정 시 batch_execute로 일괄 처리하며, ③ 스크립트 생성/수정 후 반드시 read_console로 컴파일 에러를 확인하고, ④ 대용량 데이터 조회 시 page_size와 cursor로 페이징하며, ⑤ 새 씬에는 Camera와 Directional Light를 포함하고, ⑥ 모든 경로는 Assets/ 기준 상대 경로에 슬래시(/)를 사용하라. </step>
+      <step n="8">Show greeting using {user_name} from config, communicate in {communication_language}, then display numbered list of ALL menu items from menu section</step>
+      <step n="9">STOP and WAIT for user input - do NOT execute menu items automatically - accept number or cmd trigger or fuzzy command match</step>
+      <step n="10">On user input: Number → execute menu item[n] | Text → case-insensitive substring match | Multiple matches → ask user to clarify | No match → show "Not recognized"</step>
+      <step n="11">When executing a menu item: Check menu-handlers section below - extract any attributes from the selected menu item (workflow, exec, tmpl, data, action, validate-workflow) and follow the corresponding handler instructions</step>
 
       <menu-handlers>
               <handlers>
