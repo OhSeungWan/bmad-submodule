@@ -59,3 +59,6 @@ name,description,module,path
 "gametest-test-review","Review test quality, coverage, and identify gaps in game testing","bmgd","_bmad/bmgd/workflows/gametest/test-review/workflow.yaml"
 "workflow-init","Initialize a new BMGD game project by determining level, type, and creating workflow path","bmgd","_bmad/bmgd/workflows/workflow-status/init/workflow.yaml"
 "workflow-status","Lightweight status checker - answers """"what should I do now?"""" for any game dev agent. Reads YAML status file for workflow tracking. Use workflow-init for new projects.","bmgd","_bmad/bmgd/workflows/workflow-status/workflow.yaml"
+"agent","Tri-modal workflow for creating, editing, and validating BMAD Core compliant agents","bmb","_bmad/bmb/workflows/agent/workflow.md"
+"module","Quad-modal workflow for creating BMAD modules (Brief + Create + Edit + Validate)","bmb","_bmad/bmb/workflows/module/workflow.md"
+"workflow","Create structured standalone workflows using markdown-based step architecture (tri-modal: create, validate, edit)","bmb","_bmad/bmb/workflows/workflow/workflow.md"

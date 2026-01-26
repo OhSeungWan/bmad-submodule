@@ -1,9 +1,10 @@
 installation:
   version: 6.0.0-alpha.23
-  installDate: 2026-01-22T06:23:14.762Z
-  lastUpdated: 2026-01-22T06:23:14.762Z
+  installDate: 2026-01-26T04:11:32.178Z
+  lastUpdated: 2026-01-26T04:11:32.178Z
 modules:
   - core
+  - bmb
   - bmgd
   - bmm
 ides:
