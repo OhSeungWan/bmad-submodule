@@ -1,0 +1,6 @@
+_bmad-output/
+node_modules/
+.git/
+.claude/
+package-lock.json
+*.min.*

@@ -1,0 +1,12 @@
+{
+  "name": "bmad-submodule",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write \"**/*.{md,yaml,yml}\"",
+    "format:check": "prettier --check \"**/*.{md,yaml,yml}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1"
+  }
+}
