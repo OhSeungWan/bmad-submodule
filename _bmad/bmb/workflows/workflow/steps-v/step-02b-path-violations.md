@@ -53,12 +53,14 @@ CRITICAL path checks that step-02's frontmatter validation MISSES. This catches 
 **SUBPROCESS EXECUTION PATTERN:**
 
 For EACH file in the workflow being validated, launch a subprocess that:
+
 1. Loads any reference files it needs (to avoid bloating parent context)
 2. Performs all required checks on that file
 3. **EITHER** updates the validation report directly with its findings
 4. **OR** returns structured findings to parent for aggregation
 
 **DO NOT BE LAZY - Use appropriate subprocess pattern for each check:**
+
 - **Single subprocess for grep/regex**: Run one command across many files, return matches
 - **Separate subprocess per file**: When deep analysis of each file's content is required
 - **Subprocess for data operations**: Load reference data, find matches, summarize key findings
@@ -75,6 +77,7 @@ grep -A 20 "Configuration Loading" {targetWorkflowPath}/workflow.md | grep -E "^
 **Store these as KNOWN_CONFIG_VARIABLES for reference in later checks.**
 
 These are EXCEPTIONS - paths using these variables are VALID even if not relative:
+
 - Example: `{output_folder}/doc.md` - VALID (uses config variable)
 - Example: `{planning_artifacts}/prd.md` - VALID (uses config variable)
 - These paths won't exist during validation (workflow not running yet)
@@ -99,6 +102,7 @@ done
 ```
 
 **What we're catching:**
+
 - Content like: `Load {project-root}/_bmad/foo/workflows/.../file.csv`
 - Should be: `Load {dataFile}` (frontmatter variable with a relative path like ../data/file.csv)
 
@@ -115,6 +119,7 @@ done
 3. Returns all dead link findings to parent for aggregation
 
 **CRITICAL DISTINCTION:**
+
 - **Output files using config variables:** Skip (won't exist yet - workflow not installed/running)
   - Example: `{output_folder}/my-doc.md` - SKIP
   - Example: `{planning_artifacts}/prd.md` - SKIP
@@ -127,6 +132,7 @@ done
   - Example: `{partyModeWorkflow}` - MUST EXIST
 
 **Bash execution pattern:**
+
 ```bash
 # Extract all frontmatter path references from all files
 for file in steps-c/*.md; do
@@ -146,6 +152,7 @@ done
 ```
 
 **What we're catching:**
+
 - Dead links to any files that don't exist that the workflow needs during execution
 
 ---
@@ -207,12 +214,14 @@ Paths using these variables are valid even if not relative (they reference post-
 
 | File | Line | Issue | Details |
 | ---- | ---- | ----- | ------- |
+
 {table from content_violations}
 
 ### Dead Links
 
 | File | Line | Issue | Details |
 | ---- | ---- | ----- | ------- |
+
 {table from dead_links}
 
 **Note:** Output files using config variables were correctly skipped during existence checks.

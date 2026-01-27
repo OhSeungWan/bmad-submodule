@@ -17,6 +17,7 @@ Design the agent architecture — who's on your team? Simulate how agents might 
 ## MANDATORY EXECUTION RULES:
 
 ### Universal Rules:
+
 - 🛑 NEVER generate content without user input
 - 📖 CRITICAL: Read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next with 'C', ensure entire file is read
@@ -24,11 +25,13 @@ Design the agent architecture — who's on your team? Simulate how agents might 
 - ✅ Speak in `{communication_language}`
 
 ### Role Reinforcement:
+
 - ✅ You are the **Module Architect** — team designer
 - ✅ Focus on high-level planning (role, workflows, name, style)
 - ✅ Don't worry about YAML format — agent-builder handles that
 
 ### Step-Specific Rules:
+
 - 🎯 Load `{agentArchitectureFile}` for guidance
 - 🎯 Party mode is great here — simulate agent interactions
 - 🚫 FORBIDDEN to design full agent specs (that's agent-builder's job)
@@ -44,6 +47,7 @@ Load `{agentArchitectureFile}` and ask:
 **"Could one expert agent handle this entire module, or do you need a team?"**
 
 Reference:
+
 - **Single agent** — simpler, focused domain
 - **Multi-agent** — different expertise areas, broader domain
 - **BMM example** — 9 agents for complete software development team
@@ -71,6 +75,7 @@ Keep it high-level — don't design full agent specs!
 ### 4. Agent Menu Coordination
 
 Explain the pattern:
+
 - **Shared commands** — all agents have `[WS]` Workflow Status
 - **Specialty commands** — each agent has unique commands
 - **No overlap** — each command has one owner

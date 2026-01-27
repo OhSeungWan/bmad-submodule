@@ -61,6 +61,7 @@ Confirm the workflow build is complete by checking plan metadata. If this is a c
 **Load the workflowPlanFile completely:**
 
 Read `{workflowPlanFile}` entirely to extract:
+
 - Frontmatter metadata (check for `conversionFrom`)
 - Discovery notes
 - All requirements from classification, design, tools sections
@@ -91,6 +92,7 @@ Route to [New Workflow Confirmation](#4-new-workflow-confirmation-path)
 "**This is a workflow conversion. Verifying all original elements are covered...**"
 
 **Load the original workflow from conversionFrom path:**
+
 - Read EVERY file from the source workflow
 - Extract original goal, steps, instructions
 
@@ -114,9 +116,9 @@ OR
 
 **For EACH step from the original workflow:**
 
-| Original Step | Purpose | Covered In | Status |
-|---------------|---------|------------|--------|
-| {step name} | {purpose} | {new step location} | ✅ Full / ⚠️ Partial / ❌ Missing |
+| Original Step | Purpose   | Covered In          | Status                            |
+| ------------- | --------- | ------------------- | --------------------------------- |
+| {step name}   | {purpose} | {new step location} | ✅ Full / ⚠️ Partial / ❌ Missing |
 
 "**Step-by-step coverage:** {count} of {total} steps fully covered"
 
@@ -146,12 +148,12 @@ Present findings:
 
 **Overall Coverage:** {percentage}%
 
-| Category | Total | Covered | Partial | Missing |
-|----------|-------|---------|---------|---------|
-| Goal | 1 | 1 | 0 | 0 |
-| Steps | {count} | {count} | {count} | {count} |
+| Category     | Total   | Covered | Partial | Missing |
+| ------------ | ------- | ------- | ------- | ------- |
+| Goal         | 1       | 1       | 0       | 0       |
+| Steps        | {count} | {count} | {count} | {count} |
 | Instructions | {count} | {count} | {count} | {count} |
-| Output | 1 | 1 | 0 | 0 |
+| Output       | 1       | 1       | 0       | 0       |
 
 ---
 
@@ -198,9 +200,9 @@ Present findings:
 
 **For EACH requirement from the plan:**
 
-| Requirement Area | Specified | Implemented | Location | Status |
-|------------------|-----------|-------------|----------|--------|
-| {area} | {what was specified} | {what was built} | {file/step} | ✅/⚠️/❌ |
+| Requirement Area | Specified            | Implemented      | Location    | Status   |
+| ---------------- | -------------------- | ---------------- | ----------- | -------- |
+| {area}           | {what was specified} | {what was built} | {file/step} | ✅/⚠️/❌ |
 
 #### C. Plan Completion Summary
 
@@ -215,13 +217,13 @@ Present findings:
 
 **Overall Completion:** {percentage}%
 
-| Requirement Area | Specified | Implemented | Status |
-|------------------|-----------|-------------|--------|
-| Discovery Vision | {from plan} | {what was built} | ✅/⚠️ |
-| Workflow Type | {from plan} | {what was built} | ✅/⚠️ |
-| Structure | {from plan} | {what was built} | ✅/⚠️ |
-| Key Features | {from plan} | {what was built} | ✅/⚠️ |
-| Data/Tools | {from plan} | {what was built} | ✅/⚠️ |
+| Requirement Area | Specified   | Implemented      | Status |
+| ---------------- | ----------- | ---------------- | ------ |
+| Discovery Vision | {from plan} | {what was built} | ✅/⚠️  |
+| Workflow Type    | {from plan} | {what was built} | ✅/⚠️  |
+| Structure        | {from plan} | {what was built} | ✅/⚠️  |
+| Key Features     | {from plan} | {what was built} | ✅/⚠️  |
+| Data/Tools       | {from plan} | {what was built} | ✅/⚠️  |
 
 ---
 
@@ -256,9 +258,9 @@ Update `{workflowPlanFile}` frontmatter:
 
 ```yaml
 status: CONFIRMED
-confirmationDate: {current date}
-confirmationType: {conversion / new_workflow}
-coverageStatus: {complete / gaps_accepted}
+confirmationDate: { current date }
+confirmationType: { conversion / new_workflow }
+coverageStatus: { complete / gaps_accepted }
 ```
 
 Proceed to [Validation Offer](#6-validation-offer).
@@ -272,6 +274,7 @@ Proceed to [Validation Offer](#6-validation-offer).
 **Before using your workflow, I recommend running extensive validation.**
 
 The validation phase will systematically check:
+
 - File structure & size
 - Frontmatter compliance
 - Menu handling patterns

@@ -59,11 +59,13 @@ To perform a cohesive "ultra-think" review of the entire workflow - walk through
 **SUBPROCESS APPROACH (when available):**
 
 For EACH workflow file (workflow.md + all step files in order), launch a subprocess that:
+
 1. Loads that single file
 2. Performs deep analysis of content, flow, quality, and connection points
 3. Returns structured findings to parent for holistic aggregation
 
 **Subprocess should return:**
+
 - File name analyzed
 - Purpose and flow position within the workflow
 - How it connects to previous and next steps
@@ -73,6 +75,7 @@ For EACH workflow file (workflow.md + all step files in order), launch a subproc
 **FALLBACK APPROACH (if subprocess unavailable):**
 
 Load workflow.md and EVERY step file in steps-c/ sequentially in main context:
+
 1. Load workflow.md
 2. Load EVERY step file in steps-c/ in order
 3. Read through each step
@@ -91,6 +94,7 @@ Load workflow.md and EVERY step file in steps-c/ sequentially in main context:
 - Reaching the end
 
 **Ask yourself:**
+
 - Does this make sense?
 - Is the flow logical?
 - Would I feel guided or confused?
@@ -101,6 +105,7 @@ Load workflow.md and EVERY step file in steps-c/ sequentially in main context:
 **Check for:**
 
 **✅ Cohesive Indicators:**
+
 - Each step builds on previous work
 - Clear progression toward goal
 - Consistent voice and approach throughout
@@ -108,6 +113,7 @@ Load workflow.md and EVERY step file in steps-c/ sequentially in main context:
 - Satisfying completion
 
 **❌ Incohesive Indicators:**
+
 - Steps feel disconnected
 - Jumps in logic or flow
 - Inconsistent patterns
@@ -123,16 +129,19 @@ Consider goal clarity, logical flow, facilitation quality, user experience, and 
 ### 5. Identify Strengths and Weaknesses
 
 **Strengths:**
+
 - What does this workflow do well?
 - What makes it excellent?
 - What should other workflows emulate?
 
 **Weaknesses:**
+
 - What could be improved?
 - What doesn't work well?
 - What would confuse users?
 
 **Critical Issues:**
+
 - Are there any show-stopper problems?
 - Would this workflow fail in practice?
 
@@ -150,7 +159,7 @@ Include your overall assessment (excellent/good/needs work/problematic), quality
 
 ### 8. Append to Report
 
-Update {validationReportFile} - replace "## Cohesive Review *Pending...*" with actual findings.
+Update {validationReportFile} - replace "## Cohesive Review _Pending..._" with actual findings.
 
 ### 9. Save Report and Auto-Proceed
 

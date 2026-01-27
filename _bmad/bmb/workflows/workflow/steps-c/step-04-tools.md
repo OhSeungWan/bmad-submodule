@@ -69,19 +69,23 @@ Create a concrete preview showing:
 ## Workflow Structure Preview: {workflow-name}
 
 **Phase 1: Initialization**
+
 - Welcome user, explain the workflow
 - Gather any starting inputs
 - [Specific to this workflow]
 
 **Phase 2: [Name from requirements]**
+
 - [What happens in this phase]
 - [User interaction point]
 
 **Phase 3: [Name from requirements]**
+
 - [What happens in this phase]
 - [User interaction point]
 
 **Phase 4: Completion**
+
 - [What happens at the end]
 - [Output/final step]
 ```
@@ -103,9 +107,11 @@ Load `{commonToolsCsv}` and present by category:
 "**Available BMAD Tools:**
 
 **Core Tools:**
+
 - [List from CSV with descriptions]
 
 **Optional Tools:**
+
 - [List from CSV with descriptions]"
 
 ### 4. Configure Core Tools WITH Context
@@ -115,6 +121,7 @@ Go through each core tool, referencing the preview:
 "**Party Mode** - For creative, unrestricted exploration
 
 Looking at your workflow structure, I see potential in:
+
 - [Specific phase from preview] for [specific reason]
 
 Should we include Party Mode? If so, where would it fit best?"
@@ -122,6 +129,7 @@ Should we include Party Mode? If so, where would it fit best?"
 "**Advanced Elicitation** - For deep exploration and quality
 
 This could work well in:
+
 - [Specific phase] for [specific reason]
 
 Should we include Advanced Elicitation? Where would you want quality gates or deeper exploration?"
@@ -129,6 +137,7 @@ Should we include Advanced Elicitation? Where would you want quality gates or de
 "**Brainstorming** - For idea generation
 
 In your workflow, this might fit in:
+
 - [Specific phase if applicable]
 
 Should we include Brainstorming?"
@@ -140,6 +149,7 @@ Should we include Brainstorming?"
 "**Web-Browsing** - For real-time information
 
 Would your workflow benefit from:
+
 - Current data/information
 - Research during execution
 - Live references
@@ -149,6 +159,7 @@ If yes, where in the structure would this be needed?"
 "**File I/O** - For reading/writing files
 
 Your workflow [will/won't] need file operations based on:
+
 - [Input requirements from requirements]
 - [Output specifications from requirements]
 
@@ -157,6 +168,7 @@ Any specific file operations needed?"
 "**Sub-Agents** - For delegating specialized tasks
 
 Could any part of your workflow benefit from:
+
 - Specialized expertise
 - Parallel processing
 - Focused sub-tasks
@@ -166,6 +178,7 @@ Looking at your structure, [specific phase] might benefit..."
 "**Sub-Processes** - For parallel workflows
 
 Would any phase benefit from:
+
 - Running multiple processes in parallel
 - Coordinating multiple workflows
 
@@ -179,6 +192,7 @@ If so, which phase?"
 "Since your workflow is continuable, it needs to track progress between sessions.
 
 We'll use:
+
 - `stepsCompleted` array in output frontmatter
 - `lastStep` tracking
 - `step-01b-continue.md` for resuming
@@ -193,6 +207,7 @@ Any additional state we need to track?"
 "**External Integrations** - MCP, databases, APIs
 
 Based on your workflow, are there any external systems it needs to connect to?
+
 - Databases?
 - APIs?
 - MCP servers?
@@ -207,6 +222,7 @@ If yes, note installation requirements.
 Some tools require additional setup.
 
 Based on what we've selected:
+
 - [List any tools requiring installation]
 - [Assess user comfort level]
 
@@ -220,24 +236,29 @@ Update `{workflowPlanFile}`:
 ## Tools Configuration
 
 **Core BMAD Tools:**
+
 - **Party Mode:** [included/excluded] - Integration point: [specific phase/reason]
 - **Advanced Elicitation:** [included/excluded] - Integration point: [specific phase/reason]
 - **Brainstorming:** [included/excluded] - Integration point: [specific phase/reason]
 
 **LLM Features:**
+
 - **Web-Browsing:** [included/excluded] - Use case: [specific need]
 - **File I/O:** [included/excluded] - Operations: [specific needs]
 - **Sub-Agents:** [included/excluded] - Use case: [specific need]
 - **Sub-Processes:** [included/excluded] - Use case: [specific need]
 
 **Memory:**
+
 - Type: [continuable/single-session]
 - Tracking: [stepsCompleted, lastStep, etc.]
 
 **External Integrations:**
+
 - [List any selected with purposes]
 
 **Installation Requirements:**
+
 - [List tools needing installation]
 - User preference: [willing/not willing/alternatives]
 ```

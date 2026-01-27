@@ -63,6 +63,7 @@ To gather comprehensive requirements through conversation, building on the class
 "**Let's gather the requirements for your workflow.**
 
 We already know:
+
 - [Summarize vision from discovery]
 - [Summarize 4 key decisions from classification]
 
@@ -77,12 +78,14 @@ Load `{workflowExamples}` to reference diverse patterns.
 From our examples, workflows can be structured differently:"
 
 **Flow Patterns:**
+
 - **Linear:** Step 1 → Step 2 → Step 3 → Finish
 - **Looping:** Generate → Review → Generate more... until done
 - **Branching:** Different paths based on user choices
 - **Repeating:** Same steps, new content each session
 
 "Think about your workflow:
+
 - Should it go straight through, or loop/branch?
 - How many logical phases does it need?
 - What are the major milestones?"
@@ -146,12 +149,15 @@ Since your workflow produces a document, let's decide the format:"
 "Which format fits your workflow best?"
 
 **If Free-form (most common):**
+
 - "We'll use a minimal template with basic frontmatter. The workflow will build the document section by section, with a final polish step to optimize flow."
 
 **If Structured/Semi-structured:**
+
 - "What sections are required? Any optional sections?"
 
 **If Strict:**
+
 - "Do you have an existing template to follow, or should we design one?"
 
 Document the output format decision.
@@ -174,6 +180,7 @@ Document what the workflow produces.
 "**How will we know this workflow succeeded?**
 
 Think about the end result:
+
 - What does 'done' look like?
 - What would make a user satisfied?
 - Are there quality criteria?
@@ -188,17 +195,20 @@ Think about the end result:
 "**How should the AI executing this workflow behave?**"
 
 **Intent-Based (Recommended for most):**
+
 - Steps describe goals and principles
 - AI adapts conversation naturally
 - More flexible and responsive
 - Example: "Guide user to define requirements through open-ended discussion"
 
 **Prescriptive:**
+
 - Steps provide exact instructions
 - More controlled and predictable
 - Example: "Ask: 'What is your primary goal? A) Growth B) Efficiency C) Quality'"
 
 **Mixed:**
+
 - Some steps prescriptive, others intent-based
 - Use prescriptive for critical/required steps
 - Use intent-based for creative/facilitative steps
@@ -213,30 +223,36 @@ Update `{workflowPlanFile}` with the requirements section:
 ## Requirements
 
 **Flow Structure:**
+
 - Pattern: [linear/looping/branching/repeating]
 - Phases: [list major phases]
 - Estimated steps: [rough count]
 
 **User Interaction:**
+
 - Style: [highly collaborative/mostly autonomous/guided/mixed]
 - Decision points: [where user must choose]
 - Checkpoint frequency: [how often to pause]
 
 **Inputs Required:**
+
 - Required: [list]
 - Optional: [list]
 - Prerequisites: [list]
 
 **Output Specifications:**
+
 - Type: [document/action/decision/temporary]
 - Format: [free-form/structured/semi-structured/strict OR describe non-document output]
 - Sections: [if structured]
 - Frequency: [single/batch/continuous]
 
 **Success Criteria:**
+
 - [list what success looks like]
 
 **Instruction Style:**
+
 - Overall: [intent-based/prescriptive/mixed]
 - Notes: [any specific style requirements]
 ```

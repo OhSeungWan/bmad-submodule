@@ -199,17 +199,20 @@ import { functionTestStep } from '@seontechnologies/playwright-utils';
 // Define todo items for the test
 const TODO_ITEMS = ['buy groceries', 'pay bills', 'schedule meeting'];
 
-const createDefaultTodos = functionTestStep('Create default todos', async (page: Page) => {
-  await log.info('Creating default todos');
-  await log.step('step within a functionWrapper');
-  const todoPage = new TodoPage(page);
+const createDefaultTodos = functionTestStep(
+  'Create default todos',
+  async (page: Page) => {
+    await log.info('Creating default todos');
+    await log.step('step within a functionWrapper');
+    const todoPage = new TodoPage(page);
 
-  for (const item of TODO_ITEMS) {
-    await todoPage.addTodo(item);
-  }
+    for (const item of TODO_ITEMS) {
+      await todoPage.addTodo(item);
+    }
 
-  await log.success('Created all default todos');
-});
+    await log.success('Created all default todos');
+  },
+);
 
 const checkNumberOfTodosInLocalStorage = functionTestStep(
   'Check total todos count fn-step',
@@ -217,11 +220,11 @@ const checkNumberOfTodosInLocalStorage = functionTestStep(
     await log.info(`Verifying todo count: ${expected}`);
     const result = await page.waitForFunction(
       (e) => JSON.parse(localStorage['react-todos']).length === e,
-      expected
+      expected,
     );
     await log.success(`Verified todo count: ${expected}`);
     return result;
-  }
+  },
 );
 ```
 
@@ -248,10 +251,13 @@ log.configure({
 // Extend base test with file logging context capture
 export const test = base.extend({
   // Auto-capture test context for file logging
-  autoTestContext: [async ({}, use, testInfo) => {
-    captureTestContext(testInfo);
-    await use(undefined);
-  }, { auto: true }],
+  autoTestContext: [
+    async ({}, use, testInfo) => {
+      captureTestContext(testInfo);
+      await use(undefined);
+    },
+    { auto: true },
+  ],
 });
 ```
 

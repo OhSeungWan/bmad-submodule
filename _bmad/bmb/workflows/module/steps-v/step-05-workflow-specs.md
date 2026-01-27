@@ -18,6 +18,7 @@ Validate workflow specifications and/or built workflows, distinguishing between 
 ## MANDATORY EXECUTION RULES:
 
 ### Universal Rules:
+
 - 📖 CRITICAL: Read the complete step file before taking any action
 - ✅ Speak in `{communication_language}`
 
@@ -34,6 +35,7 @@ Validate workflow specifications and/or built workflows, distinguishing between 
 ### 1. Load Workflow Files
 
 Find all workflow files in `{targetPath}/workflows/`:
+
 - `.spec.md` files (placeholder specs)
 - `workflow.md` files (built workflows)
 
@@ -42,14 +44,17 @@ Find all workflow files in `{targetPath}/workflows/`:
 For each workflow found, determine status:
 
 **Built Workflows (workflow.md with steps/ folder):**
+
 - Full implementation with step files, data, templates
 - Can be validated in-depth via workflow validation workflow
 
 **Spec Workflows (.spec.md):**
+
 - High-level placeholder/blueprint
 - Awaiting creation via workflow-builder workflow
 
 Track counts:
+
 - Total workflows: {count}
 - Built workflows: {count}
 - Spec workflows: {count}
@@ -59,6 +64,7 @@ Track counts:
 For each spec workflow, check:
 
 **Required Sections:**
+
 - [ ] Workflow goal defined
 - [ ] Description present
 - [ ] Workflow type indicated
@@ -66,10 +72,12 @@ For each spec workflow, check:
 - [ ] Agent association clear
 
 **Inputs/Outputs:**
+
 - [ ] Input requirements documented
 - [ ] Output format specified
 
 **Agent Integration:**
+
 - [ ] Primary agent identified
 - [ ] Multi-agent collaboration noted (if applicable)
 
@@ -80,11 +88,13 @@ For each spec workflow, check:
 For each built workflow, check:
 
 **Workflow Structure:**
+
 - [ ] workflow.md exists with proper frontmatter
 - [ ] steps/ folder exists (steps-c/, steps-e/, steps-v/ as appropriate)
 - [ ] Step files follow naming conventions
 
 **Step File Compliance:**
+
 - [ ] Each step has proper frontmatter
 - [ ] Step files within size limits
 - [ ] Menu handling follows standards
@@ -101,16 +111,19 @@ Append to `{validationReportOutput}`:
 **Status:** {PASS/FAIL/WARNINGS}
 
 **Workflow Summary:**
+
 - Total Workflows: {count}
 - Built Workflows: {count} {list}
 - Spec Workflows: {count} {list}
 
 **Built Workflows:**
 {for each built workflow}
+
 - **{name}**: {status} - Ready for detailed validation via workflow workflow
 
 **Spec Workflows:**
 {for each spec workflow}
+
 - **{name}**: {status} - Placeholder awaiting workflow-builder
 
 **Issues Found:**
@@ -118,9 +131,10 @@ Append to `{validationReportOutput}`:
 
 **Recommendations:**
 {if specs exist}
+
 - Use `bmad:bmb:workflows:workflow` or `/workflow` to create {spec workflow names}
 - After building workflows, re-run validation to verify compliance
-{endif}
+  {endif}
 ```
 
 ### 6. Note Sub-Process Opportunity

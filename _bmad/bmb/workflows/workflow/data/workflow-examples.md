@@ -16,6 +16,7 @@ Flow: Discovery → Assessment → Strategy → Shopping List → Prep Schedule
 ```
 
 **Each step file contains internal structure:**
+
 - STEP GOAL
 - MANDATORY EXECUTION RULES
 - EXECUTION PROTOCOLS
@@ -31,16 +32,16 @@ Flow: Discovery → Assessment → Strategy → Shopping List → Prep Schedule
 
 **Domain:** Health & Fitness
 
-| Aspect | Details |
-|--------|---------|
-| **Flow** (each → = step file) | Discovery → Assessment → Strategy → Shopping List → Prep Schedule |
-| **Step Files** | ~5 files: step-01-discovery, step-02-assessment, step-03-strategy, step-04-shopping, step-05-prep |
-| **Output** | Direct-to-final document, each step appends a section |
-| **Intent/Prescriptive** | Intent-based - Facilitates discovery of preferences |
-| **Planning** | No - builds final meal plan directly |
-| **Continuable** | Yes - Can be 200+ tokens, users may need multiple sessions |
-| **Structure** | Linear, 5 steps, no branching |
-| **Conversation** | Open-ended with progressive questioning (1-2 at a time, probe preferences) |
+| Aspect                        | Details                                                                                           |
+| ----------------------------- | ------------------------------------------------------------------------------------------------- |
+| **Flow** (each → = step file) | Discovery → Assessment → Strategy → Shopping List → Prep Schedule                                 |
+| **Step Files**                | ~5 files: step-01-discovery, step-02-assessment, step-03-strategy, step-04-shopping, step-05-prep |
+| **Output**                    | Direct-to-final document, each step appends a section                                             |
+| **Intent/Prescriptive**       | Intent-based - Facilitates discovery of preferences                                               |
+| **Planning**                  | No - builds final meal plan directly                                                              |
+| **Continuable**               | Yes - Can be 200+ tokens, users may need multiple sessions                                        |
+| **Structure**                 | Linear, 5 steps, no branching                                                                     |
+| **Conversation**              | Open-ended with progressive questioning (1-2 at a time, probe preferences)                        |
 
 **Description:** Helps users create personalized weekly meal plans based on dietary restrictions, health goals, and cooking habits.
 
@@ -50,16 +51,16 @@ Flow: Discovery → Assessment → Strategy → Shopping List → Prep Schedule
 
 **Domain:** Finance
 
-| Aspect | Details |
-|--------|---------|
-| **Flow** (each → = step file) | Input Discovery → Document Categorization → Missing Document Alert → Final Summary |
-| **Step Files** | 4 files: step-01-input-discovery, step-02-categorize, step-03-missing-alerts, step-04-summary |
-| **Output** | Analysis-only + checklist of missing docs |
-| **Intent/Prescriptive** | Highly Prescriptive - Tax compliance, exact categories |
-| **Planning** | N/A |
-| **Continuable** | No - Simple single-session checklist |
-| **Structure** | Linear, 4 steps |
-| **Conversation** | Focused - specific questions, document what user provides |
+| Aspect                        | Details                                                                                       |
+| ----------------------------- | --------------------------------------------------------------------------------------------- |
+| **Flow** (each → = step file) | Input Discovery → Document Categorization → Missing Document Alert → Final Summary            |
+| **Step Files**                | 4 files: step-01-input-discovery, step-02-categorize, step-03-missing-alerts, step-04-summary |
+| **Output**                    | Analysis-only + checklist of missing docs                                                     |
+| **Intent/Prescriptive**       | Highly Prescriptive - Tax compliance, exact categories                                        |
+| **Planning**                  | N/A                                                                                           |
+| **Continuable**               | No - Simple single-session checklist                                                          |
+| **Structure**                 | Linear, 4 steps                                                                               |
+| **Conversation**              | Focused - specific questions, document what user provides                                     |
 
 **Description:** Organizes financial documents for tax preparation, categorizes income/deductions, alerts to missing documents.
 
@@ -69,16 +70,16 @@ Flow: Discovery → Assessment → Strategy → Shopping List → Prep Schedule
 
 **Domain:** Legal / HR / Compliance
 
-| Aspect | Details |
-|--------|---------|
-| **Flow** (each → = step file) | Context → Regulatory Check → Document Requirements → Notification Timeline → Final Checklist |
-| **Step Files** | 5 files: step-01-context, step-02-regulatory, step-03-documents, step-04-timeline, step-05-checklist. Some steps branch internally based on reason/location. |
-| **Output** | Direct-to-final compliance checklist |
-| **Intent/Prescriptive** | Highly Prescriptive - Legal compliance, state-specific |
-| **Planning** | No |
-| **Continuable** | No - Focused, single-session |
-| **Structure** | Branching - Different paths within steps based on: reason, location, employee count |
-| **Conversation** | Focused - specific classification questions, present requirements |
+| Aspect                        | Details                                                                                                                                                      |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Flow** (each → = step file) | Context → Regulatory Check → Document Requirements → Notification Timeline → Final Checklist                                                                 |
+| **Step Files**                | 5 files: step-01-context, step-02-regulatory, step-03-documents, step-04-timeline, step-05-checklist. Some steps branch internally based on reason/location. |
+| **Output**                    | Direct-to-final compliance checklist                                                                                                                         |
+| **Intent/Prescriptive**       | Highly Prescriptive - Legal compliance, state-specific                                                                                                       |
+| **Planning**                  | No                                                                                                                                                           |
+| **Continuable**               | No - Focused, single-session                                                                                                                                 |
+| **Structure**                 | Branching - Different paths within steps based on: reason, location, employee count                                                                          |
+| **Conversation**              | Focused - specific classification questions, present requirements                                                                                            |
 
 **Description:** Generates legally-compliant termination checklists that vary by state, termination reason, and employee count.
 
@@ -88,16 +89,16 @@ Flow: Discovery → Assessment → Strategy → Shopping List → Prep Schedule
 
 **Domain:** Entertainment / Games
 
-| Aspect | Details |
-|--------|---------|
-| **Flow** (each → = step file) | Session Concept → NPC Creation → Scene Setup → Key Beats → Generate → [Repeat for next session] |
-| **Step Files** | 4 core files: step-01-concept, step-02-npc, step-03-scene, step-04-beats, step-05-generate. Same files reused each session. |
-| **Output** | Per-session document, maintains campaign continuity |
-| **Intent/Prescriptive** | Intent-based - Creative facilitation |
-| **Planning** | No - Each session builds directly to playable content |
-| **Continuable** | Yes - Campaign has many sessions over months |
-| **Structure** | Repeating loop - Same steps, new content each session |
-| **Conversation** | Open-ended creative facilitation, "What if..." prompts |
+| Aspect                        | Details                                                                                                                     |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Flow** (each → = step file) | Session Concept → NPC Creation → Scene Setup → Key Beats → Generate → [Repeat for next session]                             |
+| **Step Files**                | 4 core files: step-01-concept, step-02-npc, step-03-scene, step-04-beats, step-05-generate. Same files reused each session. |
+| **Output**                    | Per-session document, maintains campaign continuity                                                                         |
+| **Intent/Prescriptive**       | Intent-based - Creative facilitation                                                                                        |
+| **Planning**                  | No - Each session builds directly to playable content                                                                       |
+| **Continuable**               | Yes - Campaign has many sessions over months                                                                                |
+| **Structure**                 | Repeating loop - Same steps, new content each session                                                                       |
+| **Conversation**              | Open-ended creative facilitation, "What if..." prompts                                                                      |
 
 **Description:** Helps Game Masters create individual RPG session content while tracking campaign continuity across multiple sessions.
 
@@ -107,15 +108,15 @@ Flow: Discovery → Assessment → Strategy → Shopping List → Prep Schedule
 
 **Domain:** Education
 
-| Aspect | Details |
-|--------|---------|
-| **Flow** | Course Type → Learning Objectives → Module Breakdown → Assessment → [Branch: academic] → Accreditation → [Branch: vocational] → Certification → Final |
-| **Output** | Direct-to-final syllabus document |
-| **Intent/Prescriptive** | Balanced - Framework prescriptive, content flexible |
-| **Planning** | No |
-| **Continuable** | Yes - Complex syllabus may require multiple sessions |
-| **Structure** | Branching - Course type determines different sections |
-| **Conversation** | Mixed - Framework questions (prescriptive) + content discovery (intent) |
+| Aspect                  | Details                                                                                                                                               |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Flow**                | Course Type → Learning Objectives → Module Breakdown → Assessment → [Branch: academic] → Accreditation → [Branch: vocational] → Certification → Final |
+| **Output**              | Direct-to-final syllabus document                                                                                                                     |
+| **Intent/Prescriptive** | Balanced - Framework prescriptive, content flexible                                                                                                   |
+| **Planning**            | No                                                                                                                                                    |
+| **Continuable**         | Yes - Complex syllabus may require multiple sessions                                                                                                  |
+| **Structure**           | Branching - Course type determines different sections                                                                                                 |
+| **Conversation**        | Mixed - Framework questions (prescriptive) + content discovery (intent)                                                                               |
 
 **Description:** Creates course syllabi that adapt based on course type (academic, vocational, self-paced) with appropriate accreditation requirements.
 
@@ -125,15 +126,15 @@ Flow: Discovery → Assessment → Strategy → Shopping List → Prep Schedule
 
 **Domain:** Business Process
 
-| Aspect | Details |
-|--------|---------|
-| **Flow** | Process Selection → Scope Definition → Documentation → Review → [Generate] → "Create another?" → If yes, repeat |
-| **Output** | Each SOP is independent, stored in `{sop_folder}/` |
-| **Intent/Prescriptive** | Prescriptive - SOPs must be exact, unambiguous |
-| **Planning** | No - Each SOP generated directly |
-| **Continuable** | No - Single SOP per run, but workflow is repeatable |
-| **Structure** | Repeating - Can create multiple SOPs in one session |
-| **Conversation** | Focused on process details - "Walk me through step 1" |
+| Aspect                  | Details                                                                                                         |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Flow**                | Process Selection → Scope Definition → Documentation → Review → [Generate] → "Create another?" → If yes, repeat |
+| **Output**              | Each SOP is independent, stored in `{sop_folder}/`                                                              |
+| **Intent/Prescriptive** | Prescriptive - SOPs must be exact, unambiguous                                                                  |
+| **Planning**            | No - Each SOP generated directly                                                                                |
+| **Continuable**         | No - Single SOP per run, but workflow is repeatable                                                             |
+| **Structure**           | Repeating - Can create multiple SOPs in one session                                                             |
+| **Conversation**        | Focused on process details - "Walk me through step 1"                                                           |
 
 **Description:** Generates Standard Operating Procedure documents for business processes. Can create multiple SOPs in one session, each stored independently.
 
@@ -143,15 +144,15 @@ Flow: Discovery → Assessment → Strategy → Shopping List → Prep Schedule
 
 **Domain:** Creative Writing
 
-| Aspect | Details |
-|--------|---------|
-| **Flow** | Structure Selection → Character Arcs → Beat Breakdown → Pacing Review → Final Polish |
-| **Output** | Free-form with Final Polish step to ensure flow and coherence |
-| **Intent/Prescriptive** | Intent-based - "What does your character want?" |
-| **Planning** | No - Builds outline directly |
-| **Continuable** | Yes - Long-form creative work, sessions span weeks |
-| **Structure** | Branching - Different flows based on structure choice |
-| **Conversation** | Open-ended creative coaching, provocations |
+| Aspect                  | Details                                                                              |
+| ----------------------- | ------------------------------------------------------------------------------------ |
+| **Flow**                | Structure Selection → Character Arcs → Beat Breakdown → Pacing Review → Final Polish |
+| **Output**              | Free-form with Final Polish step to ensure flow and coherence                        |
+| **Intent/Prescriptive** | Intent-based - "What does your character want?"                                      |
+| **Planning**            | No - Builds outline directly                                                         |
+| **Continuable**         | Yes - Long-form creative work, sessions span weeks                                   |
+| **Structure**           | Branching - Different flows based on structure choice                                |
+| **Conversation**        | Open-ended creative coaching, provocations                                           |
 
 **Description:** Helps authors create novel outlines with proper story structure (3-Act, Hero's Journey, etc.), character arcs, and beat sheets.
 
@@ -161,15 +162,15 @@ Flow: Discovery → Assessment → Strategy → Shopping List → Prep Schedule
 
 **Domain:** Event Planning
 
-| Aspect | Details |
-|--------|---------|
-| **Flow** | Venue Type → Vendor Coordination → Timeline → Guest Experience → [Branch: hybrid] → Virtual Setup → Day-of Schedule |
-| **Output** | Direct-to-final itinerary |
-| **Intent/Prescriptive** | Intent-based - Facilitates couple's vision |
-| **Planning** | No |
-| **Continuable** | Yes - Wedding planning takes months |
-| **Structure** | Branching - Venue type affects required sections |
-| **Conversation** | Open-ended discovery of preferences, budget, constraints |
+| Aspect                  | Details                                                                                                             |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **Flow**                | Venue Type → Vendor Coordination → Timeline → Guest Experience → [Branch: hybrid] → Virtual Setup → Day-of Schedule |
+| **Output**              | Direct-to-final itinerary                                                                                           |
+| **Intent/Prescriptive** | Intent-based - Facilitates couple's vision                                                                          |
+| **Planning**            | No                                                                                                                  |
+| **Continuable**         | Yes - Wedding planning takes months                                                                                 |
+| **Structure**           | Branching - Venue type affects required sections                                                                    |
+| **Conversation**        | Open-ended discovery of preferences, budget, constraints                                                            |
 
 **Description:** Creates detailed wedding day itineraries, adapting to venue type (indoor/outdoor/hybrid) and guest experience goals.
 
@@ -179,15 +180,15 @@ Flow: Discovery → Assessment → Strategy → Shopping List → Prep Schedule
 
 **Domain:** Personal Development
 
-| Aspect | Details |
-|--------|---------|
-| **Flow** | Input Discovery (last year's goals) → Life Areas Assessment → Reflections → Goal Setting → Action Planning → Final Polish |
-| **Output** | Free-form with Final Polish, discovers prior review first |
-| **Intent/Prescriptive** | Intent-based - Coaching questions |
-| **Planning** | No - Direct to life plan document |
-| **Continuable** | Yes - Deep reflection may need multiple sessions |
-| **Structure** | Linear with Input Discovery at start |
-| **Conversation** | Open-ended coaching, progressive questioning |
+| Aspect                  | Details                                                                                                                   |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **Flow**                | Input Discovery (last year's goals) → Life Areas Assessment → Reflections → Goal Setting → Action Planning → Final Polish |
+| **Output**              | Free-form with Final Polish, discovers prior review first                                                                 |
+| **Intent/Prescriptive** | Intent-based - Coaching questions                                                                                         |
+| **Planning**            | No - Direct to life plan document                                                                                         |
+| **Continuable**         | Yes - Deep reflection may need multiple sessions                                                                          |
+| **Structure**           | Linear with Input Discovery at start                                                                                      |
+| **Conversation**        | Open-ended coaching, progressive questioning                                                                              |
 
 **Description:** Annual review workflow that discovers prior year's goals, facilitates reflection across life areas, and sets intentional goals for coming year.
 
@@ -197,15 +198,15 @@ Flow: Discovery → Assessment → Strategy → Shopping List → Prep Schedule
 
 **Domain:** Home Improvement
 
-| Aspect | Details |
-|--------|---------|
-| **Flow** | Room Type → Budget Assessment → Phase Planning → Materials → Contractor Timeline → [Branch: DIY] → Instructions |
-| **Output** | Direct-to-final renovation plan |
-| **Intent/Prescriptive** | Balanced - Code compliance prescriptive, design intent-based |
-| **Planning** | No |
-| **Continuable** | Yes - Complex planning, multi-session |
-| **Structure** | Branching - Room type and DIY vs pro affect content |
-| **Conversation** | Mixed - "What's your budget?" + "Describe your vision" |
+| Aspect                  | Details                                                                                                         |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Flow**                | Room Type → Budget Assessment → Phase Planning → Materials → Contractor Timeline → [Branch: DIY] → Instructions |
+| **Output**              | Direct-to-final renovation plan                                                                                 |
+| **Intent/Prescriptive** | Balanced - Code compliance prescriptive, design intent-based                                                    |
+| **Planning**            | No                                                                                                              |
+| **Continuable**         | Yes - Complex planning, multi-session                                                                           |
+| **Structure**           | Branching - Room type and DIY vs pro affect content                                                             |
+| **Conversation**        | Mixed - "What's your budget?" + "Describe your vision"                                                          |
 
 **Description:** Creates room-specific renovation plans with material selection, contractor coordination, and optional DIY instructions.
 
@@ -215,36 +216,36 @@ Flow: Discovery → Assessment → Strategy → Shopping List → Prep Schedule
 
 ### Structure Types
 
-| Type | Count | Examples |
-|------|-------|----------|
-| Linear | 5 | Meal Plan, Tax, Termination, Life Review, Renovation |
-| Branching | 5 | Termination, Syllabus, Novel, Wedding, Renovation |
-| Repeating Loop | 2 | RPG Campaign, SOP Writer |
+| Type           | Count | Examples                                             |
+| -------------- | ----- | ---------------------------------------------------- |
+| Linear         | 5     | Meal Plan, Tax, Termination, Life Review, Renovation |
+| Branching      | 5     | Termination, Syllabus, Novel, Wedding, Renovation    |
+| Repeating Loop | 2     | RPG Campaign, SOP Writer                             |
 
 ### Intent Spectrum
 
-| Type | Count | Examples |
-|------|-------|----------|
-| Intent-based | 7 | Meal Plan, RPG Campaign, Syllabus (partial), Novel, Wedding, Life Review, Renovation (partial) |
-| Prescriptive | 1 | Tax, Termination, SOP |
-| Balanced | 2 | Syllabus, Renovation |
+| Type         | Count | Examples                                                                                       |
+| ------------ | ----- | ---------------------------------------------------------------------------------------------- |
+| Intent-based | 7     | Meal Plan, RPG Campaign, Syllabus (partial), Novel, Wedding, Life Review, Renovation (partial) |
+| Prescriptive | 1     | Tax, Termination, SOP                                                                          |
+| Balanced     | 2     | Syllabus, Renovation                                                                           |
 
 ### Continuable vs Single-Session
 
-| Type | Count | Examples |
-|------|-------|----------|
-| Continuable | 7 | Meal Plan, RPG Campaign, Syllabus, Novel, Wedding, Life Review, Renovation |
-| Single-Session | 3 | Tax, Termination, SOP (repeatable but single-output) |
+| Type           | Count | Examples                                                                   |
+| -------------- | ----- | -------------------------------------------------------------------------- |
+| Continuable    | 7     | Meal Plan, RPG Campaign, Syllabus, Novel, Wedding, Life Review, Renovation |
+| Single-Session | 3     | Tax, Termination, SOP (repeatable but single-output)                       |
 
 ### Output Patterns
 
-| Type | Count | Examples |
-|------|-------|----------|
-| Direct-to-Final | 9 | All except Tax |
-| Analysis Only | 1 | Tax |
-| With Final Polish | 1 | Novel |
-| Input Discovery | 1 | Life Review |
-| Repeating Output | 2 | RPG Campaign (sessions), SOP Writer (multiple SOPs) |
+| Type              | Count | Examples                                            |
+| ----------------- | ----- | --------------------------------------------------- |
+| Direct-to-Final   | 9     | All except Tax                                      |
+| Analysis Only     | 1     | Tax                                                 |
+| With Final Polish | 1     | Novel                                               |
+| Input Discovery   | 1     | Life Review                                         |
+| Repeating Output  | 2     | RPG Campaign (sessions), SOP Writer (multiple SOPs) |
 
 ---
 

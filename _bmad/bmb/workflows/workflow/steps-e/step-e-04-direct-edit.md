@@ -71,29 +71,37 @@ Read `{editPlan}` to review direct change goals from step 2.
 #### A. Identify Change Type and Load Standards
 
 **For workflow.md changes:**
+
 - Load {architecture}
 
 **For step file changes:**
+
 - Load {stepFileRules}
 - Load {stepTypePatterns}
 - Load {intentVsPrescriptive}
 
 **For frontmatter changes:**
+
 - Load {frontmatterStandards}
 
 **For menu changes:**
+
 - Load {menuHandlingStandards}
 
 **For output/template changes:**
+
 - Load {outputFormatStandards}
 
 **For data file changes:**
+
 - Load {csvDataFileStandards}
 
 **For workflow type changes:**
+
 - Load {workflowTypeCriteria}
 
 **For discovery/input changes:**
+
 - Load {inputDiscoveryStandards}
 
 #### B. Load Target File and Check Compliance
@@ -165,10 +173,12 @@ Wait for user approval.
 ```
 
 **Update editPlan:**
+
 ```markdown
 ### Direct Changes Applied
 
 **[{change type}]** {filename}
+
 - ✅ Changed: {description}
 - User approved: Yes
 - Compliance check: Passed/Fixed/Accepted risk
@@ -229,10 +239,12 @@ Wait for user approval.
 **Modified:** {count}
 
 **Compliance Issues Found During Editing:** {count}
+
 - Fixed: {count}
 - User accepted risk: {count}
 
 **Files Modified:**
+
 - {file1}
 - {file2}
 - etc."

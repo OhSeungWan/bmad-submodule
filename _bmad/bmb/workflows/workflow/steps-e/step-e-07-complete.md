@@ -47,6 +47,7 @@ Complete the edit session with a comprehensive summary of changes made and provi
 ### 1. Read Edit Plan and Validation Report
 
 **Load both files:**
+
 1. `{editPlan}` - Full edit session history
 2. `{validationReport}` - Final validation status (if exists)
 
@@ -80,6 +81,7 @@ Complete the edit session with a comprehensive summary of changes made and provi
 **Status:** {status from report or 'Not run'}
 
 **Issues:**
+
 - Critical: {count}
 - Warnings: {count}
 
@@ -104,6 +106,7 @@ Your workflow has been successfully edited. Here's what was accomplished:
 **Session Duration:** {from start to end}
 
 **Total Edits:** {count}
+
 - Validation Fixes: {count}
 - Direct Changes: {count}
 
@@ -123,6 +126,7 @@ Your workflow has been successfully edited. Here's what was accomplished:
 4. **Re-validate periodically** - Run validation again after future changes
 
 **Resources:**
+
 - Edit this workflow again: Edit workflow mode
 - Run validation: Validate workflow mode
 - Build new workflow: Create workflow mode

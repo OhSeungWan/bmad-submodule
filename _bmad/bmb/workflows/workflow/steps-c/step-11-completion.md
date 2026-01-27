@@ -69,11 +69,13 @@ Complete the workflow creation process with a summary of what was built and next
 ## What Was Built
 
 **Workflow Structure:**
+
 - **Type:** [continuable/single-session]
 - **Mode:** [create-only/tri-modal]
 - **Steps Created:** [count]
 
 **Files Created:**
+
 - workflow.md (entry point)
 - [count] step files in steps-c/
 - [count] validation files in steps-v/ (if tri-modal)
@@ -112,21 +114,25 @@ stepsCompleted: ['step-01-discovery' or 'step-00-conversion', 'step-02-classific
 "**Next Steps:**
 
 **Test your workflow:**
+
 - Run through it end-to-end
 - Try with sample data
 - Verify all steps work as expected
 
 **Get user feedback:**
+
 - If others will use it, have them test
 - Gather feedback on facilitation
 - Note any friction points
 
 **Future maintenance:**
+
 - Use validation mode to check compliance
 - Use edit mode to make changes
 - Validation can be run anytime
 
 **Resources:**
+
 - **Validate later:** Load {targetWorkflowPath}/workflow.md with -v flag
 - **Edit later:** Load {targetWorkflowPath}/workflow.md with -e flag
 - **Build more:** Use create workflow mode for new workflows"
@@ -143,12 +149,14 @@ stepsCompleted: ['step-01-discovery' or 'step-00-conversion', 'step-02-classific
 **New location:** {targetWorkflowPath}
 
 **Preserved:**
+
 - Original goal and purpose
 - All {count} steps
 - Key instruction patterns
 - Output format
 
 **Improvements made:**
+
 - BMAD compliance
 - Better structure
 - Enhanced collaboration

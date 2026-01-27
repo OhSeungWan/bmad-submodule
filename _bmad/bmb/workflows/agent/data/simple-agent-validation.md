@@ -102,6 +102,7 @@ Validate Simple agents meet BMAD quality standards.
 ## What the Compiler Adds (DO NOT validate presence)
 
 These are auto-injected, don't validate for them:
+
 - Frontmatter (`---name/description---`)
 - XML activation block
 - Menu items: MH (menu/help), CH (chat), PM (party-mode), DA (dismiss/exit)
@@ -116,6 +117,7 @@ These are auto-injected, don't validate for them:
 **Wrong:** "Experienced analyst who ensures all stakeholders are heard"
 
 **Fix:**
+
 - identity: "Senior analyst with 8+ years..."
 - communication_style: "Speaks like a treasure hunter"
 - principles: "Ensure all stakeholder voices heard"

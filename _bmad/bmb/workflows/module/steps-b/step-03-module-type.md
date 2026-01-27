@@ -55,18 +55,21 @@ Load `{moduleStandardsFile}` and present the three types:
 "**Before we go further, we need to decide: What type of module is this?** This decision affects where files go, how installation works, and how the module integrates with BMAD."
 
 **Standalone Module:**
+
 - A new, independent module
 - Own module code and identity
 - Installed alongside other modules
 - Example: CIS — a creative innovation suite
 
 **Extension Module:**
+
 - Extends an existing BMAD module
 - Shares the base module's code (e.g., `code: bmm`)
 - Adds or overrides agents/workflows
 - Example: A security extension for BMM
 
 **Global Module:**
+
 - Affects the entire BMAD framework
 - Core functionality impacting all modules
 - Rare — use sparingly
@@ -77,16 +80,19 @@ Load `{moduleStandardsFile}` and present the three types:
 **"Based on your idea, what type makes sense?"**
 
 Help them think through:
+
 - **"Is this a brand new domain?"** → Likely Standalone
 - **"Does this build on an existing module?"** → Likely Extension
 - **"Does this affect all modules?"** → Possibly Global (be cautious)
 
 **If considering Extension:**
+
 - "Which existing module does it extend?"
 - "Are you adding new agents/workflows, or modifying existing ones?"
 - "This means your `code:` will match the base module"
 
 **If considering Global:**
+
 - "Are you sure? Global modules are rare."
 - "Could this be a standalone module instead?"
 
@@ -101,6 +107,7 @@ Once decided:
 "Folder name will be unique: {e.g., bmm-security}"
 
 **Store this decision.** It affects:
+
 - Where files are created
 - What `code:` goes in module.yaml
 - Installation behavior
@@ -108,6 +115,7 @@ Once decided:
 ### 4. Preview Implications
 
 Briefly explain what this means:
+
 - "As a {type}, your module will {implications}"
 - "When we build, files will go to {location}"
 

@@ -53,11 +53,13 @@ To validate that EVERY step file's frontmatter follows the frontmatter standards
 Load {frontmatterStandards} to understand validation criteria.
 
 **Key Rules:**
+
 1. Only variables USED in the step may be in frontmatter
 2. All file references MUST use `{variable}` format
 3. Paths within workflow folder MUST be relative - NO `workflow_path` allowed
 
 **Forbidden Patterns:**
+
 - `workflow_path: '...'` - use relative paths instead
 - `thisStepFile: '...'` - remove unless actually referenced in body
 - `workflowFile: '...'` - remove unless actually referenced in body
@@ -89,13 +91,14 @@ For each file, the subprocess performs the following deep analysis:
 ```
 
 Example frontmatter:
+
 ```yaml
 ---
 # File References
 nextStepFile: './step-02-vision.md'
 outputFile: '{planning_artifacts}/product-brief-{{project_name}}.md'
-workflow_path: '{project-root}/...'  # ❌ FORBIDDEN
-thisStepFile: './step-01-init.md'     # ❌ Likely unused
+workflow_path: '{project-root}/...' # ❌ FORBIDDEN
+thisStepFile: './step-01-init.md' # ❌ Likely unused
 ---
 ```
 
@@ -112,6 +115,7 @@ for each variable in extracted_variables:
 ```
 
 **Example:**
+
 - Variable `nextStepFile`: Search body for `{nextStepFile}` → Found in line 166 ✅
 - Variable `thisStepFile`: Search body for `{thisStepFile}` → Not found ❌ VIOLATION
 
@@ -145,6 +149,7 @@ Check ALL files systematically. Return findings for compilation and appendage to
 ### 3. Aggregate Findings and Document Results
 
 Document frontmatter validation results in the validation report showing:
+
 - Which files were checked
 - Frontmatter compliance status for each file
 - Unused variables found in each file
@@ -154,6 +159,7 @@ Document frontmatter validation results in the validation report showing:
 ### 4. List All Violations
 
 Document all violations found in the validation report, including:
+
 - Specific files with violations
 - Unused variable names and why they're unused
 - Forbidden patterns detected with explanation
@@ -162,7 +168,7 @@ Document all violations found in the validation report, including:
 
 ### 5. Append to Report
 
-Update {validationReportFile} - replace "## Frontmatter Validation *Pending...*" with actual findings.
+Update {validationReportFile} - replace "## Frontmatter Validation _Pending..._" with actual findings.
 
 ### 6. Save Report and Auto-Proceed
 

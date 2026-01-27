@@ -31,6 +31,7 @@ workflow-folder/
 - ❌ **Implementation details** - These belong in step files
 
 **The workflow.md SHOULD contain:**
+
 - ✅ Frontmatter: name, description, web_bundle
 - ✅ Goal: What the workflow accomplishes
 - ✅ Role: Who the AI embodies when running this workflow
@@ -46,22 +47,27 @@ Users should ONLY know about the current step they're executing. The workflow.md
 ## Core Principles
 
 ### 1. Micro-File Design
+
 - Each step is a focused file (~80-200 lines)
 - One concept per step
 - Self-contained instructions
 
 ### 2. Just-In-Time Loading
+
 - Only current step file is in memory
 - Never load future steps until user selects 'C'
 - Progressive disclosure - LLM stays focused
 
 ### 3. Sequential Enforcement
+
 - Steps execute in order
 - No skipping, no optimization
 - Each step completes before next loads
 
 ### 4. State Tracking
+
 For continuable workflows:
+
 ```yaml
 stepsCompleted: ['step-01-init', 'step-02-gather', 'step-03-design']
 lastStep: 'step-03-design'
@@ -75,11 +81,13 @@ Each step appends its name to `stepsCompleted` before loading next.
 ## Execution Flow
 
 ### Fresh Start
+
 ```
 workflow.md → step-01-init.md → step-02-[name].md → ... → step-N-final.md
 ```
 
 ### Continuation (Resumed)
+
 ```
 workflow.md → step-01-init.md (detects existing) → step-01b-continue.md → [appropriate next step]
 ```
@@ -89,6 +97,7 @@ workflow.md → step-01-init.md (detects existing) → step-01b-continue.md → 
 ## Frontmatter Variables
 
 ### Standard (All Workflows)
+
 ```yaml
 workflow_path: '{project-root}/_bmad/[module]/workflows/[name]'
 thisStepFile: './step-[N]-[name].md'
@@ -97,12 +106,14 @@ outputFile: '{output_folder}/[output].md'
 ```
 
 ### Module-Specific
+
 ```yaml
 # BMB example:
 bmb_creations_output_folder: '{project-root}/_bmad/bmb-creations'
 ```
 
 ### Critical Rules
+
 - ONLY variables used in step body go in frontmatter
 - All file references use `{variable}` format
 - Paths within workflow folder are relative
@@ -117,12 +128,14 @@ bmb_creations_output_folder: '{project-root}/_bmad/bmb-creations'
 Display: "**Select:** [A] [action] [P] [action] [C] Continue"
 
 #### Menu Handling Logic:
+
 - IF A: Execute {task}, then redisplay menu
 - IF P: Execute {task}, then redisplay menu
 - IF C: Save to {outputFile}, update frontmatter, then load {nextStepFile}
 - IF Any other: help user, then redisplay menu
 
 #### EXECUTION RULES:
+
 - ALWAYS halt and wait for user input
 - ONLY proceed to next step when user selects 'C'
 ```

@@ -86,6 +86,7 @@ Load and present from `{workflowPlanFile}`:
 **2. CLASSIFICATION** (from Step 2)
 
 **The 4 Key Decisions:**
+
 1. **Document Output:** {true/false} - [what it produces]
 2. **Module Affiliation:** {standalone/module} - {target path}
 3. **Session Type:** {single-session/continuable} - [implications]
@@ -99,11 +100,13 @@ Load and present from `{workflowPlanFile}`:
 **3. REQUIREMENTS** (from Step 3)
 
 **Flow Structure:**
+
 - Pattern: {linear/looping/branching/repeating}
 - Phases: {list major phases}
 - Estimated steps: {count}
 
 **User Interaction:**
+
 - Style: {collaborative/autonomous/guided/mixed}
 - Decision points: {where user must choose}
 
@@ -117,11 +120,13 @@ Load and present from `{workflowPlanFile}`:
 **4. TOOLS CONFIGURATION** (from Step 4)
 
 **Core Tools:**
+
 - Party Mode: {included/excluded} - {integration point}
 - Advanced Elicitation: {included/excluded} - {integration point}
 - Brainstorming: {included/excluded} - {integration point}
 
 **LLM Features:**
+
 - Web-Browsing: {included/excluded}
 - File I/O: {included/excluded}
 - Sub-Agents: {included/excluded}
@@ -136,21 +141,25 @@ Load and present from `{workflowPlanFile}`:
 "**Let's go through this systematically. I want your feedback on each area:**"
 
 **A. Vision and Scope (Discovery)**
+
 - "Does the 'Your Vision' section capture what you're trying to build?"
 - "Anything we missed in the key insights?"
 
 **B. Structural Decisions (Classification)**
+
 - "Do the 4 key decisions still feel right?"
 - "Any second thoughts on continuable vs single-session?"
 - "Create-only or tri-modal - still the right call?"
 
 **C. Requirements (Details)**
+
 - "Does the flow structure match what you envisioned?"
 - "Are the interaction style and decision points accurate?"
 - "Input/output specifications complete?"
 - "Success criteria clear?"
 
 **D. Tools (Integrations)**
+
 - "Do the selected tools make sense?"
 - "Integration points feel right?"
 - "Any tools we should add or remove?"
@@ -160,6 +169,7 @@ Load and present from `{workflowPlanFile}`:
 "**Your feedback:**
 
 For each section above, tell me:
+
 1. What looks good and should stay as-is
 2. What needs modification or refinement
 3. What's missing that should be added

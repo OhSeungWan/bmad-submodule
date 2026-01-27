@@ -68,6 +68,7 @@ This may take a few moments..."
 **After validation completes, load the validation report:**
 
 Read `{validationReport}` and extract:
+
 - Overall status
 - Critical issues count
 - Warning issues count
@@ -144,21 +145,24 @@ Read `{validationReport}` and extract:
 **Before routing to complete:**
 
 Update editPlan frontmatter:
+
 ```yaml
 completionDate: '{current-date}'
 validationAfterEdit: complete
-finalValidationStatus: {status from validation report}
-remainingCriticalIssues: {count}
-remainingWarnings: {count}
+finalValidationStatus: { status from validation report }
+remainingCriticalIssues: { count }
+remainingWarnings: { count }
 ```
 
 Document in editPlan:
+
 ```markdown
 ## Final Validation
 
 **Validation Date:** {current-date}
 **Status:** {status}
 **Issues After Editing:**
+
 - Critical: {count}
 - Warnings: {count}
 

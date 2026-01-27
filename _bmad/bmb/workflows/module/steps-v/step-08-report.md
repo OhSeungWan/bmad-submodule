@@ -16,6 +16,7 @@ Compile all validation results into a final report with actionable recommendatio
 ## MANDATORY EXECUTION RULES:
 
 ### Universal Rules:
+
 - 📖 CRITICAL: Read the complete step file before taking any action
 - ✅ Speak in `{communication_language}`
 
@@ -61,10 +62,12 @@ Add to `{validationReportOutput}`:
 ## Component Status
 
 ### Agents
+
 - **Built Agents:** {count} — {list}
 - **Spec Agents:** {count} — {list}
 
 ### Workflows
+
 - **Built Workflows:** {count} — {list}
 - **Spec Workflows:** {count} — {list}
 
@@ -91,14 +94,17 @@ Add to `{validationReportOutput}`:
 ## Sub-Process Validation
 
 {if built_agents_exist}
+
 ### Built Agent Deep Validation
 
 The following built agents can be validated in detail using the agent validation workflow:
 
 {for each built_agent}
+
 - **{agent_name}** — Use `{agentValidationWorkflow}`
 
 **Recommendation:** Run agent validation workflow on each built agent to verify:
+
 - Frontmatter completeness
 - Persona quality
 - Menu structure compliance
@@ -108,14 +114,17 @@ The following built agents can be validated in detail using the agent validation
 {endif}
 
 {if built_workflows_exist}
+
 ### Built Workflow Deep Validation
 
 The following built workflows can be validated in detail using the workflow validation workflow:
 
 {for each built_workflow}
+
 - **{workflow_name}** — Use `{workflowValidationWorkflow}`
 
 **Recommendation:** Run workflow validation workflow on each built workflow to verify:
+
 - Step file compliance
 - Tri-modal structure (steps-c/steps-e/steps-v/)
 - Frontmatter completeness
@@ -131,12 +140,15 @@ The following built workflows can be validated in detail using the workflow vali
 {based_on_status}
 
 {if specs_exist}
+
 ### Build Spec Components
 
 **Spec Agents:** {spec_count}
+
 - Use `bmad:bmb:agents:agent-builder` to create: {spec_agent_names}
 
 **Spec Workflows:** {spec_count}
+
 - Use `bmad:bmb:workflows:workflow` to create: {spec_workflow_names}
 
 **After building specs, re-run validation to verify compliance.**
@@ -157,6 +169,7 @@ The following built workflows can be validated in detail using the workflow vali
 
 {if built_components_exist}
 "**Built components found:**"
+
 - Built Agents: {count}
 - Built Workflows: {count}
 

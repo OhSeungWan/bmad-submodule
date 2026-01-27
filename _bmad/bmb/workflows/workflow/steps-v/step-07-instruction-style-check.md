@@ -56,6 +56,7 @@ To validate that workflow instructions use appropriate style - intent-based for 
 Load {intentVsPrescriptive} to understand:
 
 **Intent-Based (Default):**
+
 - Use for: Most workflows - creative, exploratory, collaborative
 - Step instruction describes goals and principles
 - AI adapts conversation naturally
@@ -63,6 +64,7 @@ Load {intentVsPrescriptive} to understand:
 - Example: "Guide user to define requirements through open-ended discussion"
 
 **Prescriptive (Exception):**
+
 - Use for: Compliance, safety, legal, medical, regulated industries
 - Step provides exact instructions
 - More controlled and predictable
@@ -73,12 +75,14 @@ Load {intentVsPrescriptive} to understand:
 From {workflowPlanFile}, identify the workflow domain:
 
 **Intent-Based Domains (Default):**
+
 - Creative work (writing, design, brainstorming)
 - Personal development (planning, goals, reflection)
 - Exploration (research, discovery)
 - Collaboration (facilitation, coaching)
 
 **Prescriptive Domains (Exception):**
+
 - Legal/Compliance (contracts, regulations)
 - Medical (health assessments, triage)
 - Financial (tax, regulatory compliance)
@@ -99,6 +103,7 @@ From {workflowPlanFile}, identify the workflow domain:
 Each subprocess performs deep analysis of instruction prose to classify style:
 
 **Intent-Based Indicators:**
+
 - ✅ Describes goals/outcomes, not exact wording
 - ✅ Uses "think about" language
 - ✅ Multi-turn conversation encouraged
@@ -107,17 +112,20 @@ Each subprocess performs deep analysis of instruction prose to classify style:
 - ✅ Flexible: "guide user through..." not "say exactly..."
 
 **Prescriptive Indicators:**
+
 - Exact questions specified
 - Specific wording required
 - Sequence that must be followed precisely
 - "Say exactly:" or "Ask precisely:"
 
 **Mixed Style:**
+
 - Some steps prescriptive (critical/required)
 - Others intent-based (creative/facilitative)
 
 **RETURN FORMAT:**
 Each subprocess should return findings including:
+
 - Step file identifier
 - Instruction style classification (Intent-based/Prescriptive/Mixed)
 - Style indicators observed
@@ -130,10 +138,12 @@ Each subprocess should return findings including:
 ### 4. Validate Appropriateness
 
 **For Intent-Based Domains:**
+
 - ✅ Instructions should be intent-based
 - ❌ Prescriptive instructions inappropriate (unless specific section requires it)
 
 **For Prescriptive Domains:**
+
 - ✅ Instructions should be prescriptive where compliance matters
 - ⚠️ May have intent-based sections for creative elements
 
@@ -144,26 +154,31 @@ After ALL subprocesses have analyzed their respective step files, aggregate find
 Document the following:
 
 **Workflow Domain Assessment:**
+
 - Document the domain type (creative/interactive vs compliance/legal)
 - State the appropriate instruction style for this domain
 
 **Instruction Style Findings:**
+
 - List each step and its instruction style classification (intent-based/prescriptive/mixed)
 - Note whether the style is appropriate for the domain
 - Document specific examples of instruction language that demonstrate the style
 - Identify any steps with inappropriate style (e.g., prescriptive in creative domain)
 
 **Issues Identified:**
+
 - List any steps that are overly prescriptive for their domain
 - List any steps that should be more prescriptive (for compliance domains)
 - Note any style inconsistencies across steps
 
 **Positive Findings:**
+
 - Highlight steps with excellent instruction style
 - Note effective use of intent-based facilitation language
 - Identify appropriate use of prescriptive instructions (if applicable)
 
 **Overall Status:**
+
 - Provide final assessment (PASS/FAIL/WARN)
 - Summarize key findings
 
@@ -171,7 +186,7 @@ Document the following:
 
 ### 6. Update Report with Aggregated Findings
 
-Update {validationReportFile} - replace "## Instruction Style Check *Pending...*" with actual aggregated findings from all subprocesses.
+Update {validationReportFile} - replace "## Instruction Style Check _Pending..._" with actual aggregated findings from all subprocesses.
 
 ### 7. Save Report and Auto-Proceed
 

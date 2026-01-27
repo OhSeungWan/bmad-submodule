@@ -42,6 +42,7 @@ Load `{agentArchitectureFile}` for guidance.
 ### 2. Get Agent Roster from Brief
 
 Extract from the brief:
+
 - Agent names
 - Roles
 - Workflows they're responsible for
@@ -55,7 +56,8 @@ Load `{agentSpecTemplate}` and create:
 `{targetLocation}/agents/{agent_name}.spec.md`
 
 With content:
-```markdown
+
+````markdown
 # Agent Specification: {agent_name}
 
 **Module:** {module_code}
@@ -69,13 +71,14 @@ With content:
 ```yaml
 agent:
   metadata:
-    id: "_bmad/{module_code}/agents/{agent_file_name}.md"
-    name: {agent_human_name}
-    title: {agent_title}
-    icon: {agent_icon}
-    module: {module_code}
-    hasSidecar: {false/true}
+    id: '_bmad/{module_code}/agents/{agent_file_name}.md'
+    name: { agent_human_name }
+    title: { agent_title }
+    icon: { agent_icon }
+    module: { module_code }
+    hasSidecar: { false/true }
 ```
+````
 
 ---
 
@@ -104,7 +107,8 @@ agent:
 ### Planned Commands
 
 | Trigger | Command | Description | Workflow |
-|---------|---------|-------------|----------|
+| ------- | ------- | ----------- | -------- |
+
 {agent_menu_table}
 
 ---
@@ -129,6 +133,7 @@ agent:
 ---
 
 _Spec created on {date} via BMAD Module workflow_
+
 ```
 
 ### 4. Create All Agent Specs
@@ -165,3 +170,4 @@ Update `{buildTrackingFile}`:
 ✅ Each spec has role, workflows, menu triggers
 ✅ hasSidecar documented (memory decision)
 ✅ Build tracking updated
+```

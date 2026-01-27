@@ -88,6 +88,7 @@ Append to `{validationReport}`:
 **Status:** {✅ PASS / ⚠️ WARNING / ❌ FAIL}
 
 **Checks:**
+
 - [ ] id: kebab-case, no spaces, unique
 - [ ] name: clear display name
 - [ ] title: concise function description
@@ -97,13 +98,13 @@ Append to `{validationReport}`:
 
 **Detailed Findings:**
 
-*PASSING:*
+_PASSING:_
 {List of passing checks}
 
-*WARNINGS:*
+_WARNINGS:_
 {List of non-blocking issues}
 
-*FAILURES:*
+_FAILURES:_
 {List of blocking issues that must be fixed}
 ```
 

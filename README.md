@@ -9,6 +9,7 @@ BMAD-METHOD - 범용 AI 에이전트 프레임워크
 Submodule은 다른 git 저장소에 대한 포인터입니다. 실제 파일이 아닌 참조(.gitmodules + SHA)만 저장합니다.
 
 **장점:**
+
 - 깔끔한 PR (300개 이상의 BMAD 파일 대신 2개 파일만 변경)
 - 중앙 집중식 업데이트 (하나의 BMAD repo → 모든 프로젝트)
 - `npm install`로 자동 초기화
@@ -72,15 +73,16 @@ git push
 ## 스크립트 설명
 
 ### install.sh
+
 - 루트 프로젝트에 심볼릭 링크 생성:
   - `.claude/commands/bmad` → submodule의 `.claude/commands/bmad`
   - `_bmad` → submodule의 `_bmad`
 - 기존 폴더/링크가 있으면 삭제 후 재생성
 
 ### uninstall.sh
+
 - 위 심볼릭 링크 제거
 - 일반 디렉토리인 경우 확인 후 삭제
-
 
 ## 문제 해결
 
@@ -89,11 +91,13 @@ git push
 `git status`에서 `bmad-submodule (modified content)`가 표시되면 에디터 자동 포맷팅(예: VSCode의 `files.trimTrailingWhitespace`) 때문입니다.
 
 설정으로 방지:
+
 ```bash
 git config -f .gitmodules submodule.bmad-submodule.ignore dirty
 ```
 
 수동 리셋:
+
 ```bash
 git submodule foreach --recursive git checkout .
 ```

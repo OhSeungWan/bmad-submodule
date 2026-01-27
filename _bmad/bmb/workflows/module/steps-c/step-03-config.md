@@ -43,11 +43,12 @@ Load `{moduleYamlConventionsFile}` for reference.
 Create `{targetLocation}/module.yaml` with:
 
 **Required fields:**
+
 ```yaml
-code: {module_code}
-name: "{module_display_name}"
-header: "{brief_header}"
-subheader: "{additional_context}"
+code: { module_code }
+name: '{module_display_name}'
+header: '{brief_header}'
+subheader: '{additional_context}'
 default_selected: false
 ```
 
@@ -58,19 +59,22 @@ default_selected: false
 "**Does your module need any custom configuration variables?**"
 
 Reference the brief for:
+
 - User input needed during installation
 - Paths or settings users should configure
 - Feature flags or options
 
 **For each variable, create:**
+
 ```yaml
 variable_name:
-  prompt: "{question to ask}"
-  default: "{default_value}"
-  result: "{template}"
+  prompt: '{question to ask}'
+  default: '{default_value}'
+  result: '{template}'
 ```
 
 **Common patterns:**
+
 - Text input (names, titles)
 - Boolean (enable features)
 - Single-select (experience levels)
@@ -88,6 +92,7 @@ Write the complete module.yaml to `{targetLocation}/module.yaml`
 ### 5. Update Build Tracking
 
 Update `{buildTrackingFile}`:
+
 - Add 'step-03-config' to stepsCompleted
 - Note: module.yaml created
 

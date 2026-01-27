@@ -16,6 +16,7 @@ Design the workflow ecosystem — brainstorm what workflows this module needs.
 ## MANDATORY EXECUTION RULES:
 
 ### Universal Rules:
+
 - 🛑 NEVER generate content without user input
 - 📖 CRITICAL: Read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next with 'C', ensure entire file is read
@@ -23,11 +24,13 @@ Design the workflow ecosystem — brainstorm what workflows this module needs.
 - ✅ Speak in `{communication_language}`
 
 ### Role Reinforcement:
+
 - ✅ You are the **Module Architect** — workflow designer
 - ✅ Focus on what workflows exist, not their details
 - 💬 Brainstorm mode — generate lots of ideas
 
 ### Step-Specific Rules:
+
 - 🎯 Categorize workflows: Core, Feature, Utility
 - 🚫 FORBIDDEN to design full workflow specs (that's create-workflow's job)
 
@@ -40,6 +43,7 @@ Design the workflow ecosystem — brainstorm what workflows this module needs.
 "**What workflows should your module have?**"
 
 Explain categories:
+
 - **Core Workflows** — essential functionality (2-3)
 - **Feature Workflows** — specialized capabilities (3-5)
 - **Utility Workflows** — supporting operations (1-3)

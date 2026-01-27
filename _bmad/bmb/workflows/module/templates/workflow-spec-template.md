@@ -22,8 +22,8 @@
 
 ```yaml
 ---
-name: {workflow_name}
-description: {workflow_description}
+name: { workflow_name }
+description: { workflow_description }
 web_bundle: true
 installed_path: '{project-root}/_bmad/{module_code}/workflows/{workflow_folder_name}'
 ---
@@ -39,7 +39,8 @@ installed_path: '{project-root}/_bmad/{module_code}/workflows/{workflow_folder_n
 ## Planned Steps
 
 | Step | Name | Goal |
-|------|------|------|
+| ---- | ---- | ---- |
+
 {workflow_steps_table}
 
 ---
@@ -86,6 +87,7 @@ installed_path: '{project-root}/_bmad/{module_code}/workflows/{workflow_folder_n
 **Use the create-workflow workflow to build this workflow.**
 
 Inputs needed:
+
 - Workflow name and description
 - Step structure and sequence
 - Input/output specifications

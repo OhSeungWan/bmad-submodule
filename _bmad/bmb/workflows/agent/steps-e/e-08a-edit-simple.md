@@ -54,6 +54,7 @@ Apply all planned edits to the Simple agent YAML file using templates and archit
 ### 1. Load Reference Documents
 
 Read all files before editing:
+
 - `{simpleTemplate}` - YAML structure reference
 - `{simpleArch}` - Simple agent architecture
 - `{agentCompilation}` - Assembly guidelines
@@ -77,23 +78,28 @@ Confirm: "Backup created at: `{agentBackup}`"
 For each planned edit:
 
 **Type Conversion (Simple ← Expert/Module):**
+
 - Converting TO Simple: Remove `metadata.sidecar-folder`, remove all sidecar references
 - Set `module: stand-alone` and `hasSidecar: false`
 - Remove type-specific fields from source type
 
 **Metadata Edits:**
+
 - Apply each field change from metadataEdits
 
 **Persona Edits:**
+
 - Replace persona section with new four-field persona
 - Validate field purity (role ≠ identity ≠ communication_style)
 
 **Command Edits:**
+
 - Additions: append to commands array
 - Modifications: update specific commands
 - Removals: remove from commands array
 
 **Critical Actions Edits:**
+
 - Additions: append to critical_actions array
 - Modifications: update specific actions
 - Removals: remove from array
@@ -108,10 +114,10 @@ Append to `{editPlan}`:
 
 ```yaml
 editsApplied:
-  - {edit-description}
-  - {edit-description}
-backup: {agentBackup}
-timestamp: {YYYY-MM-DD HH:MM}
+  - { edit-description }
+  - { edit-description }
+backup: { agentBackup }
+timestamp: { YYYY-MM-DD HH:MM }
 ```
 
 ### 7. Auto-Advance
@@ -134,4 +140,4 @@ When all edits applied successfully, load and execute `{nextStepFile}` immediate
 
 ---
 
-**Auto-advancing to post-edit validation...
+\*\*Auto-advancing to post-edit validation...

@@ -16,6 +16,7 @@ Define the module's identity — code, name, and personality/theme.
 ## MANDATORY EXECUTION RULES:
 
 ### Universal Rules:
+
 - 🛑 NEVER generate content without user input
 - 📖 CRITICAL: Read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next with 'C', ensure entire file is read
@@ -23,11 +24,13 @@ Define the module's identity — code, name, and personality/theme.
 - ✅ Speak in `{communication_language}`
 
 ### Role Reinforcement:
+
 - ✅ You are the **Module Architect** — naming, branding, theming
 - ✅ This is where personality comes in
 - 💬 Have fun with this!
 
 ### Step-Specific Rules:
+
 - 🎯 Module code follows conventions (kebab-case, 2-20 chars)
 - 🚫 FORBIDDEN to use reserved codes or existing module codes (for standalone)
 
@@ -40,6 +43,7 @@ Define the module's identity — code, name, and personality/theme.
 "**Let's give your module a code.**"
 
 Explain:
+
 - kebab-case (e.g., `bmm`, `cis`, `healthcare-ai`)
 - Short, memorable, descriptive
 - 2-20 characters
@@ -53,6 +57,7 @@ Explain:
 "**What's the display name?**"
 
 This is the human-facing name in module.yaml:
+
 - "BMM: BMad Method Agile-AI Driven-Development"
 - "CIS: Creative Innovation Suite"
 - "Your Module: Your Description"
@@ -62,11 +67,13 @@ This is the human-facing name in module.yaml:
 "**Does your module have a personality or theme?**"
 
 Some modules have fun themes:
+
 - BMM — Agile team (personas like John, Winston)
 - CIS — Creative innovators
 - BMGD — Game dev team
 
 **Questions:**
+
 - Should the agents have a consistent theme?
 - Any personality vibes? (Corporate team, fantasy party, reality show cast?)
 - Or keep it professional/focused?
@@ -74,6 +81,7 @@ Some modules have fun themes:
 ### 4. Store Identity
 
 Capture:
+
 - Module code: `{code}`
 - Module name: `{name}`
 - Personality theme: `{theme or "none/professional"}`

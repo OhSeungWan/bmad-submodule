@@ -11,6 +11,7 @@
 **Use when:** One persona can handle the module's purpose.
 
 **Characteristics:**
+
 - Simpler, focused
 - Clear single point of contact
 - Good for narrow domains
@@ -24,11 +25,13 @@
 **Use when:** Different expertise areas justify specialized personas.
 
 **Characteristics:**
+
 - Each agent has a distinct role and expertise
 - Agents form a cohesive team around the module's theme
 - Menus coordinate to guide users to the right agent
 
 **Why multi-agent?**
+
 - Different workflows need different expert perspectives
 - Users expect to talk to "the right expert" for each task
 - The module covers a domain too broad for one persona
@@ -47,17 +50,17 @@ Every agent serves this theme — they're a complete team working together.
 
 ### BMM Agent Overview
 
-| Agent | Name | Role | Responsible For |
-|-------|------|------|-----------------|
-| PM | John | Product Manager | PRDs, requirements, user stories |
-| Architect | Winston | System Architect | Technical design, architecture |
-| UX | | UX Designer | User research, UX design |
-| Dev | | Developer | Implementation, coding |
-| TEA | | Test Engineer Architect | Test architecture, QA |
-| SM | | Scrum Master | Sprint planning, workflow status |
-| Tech Writer | | Technical Writer | Documentation |
-| Analyst | | Business Analyst | Analysis, metrics |
-| Quick Flow | | Solo Developer | Quick standalone work |
+| Agent       | Name    | Role                    | Responsible For                  |
+| ----------- | ------- | ----------------------- | -------------------------------- |
+| PM          | John    | Product Manager         | PRDs, requirements, user stories |
+| Architect   | Winston | System Architect        | Technical design, architecture   |
+| UX          |         | UX Designer             | User research, UX design         |
+| Dev         |         | Developer               | Implementation, coding           |
+| TEA         |         | Test Engineer Architect | Test architecture, QA            |
+| SM          |         | Scrum Master            | Sprint planning, workflow status |
+| Tech Writer |         | Technical Writer        | Documentation                    |
+| Analyst     |         | Business Analyst        | Analysis, metrics                |
+| Quick Flow  |         | Solo Developer          | Quick standalone work            |
 
 ### Key Patterns
 
@@ -90,11 +93,13 @@ That's it! The agent-builder workflow will handle the detailed implementation.
 **Use when:** The agent needs to remember context across sessions.
 
 **Characteristics:**
+
 - Has a sidecar file that persists between conversations
 - Learns from user interactions
 - Remembers project details, preferences, past work
 
 **Examples:**
+
 - An agent that tracks project decisions over time
 - An agent that learns user preferences
 - An agent that maintains ongoing project context
@@ -104,6 +109,7 @@ That's it! The agent-builder workflow will handle the detailed implementation.
 **Use when:** The agent doesn't need persistent memory.
 
 **Characteristics:**
+
 - Each conversation starts fresh
 - Relies on shared context files (like project-context.md)
 - Simpler, more predictable
@@ -118,11 +124,11 @@ That's it! The agent-builder workflow will handle the detailed implementation.
 
 Each agent has menu items that trigger workflows:
 
-| Trigger Type | Pattern | Example |
-|--------------|---------|---------|
-| Shared | Same across all agents | `[WS]` Workflow Status |
-| Specialty | Unique to this agent | `[PR]` Create PRD (PM only) |
-| Cross-reference | Points to another agent's workflow | "See architecture" |
+| Trigger Type    | Pattern                            | Example                     |
+| --------------- | ---------------------------------- | --------------------------- |
+| Shared          | Same across all agents             | `[WS]` Workflow Status      |
+| Specialty       | Unique to this agent               | `[PR]` Create PRD (PM only) |
+| Cross-reference | Points to another agent's workflow | "See architecture"          |
 
 ### Simple Planning Format
 
@@ -145,12 +151,14 @@ The agent-builder workflow will convert this into the proper format.
 ## When to Use Multiple Agents
 
 **Consider multiple agents when:**
+
 - Different workflows require different expertise
 - The domain has clear specialization areas
 - Users would expect to talk to different "experts"
 - The module covers a broad process (like software development)
 
 **Use a single agent when:**
+
 - The domain is focused and narrow
 - One expertise area covers all workflows
 - Simplicity is preferred

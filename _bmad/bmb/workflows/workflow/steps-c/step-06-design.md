@@ -89,6 +89,7 @@ Example [Workflow.md](../workflow.md) for reference of a perfect workflow.md wit
 Load {stepTypePatterns} for available step type templates:
 
 This shows the standard structure for all step types:
+
 - Init Step (Continuable)
 - Continuation Step (01b)
 - Middle Step (Standard/Simple)
@@ -130,6 +131,7 @@ If **YES** to any of these, we should include continuation support using step-01
 Load {menuHandlingStandards} for menu pattern options:
 
 Design how users will interact with the workflow:
+
 - Where should users provide input vs where the AI works autonomously?
 - What menu pattern does each step need? (Standard A/P/C, Auto-proceed, Custom, Conditional)
 - Should there be Advanced Elicitation or Party Mode options?
@@ -193,6 +195,7 @@ If **YES** to any of these, we should design those steps with subprocess optimiz
 **If subprocess optimization is applicable:**
 
 For each step that could benefit from subprocesses:
+
 - Identify which pattern(s) apply (Pattern 1, 2, 3, or 4)
 - Design what the subprocess should return (findings only, not full content)
 - Plan graceful fallback for LLMs without subprocess capability
@@ -202,6 +205,7 @@ For each step that could benefit from subprocesses:
 
 ```markdown
 ### Step-Specific Rules:
+
 - 🎯 Analyze X files for Y - use subprocess per file (Pattern 2)
 - 💬 Subprocess returns structured findings, not full content
 - ⚙️ If subprocess unavailable: Perform analysis in main thread
@@ -210,6 +214,7 @@ For each step that could benefit from subprocesses:
 **Document in the plan:**
 
 For each step identified for subprocess optimization, record:
+
 - Step number and name
 - Pattern type(s) to apply
 - What the subprocess will analyze
@@ -228,6 +233,7 @@ Identify unique requirements:
 **Input Discovery:**
 
 If this workflow depends on documents from prior workflows, load {inputDiscoveryStandards}:
+
 - What prior workflow outputs does this workflow need?
 - Are these required or optional inputs?
 - How will the workflow discover these documents?
@@ -235,6 +241,7 @@ If this workflow depends on documents from prior workflows, load {inputDiscovery
 **Workflow Chaining:**
 
 If this workflow is part of a sequence, load {workflowChainingStandards}:
+
 - What workflow comes before this one?
 - What workflow comes after this one?
 - What outputs does this workflow produce for the next?

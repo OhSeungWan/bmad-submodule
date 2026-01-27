@@ -64,7 +64,9 @@ import { test } from '@seontechnologies/playwright-utils/api-request/fixtures';
 import { z } from 'zod';
 
 // JSON Schema validation
-test('should validate response schema (JSON Schema)', async ({ apiRequest }) => {
+test('should validate response schema (JSON Schema)', async ({
+  apiRequest,
+}) => {
   const { status, body } = await apiRequest({
     method: 'GET',
     path: '/api/users/123',
@@ -425,7 +427,9 @@ try {
 **✅ Let retries happen, handle final failure:**
 
 ```typescript
-await expect(apiRequest({ method: 'GET', path: '/api/unstable' })).rejects.toThrow(); // Retries happen automatically, then final error caught
+await expect(
+  apiRequest({ method: 'GET', path: '/api/unstable' }),
+).rejects.toThrow(); // Retries happen automatically, then final error caught
 ```
 
 **❌ Disabling TypeScript benefits:**

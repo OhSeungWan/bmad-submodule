@@ -7,6 +7,7 @@
 ## Core Step Structure
 
 All steps share this skeleton:
+
 ```markdown
 ---
 name: 'step-[N]-[name]'
@@ -17,31 +18,38 @@ description: '[what it does]'
 # Step [N]: [Name]
 
 ## STEP GOAL:
+
 [Single sentence goal]
 
 ## MANDATORY EXECUTION RULES (READ FIRST):
+
 ### Universal Rules:
+
 - 🛑 NEVER generate content without user input
 - 📖 CRITICAL: Read complete step file before action
 - 🔄 CRITICAL: When loading next with 'C', read entire file
 - 📋 YOU ARE A FACILITATOR, not content generator
 
 ### Role Reinforcement:
+
 - ✅ You are [specific role]
 - ✅ Collaborative dialogue, not command-response
 - ✅ You bring [expertise], user brings [theirs]
 
 ### Step-Specific Rules:
+
 - 🎯 Focus only on [specific task]
 - 🚫 FORBIDDEN to [prohibited action]
 - 💬 Approach: [how to engage]
 
 ## EXECUTION PROTOCOLS:
+
 - 🎯 Follow the MANDATORY SEQUENCE exactly
 - 💾 [Additional protocol]
 - 📖 [Additional protocol]
 
 ## CONTEXT BOUNDARIES:
+
 - Available context: [what's available]
 - Focus: [what to focus on]
 - Limits: [boundaries]
@@ -52,14 +60,19 @@ description: '[what it does]'
 **CRITICAL:** Follow this sequence exactly. Do not skip, reorder, or improvise unless user explicitly requests a change.
 
 ### 1. [First action]
+
 [Instructions]
 
 ### N. Present MENU OPTIONS
+
 [Menu section - see menu-handling-standards.md]
 
 ## 🚨 SYSTEM SUCCESS/FAILURE METRICS:
+
 ### ✅ SUCCESS: [criteria]
+
 ### ❌ SYSTEM FAILURE: [criteria]
+
 **Master Rule:** Skipping steps is FORBIDDEN.
 ```
 
@@ -72,6 +85,7 @@ description: '[what it does]'
 **Use:** Single-session workflow
 
 **Frontmatter:**
+
 ```yaml
 ---
 name: 'step-01-init'
@@ -83,6 +97,7 @@ templateFile: '../templates/[template].md'
 ```
 
 **Characteristics:**
+
 - No continuation detection
 - Auto-proceeds to step 2
 - No A/P menu
@@ -95,13 +110,16 @@ templateFile: '../templates/[template].md'
 **Use:** Multi-session workflow
 
 **Frontmatter:** Add `continueFile` reference
+
 ```yaml
 continueFile: './step-01b-continue.md'
 ```
 
 **Logic:**
+
 ```markdown
 ## 1. Check for Existing Workflow
+
 - Look for {outputFile}
 - If exists AND has stepsCompleted → STOP, load {continueFile}
 - If not exists → continue to setup
@@ -114,6 +132,7 @@ continueFile: './step-01b-continue.md'
 **Use:** Paired with continuable init
 
 **Frontmatter:**
+
 ```yaml
 ---
 name: 'step-01b-continue'
@@ -124,6 +143,7 @@ workflowFile: '{workflow_path}/workflow.md'
 ```
 
 **Logic:**
+
 1. Read `stepsCompleted` array from output
 2. Read last completed step file to find nextStep
 3. Welcome user back
@@ -136,6 +156,7 @@ workflowFile: '{workflow_path}/workflow.md'
 **Use:** Collaborative content generation
 
 **Frontmatter:**
+
 ```yaml
 ---
 name: 'step-[N]-[name]'
@@ -159,6 +180,7 @@ partyModeWorkflow: '{project-root}/.../party-mode/workflow.md'
 **Use:** User choice determines next path
 
 **Frontmatter:**
+
 ```yaml
 nextStepFile: './step-[default].md'
 altStepFile: './step-[alternate].md'
@@ -173,14 +195,18 @@ altStepFile: './step-[alternate].md'
 **Menu:** Auto-proceed to next validation
 
 **Pattern:**
+
 ```markdown
 ## 1. Perform validation check
+
 [Check logic]
 
 ## 2. Write results to {outputFile}
+
 Append findings
 
 ## 3. Proceed to next validation
+
 Display: "**Proceeding to next check...**"
 → Immediately load {nextValidationStep}
 ```
@@ -190,6 +216,7 @@ Display: "**Proceeding to next check...**"
 **Use:** Workflow that requires documents from prior workflows or external sources
 
 **Frontmatter:**
+
 ```yaml
 ---
 name: 'step-01-init'
@@ -204,6 +231,7 @@ inputFilePatterns:
 ```
 
 **Characteristics:**
+
 - Discovers documents from prior workflows
 - Searches by folder, pattern, or user-provided paths
 - Validates inputs are complete
@@ -211,23 +239,28 @@ inputFilePatterns:
 - Auto-proceeds when required inputs found
 
 **Logic:**
+
 ```markdown
 ## 1. Discover Required Inputs
+
 Search {moduleInputFolder} for {inputFilePatterns}
 Search {project_folder}/docs/ for {inputFilePatterns}
 
 ## 2. Present Findings
+
 "Found these documents:
 [1] prd-my-project.md (3 days ago) ✓
 [2] ux-research.md (1 week ago)
 Which would you like to use?"
 
 ## 3. Validate and Load
+
 Check workflowType, stepsCompleted, date
 Load selected documents
 Add to {inputDocuments} array
 
 ## 4. Auto-Proceed
+
 If all required inputs found → proceed to step 2
 If missing → Error with guidance
 ```
@@ -239,6 +272,7 @@ If missing → Error with guidance
 **Use:** Optimizes document built section-by-section
 
 **Frontmatter:**
+
 ```yaml
 ---
 name: 'step-[N]-polish'
@@ -248,6 +282,7 @@ outputFile: '{output_folder}/[document].md'
 ```
 
 **Characteristics:**
+
 - Loads entire document
 - Reviews for flow and coherence
 - Reduces duplication
@@ -256,12 +291,16 @@ outputFile: '{output_folder}/[document].md'
 - Keeps general order but optimizes readability
 
 **Logic:**
+
 ```markdown
 ## 1. Load Complete Document
+
 Read {outputFile} entirely
 
 ## 2. Document Optimization
+
 Review entire document for:
+
 1. Flow and coherence
 2. Duplication (remove while preserving essential info)
 3. Proper ## Level 2 section headers
@@ -269,12 +308,15 @@ Review entire document for:
 5. Overall readability
 
 ## 3. Optimize
+
 Make improvements while maintaining:
+
 - General order of sections
 - Essential information
 - User's voice and intent
 
 ## 4. Final Output
+
 Save optimized document
 Mark workflow complete
 ```
@@ -288,6 +330,7 @@ Mark workflow complete
 **Frontmatter:** No `nextStepFile`
 
 **Logic:**
+
 - Update frontmatter to mark workflow complete
 - Provide final summary
 - No next step

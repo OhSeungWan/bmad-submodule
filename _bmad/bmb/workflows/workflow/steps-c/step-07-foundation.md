@@ -103,6 +103,7 @@ Create the folders and confirm structure.
 Load {workflowTemplate} and create workflow.md with:
 
 **Frontmatter:**
+
 ```yaml
 ---
 name: '{workflow-name-from-design}'
@@ -112,6 +113,7 @@ web_bundle: true
 ```
 
 **Content:**
+
 - Workflow name and description
 - Goal statement
 - Role definition
@@ -121,6 +123,7 @@ web_bundle: true
 
 **If tri-modal (Create + Edit + Validate):**
 Add mode routing logic to workflow.md:
+
 - IF invoked with -c: Load ./steps-c/step-01-init.md
 - IF invoked with -v: Load ./steps-v/step-01-validate.md
 - IF invoked with -e: Load ./steps-e/step-01-edit.md
@@ -130,6 +133,7 @@ Add mode routing logic to workflow.md:
 **Load {outputFormatStandards} to determine template type.**
 
 **From the design, determine:**
+
 - Free-form (recommended) - Minimal frontmatter + progressive append
 - Structured - Required sections with flexible content
 - Semi-structured - Core sections + optional additions
@@ -138,6 +142,7 @@ Add mode routing logic to workflow.md:
 **For Free-form (most common):**
 
 Create `templates/output-template.md`:
+
 ```yaml
 ---
 stepsCompleted: []
@@ -148,6 +153,7 @@ user_name: ''
 ```
 
 If the workflow produces a document with sections:
+
 ```markdown
 # {{document_title}}
 
@@ -157,13 +163,16 @@ If the workflow produces a document with sections:
 **For Structured/Semi-structured:**
 
 Create template with section placeholders based on design:
+
 ```markdown
 # {{title}}
 
 ## {{section_1}}
+
 [Content to be filled]
 
 ## {{section_2}}
+
 [Content to be filled]
 ```
 
@@ -179,17 +188,20 @@ Append to {workflowPlanFile}:
 ## Foundation Build Complete
 
 **Created:**
+
 - Folder structure at: {targetWorkflowPath}
 - workflow.md
 - Main template: [template-name]
 
 **Configuration:**
+
 - Workflow name: {name}
 - Continuable: [yes/no]
 - Document output: [yes/no - type]
 - Mode: [create-only or tri-modal]
 
 **Next Steps:**
+
 - Step 8: Build step-01 (and step-01b if continuable)
 - Step 9: Build remaining steps (repeatable)
 ```

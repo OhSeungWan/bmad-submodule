@@ -89,6 +89,7 @@ Read `{editPlan}` to understand what edits were applied.
 **IF user selects [C] Complete:**
 
 Update editPlan frontmatter:
+
 ```yaml
 completionDate: '{current-date}'
 validationAfterEdit: skipped
@@ -96,6 +97,7 @@ completionStatus: complete_without_validation
 ```
 
 Document in editPlan:
+
 ```markdown
 ## Completion
 

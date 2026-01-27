@@ -17,6 +17,7 @@ Validate module documentation completeness, including user-facing docs in docs/ 
 ## MANDATORY EXECUTION RULES:
 
 ### Universal Rules:
+
 - 📖 CRITICAL: Read the complete step file before taking any action
 - ✅ Speak in `{communication_language}`
 
@@ -33,6 +34,7 @@ Validate module documentation completeness, including user-facing docs in docs/ 
 ### 1. Load Documentation Files
 
 Check for:
+
 - `{targetPath}/README.md` (module overview)
 - `{targetPath}/TODO.md` (development roadmap)
 - `{targetPath}/docs/` (user documentation folder)
@@ -40,6 +42,7 @@ Check for:
 ### 2. Validate README.md
 
 **Required Sections:**
+
 - [ ] Module name and description
 - [ ] Installation instructions
 - [ ] Components section (agents, workflows)
@@ -48,6 +51,7 @@ Check for:
 - [ ] Link to docs/ folder
 
 **Quality Checks:**
+
 - [ ] Clear description of what module does
 - [ ] Installation command shown
 - [ ] Agent/workflow lists complete
@@ -56,6 +60,7 @@ Check for:
 ### 3. Validate TODO.md
 
 **Required Content:**
+
 - [ ] Agent build checklist
 - [ ] Workflow build checklist
 - [ ] Testing section
@@ -64,11 +69,13 @@ Check for:
 ### 4. Validate docs/ Folder
 
 **For Custom Modules:**
+
 - [ ] docs/ folder exists
 - [ ] Contains user-facing documentation
 - [ ] Documentation is clear and helpful
 
 **Valid docs/ Contents (may include):**
+
 - `getting-started.md` — Quick start guide
 - `agents.md` — Agent documentation
 - `workflows.md` — Workflow documentation
@@ -77,6 +84,7 @@ Check for:
 - `troubleshooting.md` — Common issues and solutions
 
 **Quality Check:**
+
 - [ ] Even with placeholder agent/workflow specs, user docs should provide useful information
 - [ ] Documentation references agents/workflows by name
 - [ ] Clear what functionality exists vs what is planned
@@ -88,6 +96,7 @@ Check for:
 "**User documentation can be generated from module brief and agent/workflow specs.**"
 
 "**Even with placeholder plans, you can create helpful user documentation that describes:**
+
 - What each agent does and when to use it
 - What workflows are available and their purpose
 - How to get started with the module
@@ -103,10 +112,12 @@ Append to `{validationReportOutput}`:
 **Status:** {PASS/FAIL/WARNINGS}
 
 **Root Documentation:**
+
 - **README.md:** {present/missing} - {status}
 - **TODO.md:** {present/missing} - {status}
 
 **User Documentation (docs/):**
+
 - **docs/ folder:** {present/missing} - {status}
 - **Documentation files:** {count} files found
 
@@ -118,10 +129,11 @@ Append to `{validationReportOutput}`:
 
 **Recommendations:**
 {if docs/ missing or incomplete}
+
 - Generate user documentation from module brief and specs
 - Create getting-started.md, agents.md, workflows.md
 - User docs are valuable even with placeholder plans
-{endif}
+  {endif}
 ```
 
 ### 7. Auto-Proceed

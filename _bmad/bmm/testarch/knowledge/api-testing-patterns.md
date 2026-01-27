@@ -23,16 +23,16 @@ API-first testing provides:
 
 ## When to Use API Tests vs E2E Tests
 
-| Scenario | API Test | E2E Test |
-|----------|----------|----------|
-| CRUD operations | ✅ Primary | ❌ Overkill |
-| Business logic validation | ✅ Primary | ❌ Overkill |
-| Error handling (4xx, 5xx) | ✅ Primary | ⚠️ Supplement |
-| Authentication flows | ✅ Primary | ⚠️ Supplement |
-| Data transformation | ✅ Primary | ❌ Overkill |
-| User journeys | ❌ Can't test | ✅ Primary |
-| Visual regression | ❌ Can't test | ✅ Primary |
-| Cross-browser issues | ❌ Can't test | ✅ Primary |
+| Scenario                  | API Test      | E2E Test      |
+| ------------------------- | ------------- | ------------- |
+| CRUD operations           | ✅ Primary    | ❌ Overkill   |
+| Business logic validation | ✅ Primary    | ❌ Overkill   |
+| Error handling (4xx, 5xx) | ✅ Primary    | ⚠️ Supplement |
+| Authentication flows      | ✅ Primary    | ⚠️ Supplement |
+| Data transformation       | ✅ Primary    | ❌ Overkill   |
+| User journeys             | ❌ Can't test | ✅ Primary    |
+| Visual regression         | ❌ Can't test | ✅ Primary    |
+| Cross-browser issues      | ❌ Can't test | ✅ Primary    |
 
 **Rule of thumb**: If you're testing what the server returns (not how it looks), use API tests.
 
@@ -101,7 +101,7 @@ test.describe('Users API', () => {
     const error = await response.json();
     expect(error.code).toBe('VALIDATION_ERROR');
     expect(error.details).toContainEqual(
-      expect.objectContaining({ field: 'email', message: expect.any(String) })
+      expect.objectContaining({ field: 'email', message: expect.any(String) }),
     );
   });
 });
@@ -122,7 +122,10 @@ test.describe('Users API', () => {
 
 ```typescript
 // tests/api/orders.spec.ts
-import { test, expect } from '@seontechnologies/playwright-utils/api-request/fixtures';
+import {
+  test,
+  expect,
+} from '@seontechnologies/playwright-utils/api-request/fixtures';
 import { z } from 'zod';
 
 // Define schema for type safety and validation
@@ -134,7 +137,7 @@ const OrderSchema = z.object({
       productId: z.string(),
       quantity: z.number().positive(),
       price: z.number().positive(),
-    })
+    }),
   ),
   total: z.number().positive(),
   status: z.enum(['pending', 'processing', 'shipped', 'delivered']),
@@ -179,7 +182,11 @@ test.describe('Orders API', () => {
   });
 
   test('should list orders with pagination', async ({ apiRequest }) => {
-    const { status, body } = await apiRequest<{ orders: Order[]; total: number; page: number }>({
+    const { status, body } = await apiRequest<{
+      orders: Order[];
+      total: number;
+      page: number;
+    }>({
       method: 'GET',
       path: '/api/orders',
       params: { page: 1, limit: 10, status: 'pending' },
@@ -211,9 +218,12 @@ test.describe('Orders API', () => {
 import { test, expect } from '@seontechnologies/playwright-utils/fixtures';
 
 test.describe('Service Integration', () => {
-  const USER_SERVICE_URL = process.env.USER_SERVICE_URL || 'http://localhost:3001';
-  const ORDER_SERVICE_URL = process.env.ORDER_SERVICE_URL || 'http://localhost:3002';
-  const INVENTORY_SERVICE_URL = process.env.INVENTORY_SERVICE_URL || 'http://localhost:3003';
+  const USER_SERVICE_URL =
+    process.env.USER_SERVICE_URL || 'http://localhost:3001';
+  const ORDER_SERVICE_URL =
+    process.env.ORDER_SERVICE_URL || 'http://localhost:3002';
+  const INVENTORY_SERVICE_URL =
+    process.env.INVENTORY_SERVICE_URL || 'http://localhost:3003';
 
   test('order service should validate user exists', async ({ apiRequest }) => {
     // Create user in user-service
@@ -282,7 +292,7 @@ test.describe('Service Integration', () => {
           baseUrl: INVENTORY_SERVICE_URL,
         }),
       (response) => response.body.quantity === initialInventory.quantity - 2,
-      { timeout: 10000, interval: 500 }
+      { timeout: 10000, interval: 500 },
     );
 
     expect(updatedInventory.quantity).toBe(initialInventory.quantity - 2);
@@ -305,7 +315,10 @@ test.describe('Service Integration', () => {
 
 ```typescript
 // tests/api/graphql.spec.ts
-import { test, expect } from '@seontechnologies/playwright-utils/api-request/fixtures';
+import {
+  test,
+  expect,
+} from '@seontechnologies/playwright-utils/api-request/fixtures';
 
 const GRAPHQL_ENDPOINT = '/graphql';
 
@@ -564,7 +577,7 @@ test.describe('Background Jobs', () => {
         timeout: 60000,
         interval: 2000,
         log: `Waiting for export job ${job.id} to complete`,
-      }
+      },
     );
 
     expect(completedJob.status).toBe('completed');
@@ -572,7 +585,10 @@ test.describe('Background Jobs', () => {
     expect(completedJob.recordCount).toBeGreaterThan(0);
   });
 
-  test('should handle job failure gracefully', async ({ apiRequest, recurse }) => {
+  test('should handle job failure gracefully', async ({
+    apiRequest,
+    recurse,
+  }) => {
     // Trigger job that will fail
     const { body: job } = await apiRequest({
       method: 'POST',
@@ -587,7 +603,7 @@ test.describe('Background Jobs', () => {
     const { body: failedJob } = await recurse(
       () => apiRequest({ method: 'GET', path: `/api/exports/${job.id}` }),
       (response) => ['completed', 'failed'].includes(response.body.status),
-      { timeout: 30000 }
+      { timeout: 30000 },
     );
 
     expect(failedJob.status).toBe('failed');
@@ -609,9 +625,10 @@ test.describe('Background Jobs', () => {
 
     // Poll for webhook delivery status
     const { body: webhookStatus } = await recurse(
-      () => apiRequest({ method: 'GET', path: `/api/webhooks/order/${order.id}` }),
+      () =>
+        apiRequest({ method: 'GET', path: `/api/webhooks/order/${order.id}` }),
       (response) => response.body.delivered === true,
-      { timeout: 30000, interval: 1000 }
+      { timeout: 30000, interval: 1000 },
     );
 
     expect(webhookStatus.delivered).toBe(true);
@@ -654,7 +671,9 @@ test.describe('Authenticated API Tests', () => {
     authToken = token;
   });
 
-  test('should access protected endpoint with token', async ({ apiRequest }) => {
+  test('should access protected endpoint with token', async ({
+    apiRequest,
+  }) => {
     const { status, body } = await apiRequest({
       method: 'GET',
       path: '/api/me',
@@ -730,7 +749,7 @@ export default defineConfig({
   use: {
     baseURL: process.env.API_URL || 'http://localhost:3000',
     extraHTTPHeaders: {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'Content-Type': 'application/json',
     },
   },
@@ -774,15 +793,15 @@ export default defineConfig({
 
 ## Comparison: API Tests vs E2E Tests
 
-| Aspect | API Test | E2E Test |
-|--------|----------|----------|
-| **Speed** | ~50-100ms per test | ~2-10s per test |
-| **Stability** | Very stable | More flaky (UI timing) |
-| **Setup** | Minimal | Browser, context, page |
-| **Debugging** | Clear request/response | DOM, screenshots, traces |
-| **Coverage** | Service logic | User experience |
-| **Parallelization** | Easy (stateless) | Complex (browser resources) |
-| **CI Cost** | Low (no browser) | High (browser containers) |
+| Aspect              | API Test               | E2E Test                    |
+| ------------------- | ---------------------- | --------------------------- |
+| **Speed**           | ~50-100ms per test     | ~2-10s per test             |
+| **Stability**       | Very stable            | More flaky (UI timing)      |
+| **Setup**           | Minimal                | Browser, context, page      |
+| **Debugging**       | Clear request/response | DOM, screenshots, traces    |
+| **Coverage**        | Service logic          | User experience             |
+| **Parallelization** | Easy (stateless)       | Complex (browser resources) |
+| **CI Cost**         | Low (no browser)       | High (browser containers)   |
 
 ## Related Fragments
 
@@ -834,10 +853,20 @@ test('validate user creation', async ({ apiRequest }) => {
 ```typescript
 // Good: Explicit API test suite
 test.describe('Users API', () => {
-  test('creates user', async ({ apiRequest }) => { /* ... */ });
-  test('handles duplicate email', async ({ apiRequest }) => { /* ... */ });
-  test('validates required fields', async ({ apiRequest }) => { /* ... */ });
-  test('handles malformed JSON', async ({ apiRequest }) => { /* ... */ });
-  test('rate limits requests', async ({ apiRequest }) => { /* ... */ });
+  test('creates user', async ({ apiRequest }) => {
+    /* ... */
+  });
+  test('handles duplicate email', async ({ apiRequest }) => {
+    /* ... */
+  });
+  test('validates required fields', async ({ apiRequest }) => {
+    /* ... */
+  });
+  test('handles malformed JSON', async ({ apiRequest }) => {
+    /* ... */
+  });
+  test('rate limits requests', async ({ apiRequest }) => {
+    /* ... */
+  });
 });
 ```

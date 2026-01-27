@@ -36,6 +36,7 @@ Resume a paused Create mode session by loading the build tracking state and rout
 ### 2. Load Build Tracking
 
 Load `{buildTrackingFile}` and read:
+
 - `stepsCompleted` array
 - `moduleCode`
 - `moduleName`
@@ -51,21 +52,22 @@ Load `{buildTrackingFile}` and read:
 **Status:** {status}
 
 **Completed steps:**
+
 - {list completed steps}
 
 ### 4. Determine Next Step
 
 Find the last completed step and route to the next one:
 
-| Last Completed | Next Step |
-|---------------|-----------|
+| Last Completed     | Next Step         |
+| ------------------ | ----------------- |
 | step-01-load-brief | step-02-structure |
-| step-02-structure | step-03-config |
-| step-03-config | step-04-installer |
-| step-04-installer | step-05-agents |
-| step-05-agents | step-06-workflows |
-| step-06-workflows | step-07-docs |
-| step-07-docs | step-08-complete |
+| step-02-structure  | step-03-config    |
+| step-03-config     | step-04-installer |
+| step-04-installer  | step-05-agents    |
+| step-05-agents     | step-06-workflows |
+| step-06-workflows  | step-07-docs      |
+| step-07-docs       | step-08-complete  |
 
 ### 5. Route to Next Step
 

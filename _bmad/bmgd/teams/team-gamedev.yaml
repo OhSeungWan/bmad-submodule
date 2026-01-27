@@ -26,4 +26,4 @@ workflows:
   - quick-prototype
   - quick-dev
 
-party: "./default-party.csv"
+party: './default-party.csv'

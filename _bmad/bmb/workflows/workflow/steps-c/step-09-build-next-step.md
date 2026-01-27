@@ -2,7 +2,7 @@
 name: 'step-09-build-next-step'
 description: 'Build the next step in the workflow sequence - repeatable until all steps are built'
 
-nextStepFile: './step-09-build-next-step.md'  # Self-referencing - repeats until complete
+nextStepFile: './step-09-build-next-step.md' # Self-referencing - repeats until complete
 targetWorkflowPath: '{bmb_creations_output_folder}/workflows/{new_workflow_name}'
 workflowPlanFile: '{targetWorkflowPath}/workflow-plan-{new_workflow_name}.md'
 stepTemplate: '../templates/step-template.md'
@@ -70,12 +70,14 @@ To build the next step file in the workflow sequence based on the approved desig
 Load {workflowPlanFile} and check:
 
 **What steps have been built so far?**
+
 - Step 01: Always built in step-08
 - Subsequent steps: Track in plan
 
 **What is the NEXT step to build?**
 
 From the design in the plan, identify:
+
 - Step number and name
 - Step type (Middle/Standard, Middle/Simple, Branch, Validation, Final Polish, Final)
 - This step's goal and purpose
@@ -85,6 +87,7 @@ Confirm: "The next step to build is **step-{N}-{name}** which is a [step type]. 
 ### 2. Load Standards for This Step Type
 
 **Load {stepTypePatterns}** and find the pattern for this step type:
+
 - Middle Step (Standard) - A/P/C menu, collaborative content
 - Middle Step (Simple) - C only menu, no A/P
 - Branch Step - Custom menu with routing logic
@@ -113,8 +116,10 @@ Load {subprocessPatterns} and implement the subprocess optimization for this ste
    - Pattern 4: Parallel execution of independent operations
 
 2. **Add subprocess-specific Step-Specific Rules to this step:**
+
    ```markdown
    ### Step-Specific Rules:
+
    - 🎯 [Brief description of which pattern applies]
    - 💬 Subprocess must either update report OR return findings to parent
    - 🚫 DO NOT BE LAZY - [specific guidance if Pattern 2]
@@ -148,18 +153,19 @@ Skip this section and proceed to build the step file.
 Create `steps-c/step-{N}-{name}.md` with:
 
 **Frontmatter:**
+
 ```yaml
 ---
 name: 'step-{N}-{name}'
 description: '[what this step does]'
 
 # File references (ONLY variables used in this step)
-nextStepFile: './step-{N+1}-[next-name].md'  # Omit for final step
+nextStepFile: './step-{N+1}-[next-name].md' # Omit for final step
 outputFile: '{output_folder}/[output-name].md'
-templateFile: '../templates/[template-name].md'  # If applicable
+templateFile: '../templates/[template-name].md' # If applicable
 
 # Data files (if this step needs them)
-someData: '../data/[data-file].csv'  # If applicable
+someData: '../data/[data-file].csv' # If applicable
 
 # Tasks (if A/P menu used)
 advancedElicitationTask: '{project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml'
@@ -173,10 +179,13 @@ partyModeWorkflow: '{project-root}/_bmad/core/workflows/party-mode/workflow.md'
 # Step {N}: [Step Name From Design]
 
 ## STEP GOAL:
+
 [Single sentence goal from design]
 
 ## MANDATORY EXECUTION RULES (READ FIRST):
+
 ### Universal Rules:
+
 - 🛑 NEVER generate content without user input
 - 📖 CRITICAL: Read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next step with 'C', ensure entire file is read
@@ -184,21 +193,25 @@ partyModeWorkflow: '{project-root}/_bmad/core/workflows/party-mode/workflow.md'
 - ✅ YOU MUST ALWAYS SPEAK OUTPUT In your Agent communication style with the config `{communication_language}`
 
 ### Role Reinforcement:
+
 - ✅ You are [role from design]
 - ✅ We engage in collaborative dialogue, not command-response
 - ✅ You bring [expertise for this step], user brings [theirs]
 
 ### Step-Specific Rules:
+
 - 🎯 Focus only on [specific task for this step]
 - 🚫 FORBIDDEN to [prohibited action]
 - 💬 Approach: [how to engage for this step]
 
 ## EXECUTION PROTOCOLS:
+
 - 🎯 Follow the MANDATORY SEQUENCE exactly
 - 💾 [Protocol - append to output if this step outputs]
 - 📖 [Protocol - tracking if applicable]
 
 ## CONTEXT BOUNDARIES:
+
 - [What's available at this step]
 - Focus: [what to focus on]
 - Limits: [boundaries]
@@ -209,33 +222,42 @@ partyModeWorkflow: '{project-root}/_bmad/core/workflows/party-mode/workflow.md'
 **CRITICAL:** Follow this sequence exactly. Do not skip, reorder, or improvise unless user explicitly requests a change.
 
 ### 1. [First action - from design]
+
 [Intent-based instructions for this step]
 
 ### 2. [Second action - from design]
+
 [Intent-based instructions]
 
 ### ... [continue for all actions in this step]
 
 ### N. Present MENU OPTIONS
+
 [Menu based on step type - Standard A/P/C, Simple C-only, Branching, Auto-proceed]
 
 #### EXECUTION RULES:
+
 [Based on menu type from {menuHandlingStandards}]
 
 #### Menu Handling Logic:
+
 [Handler for this step's menu]
 
 ## 🚨 SYSTEM SUCCESS/FAILURE METRICS:
+
 ### ✅ SUCCESS:
+
 [What success looks like for this step]
 
 ### ❌ SYSTEM FAILURE:
+
 [What failure looks like]
 
 **Master Rule:** Skipping steps is FORBIDDEN.
 ```
 
 **Customize based on:**
+
 - Step type pattern from {stepTypePatterns}
 - The step's specific goal and actions from design
 - What this step outputs (if document-producing workflow)
@@ -248,6 +270,7 @@ partyModeWorkflow: '{project-root}/_bmad/core/workflows/party-mode/workflow.md'
 **Small templates?** - Inline in step content or create small template file
 
 **Data files?** - If step references CSV data, create in `data/` folder
+
 - Load {csvDataFileStandards} for CSV structure
 - Create CSV with proper headers and data
 
@@ -256,6 +279,7 @@ partyModeWorkflow: '{project-root}/_bmad/core/workflows/party-mode/workflow.md'
 **Section templates?** - If step outputs to specific document section
 
 **If supporting files are created:**
+
 1. Create in appropriate folder (`data/` or `templates/`)
 2. Update step frontmatter to reference them
 3. Document in plan
@@ -268,15 +292,18 @@ Append to {workflowPlanFile}:
 ## Step {N} Build Complete
 
 **Created:**
+
 - steps-c/step-{N}-{name}.md
 - [any supporting files]
 
 **Step Configuration:**
+
 - Type: [step type]
 - Outputs to: [output section or file]
 - Next Step: [next step or "final step"]
 
 **Supporting Files:**
+
 - [list any data files, templates created for this step]
 ```
 
@@ -285,6 +312,7 @@ Append to {workflowPlanFile}:
 After documenting, check the design:
 
 **Are all steps from the design now built?**
+
 - **YES:** Proceed to completion menu (option 7 below)
 - **NO:** Present continuation menu (option 6 below)
 

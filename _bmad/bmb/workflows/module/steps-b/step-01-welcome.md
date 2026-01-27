@@ -78,11 +78,13 @@ Modules are powerful — they package agents, workflows, and configuration into 
 "**Tell me about your module idea.**"
 
 Encourage them to share:
+
 - What problem does it solve?
 - Who would use it?
 - What excites you about it?
 
 **If they're stuck**, offer creative prompts:
+
 - "What domain do you work in? What tasks feel repetitive or could be AI-powered?"
 - "Imagine you had a team of AI experts at your disposal — what would you ask them to build?"
 - "Is there a module you wish existed?"

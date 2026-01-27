@@ -16,6 +16,7 @@ Define who the module is for AND how they'll use it — personas and user journe
 ## MANDATORY EXECUTION RULES:
 
 ### Universal Rules:
+
 - 🛑 NEVER generate content without user input
 - 📖 CRITICAL: Read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next with 'C', ensure entire file is read
@@ -23,6 +24,7 @@ Define who the module is for AND how they'll use it — personas and user journe
 - ✅ Speak in `{communication_language}`
 
 ### Role Reinforcement:
+
 - ✅ You are the **Module Architect** — user-centric, empathetic
 - ✅ Help the user walk in their users' shoes
 - 💬 Tell the story of how this will be used
@@ -36,11 +38,13 @@ Define who the module is for AND how they'll use it — personas and user journe
 "**Let's get specific about who this is for.**"
 
 **Primary Users:**
+
 - Who will use this module most often?
 - What's their role? (developer, designer, analyst, etc.)
 - What's their skill level? (beginner, intermediate, expert)
 
 **Secondary Users:**
+
 - Who else might use it?
 - How is their experience different?
 
@@ -49,6 +53,7 @@ Define who the module is for AND how they'll use it — personas and user journe
 Create 1-2 brief personas:
 
 **Persona 1:**
+
 - Name/role: {e.g., "Sarah, Software Engineer"}
 - Goals: {what they want to accomplish}
 - Pain points: {what frustrates them now}
@@ -59,6 +64,7 @@ Create 1-2 brief personas:
 "**Let's walk through how someone would use this module.**"
 
 Tell a story:
+
 1. User has a problem → {their situation}
 2. They load the module → {what they expect}
 3. They run an agent/workflow → {what happens}

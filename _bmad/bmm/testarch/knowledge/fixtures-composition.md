@@ -167,7 +167,14 @@ import { test as networkRecorderFixture } from '@seontechnologies/playwright-uti
 import { test as customFixtures } from './custom-fixtures';
 
 // Merge everything
-export const test = mergeTests(apiRequestFixture, authFixture, interceptFixture, recurseFixture, networkRecorderFixture, customFixtures);
+export const test = mergeTests(
+  apiRequestFixture,
+  authFixture,
+  interceptFixture,
+  recurseFixture,
+  networkRecorderFixture,
+  customFixtures,
+);
 
 export { expect } from '@playwright/test';
 ```
@@ -194,7 +201,9 @@ test('full integration', async ({
   await page.goto('/users');
   const { responseJson } = await usersCall;
 
-  expect(responseJson).toContainEqual(expect.objectContaining({ id: testUser.id }));
+  expect(responseJson).toContainEqual(
+    expect.objectContaining({ id: testUser.id }),
+  );
 });
 ```
 
@@ -324,7 +333,11 @@ import { createUser } from './factories';
 test('verbose', async ({ request }) => {
   const token = await getAuthToken();
   const user = await createUser();
-  const response = await apiRequest({ request, method: 'GET', path: '/api/users' });
+  const response = await apiRequest({
+    request,
+    method: 'GET',
+    path: '/api/users',
+  });
   // Manual wiring everywhere
 });
 
@@ -378,5 +391,10 @@ test('my test', async ({ fixture1, fixture2, ..., fixture20 }) => {
 
 ```typescript
 // Merge the 4-6 fixtures your project actually needs
-const test = mergeTests(apiRequestFixture, authFixture, recurseFixture, customFixtures);
+const test = mergeTests(
+  apiRequestFixture,
+  authFixture,
+  recurseFixture,
+  customFixtures,
+);
 ```

@@ -70,7 +70,7 @@ Initialize the validation report:
 ```markdown
 ---
 agentName: '{agent-name}'
-agentType: '{simple|expert|module}'  # Derived from module + hasSidecar
+agentType: '{simple|expert|module}' # Derived from module + hasSidecar
 agentFile: '{agent-file-path}'
 validationDate: '{YYYY-MM-DD}'
 stepsCompleted:
@@ -82,7 +82,7 @@ stepsCompleted:
 ## Agent Overview
 
 **Name:** {agent-name}
-**Type:** {simple|expert|module}  # Derived from: module + hasSidecar
+**Type:** {simple|expert|module} # Derived from: module + hasSidecar
 **module:** {module-value}
 **hasSidecar:** {true|false}
 **File:** {agent-file-path}
@@ -91,7 +91,7 @@ stepsCompleted:
 
 ## Validation Findings
 
-*This section will be populated by validation steps*
+_This section will be populated by validation steps_
 ```
 
 Write to `{validationReport}`.

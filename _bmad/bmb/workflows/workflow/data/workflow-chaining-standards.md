@@ -15,6 +15,7 @@ brainstorming → research → brief → PRD → UX → architecture → epics �
 ```
 
 Each workflow:
+
 1. Checks for required inputs from prior workflows
 2. Validates inputs are complete
 3. Produces output for next workflow
@@ -27,12 +28,14 @@ Each workflow:
 ### Output Contract (What Each Workflow Produces)
 
 **Every workflow should:**
+
 1. Create output document with predictable filename
 2. Include `workflowType` in frontmatter for identification
 3. Mark `stepsCompleted: [all steps]` when complete
 4. Store in known location (`{module_output_folder}`)
 
 **Example frontmatter:**
+
 ```yaml
 ---
 workflowType: 'prd'
@@ -47,6 +50,7 @@ previousWorkflow: 'create-brief'
 ### Input Contract (What Each Workflow Consumes)
 
 **Every workflow should:**
+
 1. Define required inputs in Step 1
 2. Search in `{module_output_folder}` for prior outputs
 3. Validate inputs are complete
@@ -60,9 +64,11 @@ previousWorkflow: 'create-brief'
 ## 1. Discover Required Inputs
 
 ### Required Inputs:
+
 - {module_output_folder}/prd-{project_name}.md
 
 ### Search:
+
 1. Look for prd-{project_name}.md in {module_output_folder}
 2. If found → validate completeness
 3. If missing or incomplete → error with guidance
@@ -85,12 +91,14 @@ Based on your completed [workflow], recommended next workflows:
 2. **[alternative-workflow]** - [when to use this instead]
 
 Would you like to:
+
 - Run [next-workflow-name] now?
 - Run a different workflow?
 - Exit for now?
 ```
 
 **Update output frontmatter:**
+
 ```yaml
 nextWorkflow: 'create-ux'
 nextWorkflowRecommended: true
@@ -121,6 +129,7 @@ outputs:
 ```
 
 **Workflow checks this file to:**
+
 - Validate sequence (don't run UX before PRD)
 - Find output locations
 - Track overall progress
@@ -137,10 +146,12 @@ outputs:
 Based on your project type:
 
 **For software projects:**
+
 - create-architecture - Technical architecture
 - create-epics - Break down into epics
 
 **For data projects:**
+
 - data-modeling - Database schema design
 - etl-pipeline - Data pipeline design
 
@@ -152,6 +163,7 @@ Which workflow would you like to run next?
 ## Required vs Optional Sequences
 
 ### Required Sequence
+
 **PRD must come before Architecture:**
 
 ```yaml
@@ -167,6 +179,7 @@ ELSE:
 ```
 
 ### Optional Sequence
+
 **UX research helps Architecture but isn't required:**
 
 ```yaml
@@ -186,16 +199,17 @@ ELSE:
 
 **Standard pattern:** `{workflow-name}-{project-name}.md`
 
-| Workflow | Output Filename Pattern |
-|----------| ---------------------- |
+| Workflow      | Output Filename Pattern           |
+| ------------- | --------------------------------- |
 | brainstorming | `brainstorming-{project_name}.md` |
-| brief | `brief-{project_name}.md` |
-| PRD | `prd-{project_name}.md` |
-| UX | `ux-design-{project_name}.md` |
-| architecture | `architecture-{project_name}.md` |
-| epics | `epics-{project_name}.md` |
+| brief         | `brief-{project_name}.md`         |
+| PRD           | `prd-{project_name}.md`           |
+| UX            | `ux-design-{project_name}.md`     |
+| architecture  | `architecture-{project_name}.md`  |
+| epics         | `epics-{project_name}.md`         |
 
 **Predictable filenames enable:**
+
 - Automatic discovery
 - Clear dependencies
 - Easy validation
@@ -235,6 +249,7 @@ workflows:
 ```
 
 **Workflows read this to:**
+
 - Know what outputs exist
 - Know valid next steps
 - Know output filenames
@@ -262,6 +277,7 @@ workflows:
 ## Validation Checklist
 
 For workflow chaining:
+
 - [ ] Output filename follows convention
 - [ ] Frontmatter includes `workflowType`
 - [ ] `stepsCompleted` marked complete when done

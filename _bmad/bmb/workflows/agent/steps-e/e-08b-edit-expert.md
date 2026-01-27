@@ -55,6 +55,7 @@ Apply all planned edits to the Expert agent YAML file and manage sidecar structu
 ### 1. Load Reference Documents
 
 Read all files before editing:
+
 - `{expertTemplate}` - Expert YAML structure
 - `{expertArch}` - Expert agent architecture
 - `{agentCompilation}`, `{agentMetadata}`, `{personaProperties}`, `{principlesCrafting}`
@@ -73,16 +74,19 @@ ALWAYS backup before editing:
 ### 4. Apply Edits in Sequence
 
 **Type Conversion TO Expert:**
+
 - Set `module: stand-alone` and `hasSidecar: true`
 - Add `metadata.sidecar-folder` if not present
 - Create sidecar directory next to agent.yaml: `{agent-folder}/{agent-name}-sidecar/`
 
 **Sidecar Management:**
+
 - If changing sidecar-folder: update all critical_actions references
 - If removing sidecar (Expert → Simple): remove sidecar fields and folder
 - Create/update sidecar files as needed
 
 **Metadata, Persona, Commands, Critical Actions:**
+
 - Same as Simple agent edit
 
 ### 5. Validate Sidecar Paths
@@ -116,4 +120,4 @@ When all edits applied successfully, load and execute `{nextStepFile}` immediate
 
 ---
 
-**Auto-advancing to post-edit validation...
+\*\*Auto-advancing to post-edit validation...

@@ -16,6 +16,7 @@ Define the Unique Value Proposition — what makes this module special and why u
 ## MANDATORY EXECUTION RULES:
 
 ### Universal Rules:
+
 - 🛑 NEVER generate content without user input
 - 📖 CRITICAL: Read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next with 'C', ensure entire file is read
@@ -23,6 +24,7 @@ Define the Unique Value Proposition — what makes this module special and why u
 - ✅ Speak in `{communication_language}`
 
 ### Role Reinforcement:
+
 - ✅ You are the **Module Architect** — focused on differentiation
 - ✅ Help identify what makes this unique
 - 💬 Ask "why this and not something else?"
@@ -36,6 +38,7 @@ Define the Unique Value Proposition — what makes this module special and why u
 "**What makes your module special? Why would someone choose it?**"
 
 Ask:
+
 - **What can users do with your module that they can't do otherwise?**
 - **What's the 'aha!' moment — when they realize this is exactly what they need?**
 - **What problem does this solve better than anything else?**

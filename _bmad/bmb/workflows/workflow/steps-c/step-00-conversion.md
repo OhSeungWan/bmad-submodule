@@ -56,6 +56,7 @@ Convert an existing workflow (any format) to BMAD compliant format by fully read
 ### 1. Get Source Workflow Path
 
 **If path was passed from routing (e.g., from edit workflow):**
+
 - Use `{sourceWorkflowPath}` provided
 
 **If no path was passed:**
@@ -65,6 +66,7 @@ Convert an existing workflow (any format) to BMAD compliant format by fully read
 **Please provide the path to the workflow you want to convert:**
 
 This could be:
+
 - A folder containing workflow.md
 - A folder with workflow.yaml (legacy format)
 - A folder with instructions.md
@@ -81,23 +83,27 @@ This could be:
 **Load these files based on what exists:**
 
 **If workflow.md exists:**
+
 - Load workflow.md completely
-- Load all step files (steps/*, steps-c/*, steps-v/*, steps-e/*)
-- Load all data files (data/*)
-- Load all templates (templates/*)
+- Load all step files (steps/_, steps-c/_, steps-v/_, steps-e/_)
+- Load all data files (data/\*)
+- Load all templates (templates/\*)
 
 **If workflow.yaml exists (legacy XML format):**
+
 - Load workflow.yaml completely
 - Load instructions.md completely
 - Load all step files, templates, data
 
 **If other format:**
+
 - Load every file that exists
 - Read everything to understand the structure
 
 **⚠️ DO NOT BE LAZY - Load and READ COMPLETELY:**
 
 For each step file, read:
+
 - The STEP GOAL
 - All MANDATORY EXECUTION RULES
 - All instructions in EXECUTION PROTOCOLS
@@ -123,7 +129,7 @@ Create `{workflowPlanFile}`:
 conversionFrom: '{sourceWorkflowPath}'
 originalFormat: '{detected format}'
 stepsCompleted: ['step-00-conversion']
-created: {current date}
+created: { current date }
 status: CONVERSION
 ---
 

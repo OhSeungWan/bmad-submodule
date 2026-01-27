@@ -52,8 +52,8 @@ Create {validationReportFile} with header structure:
 ```markdown
 ---
 validationDate: [current date]
-workflowName: {new_workflow_name}
-workflowPath: {workflow_folder_path}
+workflowName: { new_workflow_name }
+workflowPath: { workflow_folder_path }
 validationStatus: IN_PROGRESS
 ---
 
@@ -66,12 +66,12 @@ validationStatus: IN_PROGRESS
 {{TOC}}
 
 {{#each parallel-steps}}
+
 ## {{title}}
 
 {{results}}
 
 {{/each}}
-
 ```
 
 Save the file (without the handlebars output of course) before proceeding.

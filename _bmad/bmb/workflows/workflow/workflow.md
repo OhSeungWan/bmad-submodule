@@ -1,6 +1,6 @@
 ---
 name: workflow
-description: "Create structured standalone workflows using markdown-based step architecture (tri-modal: create, validate, edit)"
+description: 'Create structured standalone workflows using markdown-based step architecture (tri-modal: create, validate, edit)'
 web_bundle: true
 ---
 
@@ -53,7 +53,7 @@ This uses **step-file architecture** for disciplined execution:
 
 ### 1. Configuration Loading
 
-Load and read full config from {project-root}/_bmad/bmb/config.yaml and resolve:
+Load and read full config from {project-root}/\_bmad/bmb/config.yaml and resolve:
 
 - `project_name`, `output_folder`, `user_name`, `communication_language`, `document_output_language`, `bmb_creations_output_folder`
 - ✅ YOU MUST ALWAYS SPEAK OUTPUT In your Agent communication style with the config `{communication_language}`

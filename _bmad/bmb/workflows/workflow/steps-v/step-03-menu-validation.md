@@ -55,11 +55,13 @@ Load {menuHandlingStandards} to understand validation criteria:
 **Reserved Letters:** A (Advanced Elicitation), P (Party Mode), C (Continue/Accept), X (Exit/Cancel)
 
 **Required Structure:**
+
 1. Display section
 2. Handler section (MANDATORY)
 3. Execution Rules section
 
 **When To Include A/P:**
+
 - DON'T: Step 1 (init), validation sequences, simple data gathering
 - DO: Collaborative content creation, user might want alternatives, quality gates
 
@@ -76,29 +78,35 @@ Load {menuHandlingStandards} to understand validation criteria:
 **SUBPROCESS VALIDATION PATTERN - Each subprocess checks for:**
 
 **Check 1: Handler Section Exists**
+
 - ✅ Handler section immediately follows Display
 - ❌ If missing: mark as violation
 
 **Check 2: Execution Rules Section Exists**
+
 - ✅ "EXECUTION RULES" section present
 - ✅ Contains "halt and wait" instruction
 - ❌ If missing: mark as violation
 
 **Check 3: Non-C Options Redisplay Menu**
+
 - ✅ A/P options specify "redisplay menu"
 - ❌ If missing: mark as violation
 
 **Check 4: C Option Sequence**
+
 - ✅ C option: save → update frontmatter → load next step
 - ❌ If sequence wrong: mark as violation
 
 **Check 5: A/P Only Where Appropriate**
+
 - Step 01 should NOT have A/P (inappropriate for init)
 - Validation sequences should auto-proceed, not have menus
 - ❌ If A/P in wrong place: mark as violation
 
 **RETURN FORMAT:**
 Each subprocess should return validation findings for its assigned file including:
+
 - File name
 - Whether a menu is present
 - Results of all 5 checks (handler section, execution rules, redisplay menu, C sequence, A/P appropriateness)
@@ -129,7 +137,7 @@ Compile and document all violations found during validation, organizing them by 
 
 ### 5. Append to Report
 
-Update {validationReportFile} - replace "## Menu Handling Validation *Pending...*" with actual findings.
+Update {validationReportFile} - replace "## Menu Handling Validation _Pending..._" with actual findings.
 
 ### 6. Save Report and Auto-Proceed
 

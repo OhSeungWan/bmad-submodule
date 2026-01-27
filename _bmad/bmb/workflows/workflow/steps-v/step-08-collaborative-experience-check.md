@@ -51,6 +51,7 @@ To validate that the workflow actually facilitates well - natural conversation, 
 ### 1. Load the Workflow Design
 
 From {workflowPlanFile}, understand:
+
 - What is the workflow's goal?
 - Who is the user?
 - What interaction style was designed?
@@ -64,6 +65,7 @@ From {workflowPlanFile}, understand:
 3. Evaluate against collaborative quality criteria:
 
 **Good Facilitation Indicators:**
+
 - ✅ "Ask 1-2 questions at a time"
 - ✅ "Think about their response before continuing"
 - ✅ "Use conversation, not interrogation"
@@ -72,6 +74,7 @@ From {workflowPlanFile}, understand:
 - ✅ Allows for back-and-forth
 
 **Bad Interrogation Indicators:**
+
 - ❌ Laundry lists of questions
 - ❌ "Ask the following: 1, 2, 3, 4, 5, 6..."
 - ❌ Form-filling approach
@@ -79,6 +82,7 @@ From {workflowPlanFile}, understand:
 - ❌ Rigid sequences without flexibility
 
 **Role Reinforcement Check:**
+
 - ✅ "You are a [role], we engage in collaborative dialogue"
 - ✅ "Together we produce something better"
 - ❌ "You are a form filler" (obviously bad, but check for patterns)
@@ -86,12 +90,14 @@ From {workflowPlanFile}, understand:
 ### 3. Check Progression and Arc
 
 **Does the workflow have:**
+
 - ✅ Clear progression from step to step?
 - ✅ Each step builds on previous work?
 - ✅ User knows where they are in the process?
 - ✅ Satisfying completion at the end?
 
 **Or does it:**
+
 - ❌ Feel disjointed?
 - ❌ Lack clear progression?
 - ❌ Leave user unsure of status?
@@ -99,6 +105,7 @@ From {workflowPlanFile}, understand:
 ### 4. Check Error Handling
 
 **Do steps handle:**
+
 - ✅ Invalid input gracefully?
 - ✅ User uncertainty with guidance?
 - ✅ Off-track conversation with redirection?
@@ -114,12 +121,14 @@ From {workflowPlanFile}, understand:
 **Step-by-Step Analysis:**
 
 **step-01-init.md:**
+
 - Question style: [Progressive/Laundry list]
 - Conversation flow: [Natural/Rigid]
 - Role clarity: ✅/❌
 - Status: ✅ PASS / ❌ FAIL
 
-**step-02-*.md:**
+**step-02-\*.md:**
+
 - Question style: [Progressive/laundry list - "Ask 1-2 at a time" / Lists 5+ questions]
 - Allows conversation: ✅/❌
 - Thinks before continuing: ✅/❌
@@ -128,30 +137,36 @@ From {workflowPlanFile}, understand:
 [Continue for ALL steps...]
 
 **Collaborative Strengths Found:**
+
 - [List examples of good facilitation]
 - [Highlight steps that excel at collaboration]
 
 **Collaborative Issues Found:**
 
 **Laundry List Questions:**
+
 - [List steps with question dumps]
-- Example: "step-03-*.md asks 7 questions at once"
+- Example: "step-03-\*.md asks 7 questions at once"
 
 **Rigid Sequences:**
+
 - [List steps that don't allow conversation]
-- Example: "step-04-*.md has no space for back-and-forth"
+- Example: "step-04-\*.md has no space for back-and-forth"
 
 **Form-Filling Patterns:**
+
 - [List steps that feel like form filling]
-- Example: "step-05-*.md collects data without facilitation"
+- Example: "step-05-\*.md collects data without facilitation"
 
 **Progression Issues:**
+
 - [List problems with flow/arc]
-- Example: "step-06-*.md doesn't connect to previous step"
+- Example: "step-06-\*.md doesn't connect to previous step"
 
 **User Experience Assessment:**
 
 **Would this workflow feel like:**
+
 - [ ] A collaborative partner working WITH the user
 - [ ] A form collecting data FROM the user
 - [ ] An interrogation extracting information
@@ -164,7 +179,7 @@ From {workflowPlanFile}, understand:
 
 ### 6. Append to Report
 
-Update {validationReportFile} - replace "## Collaborative Experience Check *Pending...*" with actual findings.
+Update {validationReportFile} - replace "## Collaborative Experience Check _Pending..._" with actual findings.
 
 ### 7. Save Report and Auto-Proceed
 

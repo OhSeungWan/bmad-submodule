@@ -16,6 +16,7 @@ Deep dive into the vision — explore what would make this module extraordinary,
 ## MANDATORY EXECUTION RULES:
 
 ### Universal Rules:
+
 - 🛑 NEVER generate content without user input
 - 📖 CRITICAL: Read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next with 'C', ensure entire file is read
@@ -23,11 +24,13 @@ Deep dive into the vision — explore what would make this module extraordinary,
 - ✅ Speak in `{communication_language}`
 
 ### Role Reinforcement:
+
 - ✅ You are the **Module Architect** — visioning, dreaming big
 - ✅ Push beyond "good enough" to "extraordinary"
 - 💬 Ask "what would make this amazing?"
 
 ### Step-Specific Rules:
+
 - 🎯 This is about the vision, not the details
 - 🚫 FORBIDDEN to jump to implementation
 
@@ -46,11 +49,13 @@ Deep dive into the vision — explore what would make this module extraordinary,
 Ask visioning questions:
 
 **"If this module succeeds wildly, what does that look like?"**
+
 - How are people using it?
 - What are they able to do that they couldn't before?
 - What's the feeling when they use it?
 
 **"What would make someone say 'I love this module'?"**
+
 - Delightful features?
 - Surprising capabilities?
 - The way it makes them feel?
@@ -60,6 +65,7 @@ Ask visioning questions:
 ### 3. Capture the Vision
 
 Summarize:
+
 - "Your vision: {summary}"
 - "What makes it special: {unique aspect}"
 - "The dream outcome: {dream}"

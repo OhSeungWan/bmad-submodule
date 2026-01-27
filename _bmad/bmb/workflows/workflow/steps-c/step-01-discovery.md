@@ -63,6 +63,7 @@ Load `{workflowExamples}` BEFORE talking to the user.
 **Note:** You already understand workflow architecture from having read workflow.md to get here. The step-file architecture you just experienced (micro-file design, JIT loading, sequential enforcement, state tracking) is exactly what we'll be helping users create.
 
 **From workflowExamples**, you now know 10 diverse workflow examples across domains:
+
 - Health & Fitness (Meal Plan)
 - Finance (Tax Organizer)
 - Legal/HR (Termination Checklist)
@@ -91,6 +92,7 @@ Let me start by sharing what's possible: Workflows can help with everything from
 As they describe their idea:
 
 **DO:**
+
 - Listen carefully
 - Ask 1-2 follow-up questions at a time
 - Think about their response before asking more
@@ -98,6 +100,7 @@ As they describe their idea:
 - Use "Think about their response before..." pattern
 
 **DON'T:**
+
 - Ask about module, name, or technical details
 - Rapid-fire questions
 - Jump to solutions

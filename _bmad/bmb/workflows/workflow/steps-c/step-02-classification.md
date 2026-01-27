@@ -74,11 +74,13 @@ Based on your idea from discovery, let me clarify:"
 Present the two options:
 
 **A. Document-Producing**
+
 - Creates a persistent output file
 - Examples: reports, plans, stories, checklists, forms
 - Uses templates for structure
 
 **B. Non-Document**
+
 - Performs actions without creating a document
 - Examples: refactoring code, running tests, orchestrating tools
 - May produce temporary files but no persistent output
@@ -88,6 +90,7 @@ Present the two options:
 **Think about their response before continuing...**
 
 Once decided:
+
 - Document: `workflowProducesDocuments: true`
 - Non-document: `workflowProducesDocuments: false`
 
@@ -98,21 +101,25 @@ Once decided:
 Workflows can be standalone or part of a module:"
 
 **Standalone:**
+
 - NOT part of any module
 - Stored in your custom location
 - Only standard variables available
 
 **Module-Based (BMB, BMM, CIS, BMGD, etc.):**
+
 - Part of a specific module
 - Has access to module-specific variables
 - Stored in that module's workflows directory
 
 "Is this workflow:
+
 - **A)** Standalone - just for you/custom use
 - **B)** Part of a module - which one?"
 
 **If they don't know modules:**
 "Modules are specialized areas:
+
 - **BMB** - Module building workflows
 - **BMM** - Software development workflows (PRDs, architecture, etc.)
 - **CIS** - Innovation and creative workflows
@@ -130,21 +137,25 @@ Document the result.
 Think about: Will this workflow consume many tokens or take a long time? Might users need to pause and come back later?"
 
 **Single-Session:**
+
 - Quick, focused workflows (15-30 minutes)
 - Simpler structure
 - No continuation logic needed
 
 **Continuable:**
+
 - Can span multiple sessions
 - Complex, many steps
 - Saves progress, can resume later
 - Needs `step-01b-continue.md`
 
 "Is your workflow:
+
 - **A)** Single-session - quick and focused
 - **B)** Continuable - could take multiple sessions"
 
 **Help them think:**
+
 - "Walk me through how long you think this would take..."
 - "What happens if someone gets halfway through and has to stop?"
 
@@ -154,20 +165,23 @@ Document the result.
 
 "**Decision 4: Will this workflow need Edit and Validate capabilities?**
 
-Some workflows are simple - you create them once and use them. Others need full lifecycle support:**
+Some workflows are simple - you create them once and use them. Others need full lifecycle support:\*\*
 
 **Create-Only:**
+
 - Just `steps-c/` (create steps)
 - Simpler, faster to build
 - Good for: experimental workflows, one-off use, simple tools
 
 **Tri-Modal (Create + Edit + Validate):**
+
 - Has `steps-c/`, `steps-e/` (edit), and `steps-v/` (validate)
 - Full lifecycle support
 - Can be modified and validated after creation
 - Good for: complex workflows, maintained workflows, team use
 
 "Do you envision:
+
 - **A)** Create-only - build it and use it
 - **B)** Tri-modal - create, edit, AND validate capabilities"
 
@@ -183,6 +197,7 @@ Document the result.
 Based on everything we've discovered, what would you call this?
 
 Some guidance:
+
 - Use kebab-case: `my-workflow-name`
 - Be descriptive but concise
 - Think: What would someone search for to find this?
@@ -190,6 +205,7 @@ Some guidance:
 [Offer suggestions based on their vision]"
 
 **Check for uniqueness:**
+
 - Look for folder at `{bmb_creationsOutputFolder}/workflows/{proposed-name}/`
 - If exists: "That name is taken. Want to try a variant like...?"
 - Loop until unique name confirmed
@@ -201,10 +217,12 @@ Document the final name.
 Based on module decision, confirm and document the target path:
 
 **For standalone/custom:**
+
 - Target: `{customWorkflowLocation}/{workflow-name}/`
 - Typically: `_bmad/custom/src/workflows/{workflow-name}/`
 
 **For modules:**
+
 - Check module's workflow location from module.yaml
 - Confirm path with user
 
@@ -221,12 +239,14 @@ Update `{workflowPlanFile}`:
 **Target Path:** {targetWorkflowPath}
 
 **4 Key Decisions:**
+
 1. **Document Output:** {true/false}
 2. **Module Affiliation:** {standalone/module-name}
 3. **Session Type:** {single-session/continuable}
 4. **Lifecycle Support:** {create-only/tri-modal}
 
 **Structure Implications:**
+
 - [Document what this means: e.g., "Needs steps-c/, steps-e/, steps-v/", "Needs step-01b-continue.md", etc.]
 ```
 
@@ -242,8 +262,8 @@ Display: **Select an Option:** [A] Advanced Elicitation [P] Party Mode [C] Conti
 
 #### Menu Handling Logic:
 
-- IF A: Execute {project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml
-- IF P: Execute {project-root}/_bmad/core/workflows/party-mode/workflow.md
+- IF A: Execute {project-root}/\_bmad/core/workflows/advanced-elicitation/workflow.xml
+- IF P: Execute {project-root}/\_bmad/core/workflows/party-mode/workflow.md
 - IF C: Update plan frontmatter with stepsCompleted and classification, then load `{nextStepFile}`
 - IF Any other: Help user, then redisplay menu
 

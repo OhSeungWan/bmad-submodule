@@ -48,9 +48,11 @@ To create the validation report and check that the workflow has correct file str
 **Launch a single subprocess that will do all of the following for items:**
 
 1.  Load {stepFileRules} to understand:
+
 - File size limits (<200 recommended, 250 max)
 - Required folder structure
 - Required files
+
 2. Lists the entire folder structure using bash commands
 3. Verifies all required folders and files exist
 4. Returns structured findings to parent for aggregation
@@ -61,6 +63,7 @@ find {targetWorkflowPath} -type f -name "*.md" | sort
 ```
 
 **Expected structure:**
+
 ```
 {targetWorkflowPath}/
 ├── workflow.md
@@ -77,6 +80,7 @@ find {targetWorkflowPath} -type f -name "*.md" | sort
 ```
 
 **Check:**
+
 - ✅ workflow.md exists
 - ✅ step files are in a well organized folder
 - ✅ non step reference files are organized in other folders such as data, templates, or others that make sense for the workflow
@@ -91,6 +95,7 @@ find {targetWorkflowPath} -type f -name "*.md" | sort
 3. Returns structured findings to parent for aggregation
 
 **Limits:**
+
 - < 200 lines: ✅ Good
 - 200-300 lines: ⚠️ Approaching limit
 - > 300 lines: ❌ Exceeds limit
@@ -98,10 +103,12 @@ find {targetWorkflowPath} -type f -name "*.md" | sort
 **Subprocess returns:** File name, line count, status (Good/Approaching limit/Exceeds limit), and any issues found.
 
 **Subprocess must either:**
+
 - Update validation report directly with findings, OR
 - Return structured findings to parent for aggregation into report
 
 **Document findings in validation report:**
+
 - List all step files checked with their line counts
 - Note any files approaching or exceeding size limits (<200 recommended, 250 max)
 - Check data and reference files for size issues (large files should be sharded or indexed)
@@ -110,6 +117,7 @@ find {targetWorkflowPath} -type f -name "*.md" | sort
 ### 5. Verify File Presence
 
 From the design in {workflowPlanFile}, verify:
+
 - Every step from design has a corresponding file
 - Step files are numbered sequentially
 - No gaps in numbering
@@ -118,6 +126,7 @@ From the design in {workflowPlanFile}, verify:
 ### 6. Document all findings in a report
 
 **Document the following:**
+
 - Folder structure assessment
 - Required files presence check
 - File size analysis results
