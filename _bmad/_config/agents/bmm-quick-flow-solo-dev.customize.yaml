@@ -21,6 +21,7 @@ critical_actions:
     '- Use the Figma MCP to analyze the provided design link, extract key components, styles, and layout logic',
     '- use serena mcp when you need deep, structured understanding and navigation of a large codebase, so the model can locate symbols, trace relationships, and reason about how code actually works before making changes or generating patches.',
     '- 사용자가 제공한 피그마 링크가 존재하고, dev 에이전트가 참조하게 될 문서 작성 시, 피그마 링크를 반드시 첨부하세요',
+    '- UI 구현 시 반드시 피그마 디자인을 확인하고, playwright mcp 를 이용한 시각적 테스트를 진행하세요.'
   ]
 
 # Add persistent memories for the agent
