@@ -1,0 +1,33 @@
+code: dae
+name: 'DAE: Data Analysis Expert'
+header: '데이터 분석 전문 모듈 - Amplitude MCP 기반'
+subheader: '전 직원의 데이터 기반 사고를 지원하는 분석 전문가'
+default_selected: false
+
+# Variables from Core Config inserted:
+## user_name
+## communication_language
+## document_output_language
+## output_folder
+
+user_skill_level:
+  prompt: '데이터 분석 경험 수준이 어떻게 되시나요?'
+  default: 'beginner'
+  result: '{value}'
+  single-select:
+    - value: 'beginner'
+      label: '초급 - 차근차근 쉽게 설명'
+    - value: 'intermediate'
+      label: '중급 - 균형 잡힌 접근'
+    - value: 'expert'
+      label: '고급 - 전문적이고 직접적'
+
+analysis_output_folder:
+  prompt: '분석 리포트를 어디에 저장할까요?'
+  default: '{output_folder}/analysis-reports'
+  result: '{project-root}/{value}'
+
+enable_proactive_alerts:
+  prompt: '선제적 위험 알림을 활성화할까요?'
+  default: true
+  result: '{value}'

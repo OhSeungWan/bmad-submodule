@@ -62,3 +62,4 @@ name,description,module,path
 "agent","Tri-modal workflow for creating, editing, and validating BMAD Core compliant agents","bmb","_bmad/bmb/workflows/agent/workflow.md"
 "module","Quad-modal workflow for creating BMAD modules (Brief + Create + Edit + Validate)","bmb","_bmad/bmb/workflows/module/workflow.md"
 "workflow","Create structured standalone workflows using markdown-based step architecture (tri-modal: create, validate, edit)","bmb","_bmad/bmb/workflows/workflow/workflow.md"
+"data-analysis","Amplitude 데이터 조회 및 분석을 통해 사용자 질문에 데이터 기반 답변 제공","dae","_bmad/dae/workflows/data-analysis/workflow.md"

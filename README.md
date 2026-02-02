@@ -14,6 +14,32 @@ Submodule은 다른 git 저장소에 대한 포인터입니다. 실제 파일이
 - 중앙 집중식 업데이트 (하나의 BMAD repo → 모든 프로젝트)
 - `npm install`로 자동 초기화
 
+## 프로젝트 구조
+
+```
+bmad-submodule/
+├── .claude/
+│   └── commands/
+│       ├── bmad/           # 모듈별 슬래시 커맨드
+│       │   ├── core/       # 핵심 워크플로우/에이전트
+│       │   ├── bmm/        # BMAD Method Module
+│       │   ├── bmb/        # BMAD Module Builder
+│       │   ├── bmgd/       # BMAD Game Dev
+│       │   └── dae/        # Data Analysis Expert
+│       └── commit.md       # 커밋 커맨드
+├── _bmad/                  # BMAD 프레임워크 리소스
+│   ├── _config/            # 설정 파일 (manifest, IDE 설정)
+│   ├── _memory/            # 메모리/사이드카 템플릿
+│   ├── core/               # 핵심 모듈
+│   ├── bmm/                # 소프트웨어 개발 모듈
+│   ├── bmb/                # 모듈 빌더
+│   ├── bmgd/               # 게임 개발 모듈
+│   └── dae/                # 데이터 분석 모듈
+├── src/modules/            # 모듈 소스 코드
+├── install.sh              # 심볼릭 링크 생성 스크립트
+└── uninstall.sh            # 심볼릭 링크 제거 스크립트
+```
+
 ## 설치
 
 ### 1. 프로젝트에 Submodule 추가
@@ -30,7 +56,7 @@ git config -f .gitmodules submodule.bmad-submodule.ignore dirty
 ```json
 {
   "scripts": {
-    "postinstall": "[ -z \"$CI\" ] && git submodule update --init --recursive && cd bmad-submodule && git pull origin master && cd .. && ./bmad-submodule/install.sh || true",
+    "postinstall": "[ -z \"$CI\" ] && git submodule update --init --recursive && git -C bmad-submodule pull origin master && ./bmad-submodule/install.sh || true",
     "bmad:install": "./bmad-submodule/install.sh",
     "bmad:uninstall": "./bmad-submodule/uninstall.sh"
   }
@@ -61,10 +87,10 @@ git submodule update --init --recursive
 ## Submodule 업데이트
 
 ```bash
-cd your-repo/bmad-submodule
+cd bmad-submodule
 git pull origin master
+./install.sh
 cd ..
-npm install  # postinstall 스크립트 실행
 git add bmad-submodule
 git commit -m "chore: update bmad-submodule"
 git push
