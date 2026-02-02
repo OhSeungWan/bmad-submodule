@@ -1,8 +1,14 @@
 # BMAD Framework Submodule
 
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-purple.svg)
+
 BMAD-METHOD - 범용 AI 에이전트 프레임워크
 
 소프트웨어 개발 전체 라이프사이클을 위한 프롬프트 & 컨텍스트 엔지니어링 프레임워크입니다. 전문화된 에이전트(Analyst, PM, Architect, Dev, Test Architect)와 워크플로우, 지식 베이스를 제공합니다.
+
+> **Current Version: v1.0.0** | [Changelog](#changelog)
 
 ---
 
@@ -471,6 +477,27 @@ A: Submodule은 특정 커밋을 가리키므로 기본적으로 버전이 고�
 ### Q: CI/CD에서는 어떻게 하나요?
 
 A: postinstall 스크립트에 `[ -z "$CI" ]` 조건이 있어 CI 환경에서는 스킵됩니다. CI에서 BMAD가 필요하다면 이 조건을 제거하세요.
+
+---
+
+## Changelog
+
+### v1.0.0 (2025-01-27)
+
+**포함 모듈:**
+
+- **Core** - 핵심 에이전트 및 워크플로우 (bmad-master, brainstorming, party-mode)
+- **BMM** - 소프트웨어 개발 모듈 (analyst, architect, dev, pm, sm, ux)
+- **BMB** - 모듈 빌더 (agent-builder, workflow-builder, module-builder)
+- **BMGD** - 게임 개발 모듈 (game-designer, game-dev, game-qa)
+- **DAE** - 데이터 분석 모듈 (data-analyst, Amplitude 연동)
+
+**주요 기능:**
+
+- Git Submodule 기반 설치 지원
+- 심볼릭 링크 자동 생성 스크립트
+- npm postinstall 자동화
+- Claude Code 슬래시 커맨드 통합
 
 ---
 
