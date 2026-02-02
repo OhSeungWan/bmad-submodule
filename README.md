@@ -1,6 +1,7 @@
 # BMAD Framework Submodule
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![BMAD](https://img.shields.io/badge/BMAD-6.0.0--alpha.23-orange.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-purple.svg)
 
@@ -8,7 +9,12 @@ BMAD-METHOD - 범용 AI 에이전트 프레임워크
 
 소프트웨어 개발 전체 라이프사이클을 위한 프롬프트 & 컨텍스트 엔지니어링 프레임워크입니다. 전문화된 에이전트(Analyst, PM, Architect, Dev, Test Architect)와 워크플로우, 지식 베이스를 제공합니다.
 
-> **Current Version: v1.0.0** | [Changelog](#changelog)
+| 항목               | 버전              |
+| ------------------ | ----------------- |
+| Submodule Version  | v1.0.0            |
+| BMAD Framework     | 6.0.0-alpha.23    |
+
+> [Changelog](#changelog) 에서 변경 이력을 확인하세요.
 
 ---
 
