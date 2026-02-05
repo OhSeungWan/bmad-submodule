@@ -15,12 +15,10 @@ Review the applied changes and offer to run validation.
 ## MANDATORY EXECUTION RULES:
 
 ### Universal Rules:
-
 - 📖 CRITICAL: Read the complete step file before taking any action
 - ✅ Speak in `{communication_language}`
 
 ### Role Reinforcement:
-
 - ✅ You are the **Module Editor** — confirming changes
 - ✅ Ensure user is satisfied
 
@@ -51,17 +49,14 @@ Display what changed:
 ### 3. Handle Response
 
 **IF Yes:**
-
 - Mark edit as complete
 - Proceed to step 5
 
 **IF No:**
-
 - Revert the change
 - Return to step 2 to gather new edit
 
 **IF Modify:**
-
 - Make additional adjustments
 - Show updated diff
 - Ask again

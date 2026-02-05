@@ -30,7 +30,6 @@
 Workflows in a MODULE can access additional variables from its `module.yaml`.
 
 **BMB Module example:**
-
 ```yaml
 bmb_creations_output_folder: '{project-root}/_bmad/bmb-creations'
 ```
@@ -42,7 +41,6 @@ bmb_creations_output_folder: '{project-root}/_bmad/bmb-creations'
 ## Frontmatter Structure
 
 ### Required Fields
-
 ```yaml
 ---
 name: 'step-[N]-[name]'
@@ -51,7 +49,6 @@ description: '[what this step does]'
 ```
 
 ### File References - ONLY variables used in this step
-
 ```yaml
 ---
 # Step to step (SAME folder) - use ./filename.md
@@ -77,18 +74,16 @@ partyModeWorkflow: '{project-root}/_bmad/core/workflows/party-mode/workflow.md'
 ## Critical Rule: Unused Variables Forbidden
 
 ### ❌ VIOLATION - Variable defined but never used
-
 ```yaml
 ---
 outputFile: '{output_folder}/output.md'
-thisStepFile: './step-01-init.md' # ❌ NEVER USED in body
-workflowFile: './workflow.md' # ❌ NEVER USED in body
+thisStepFile: './step-01-init.md'      # ❌ NEVER USED in body
+workflowFile: './workflow.md'           # ❌ NEVER USED in body
 ---
 # Step body never mentions {thisStepFile} or {workflowFile}
 ```
 
 ### ✅ CORRECT - Only variables that are used
-
 ```yaml
 ---
 outputFile: '{output_folder}/output.md'
@@ -104,7 +99,6 @@ nextStepFile: './step-02-foo.md'
 ## Path Rules - NO EXCEPTIONS
 
 ### 1. Step to Step (SAME folder) = ./filename.md
-
 ```yaml
 # ❌ WRONG
 nextStepFile: './step-02.md'
@@ -115,7 +109,6 @@ nextStepFile: './step-02-vision.md'
 ```
 
 ### 2. Step to Template (PARENT folder) = ../filename.md
-
 ```yaml
 # ❌ WRONG
 someTemplate: '{workflow_path}/templates/template.md'
@@ -125,7 +118,6 @@ someTemplate: '../template.md'
 ```
 
 ### 3. Step to Subfolder = ./subfolder/file.md
-
 ```yaml
 # ❌ WRONG
 dataFile: '{workflow_path}/data/config.csv'
@@ -135,14 +127,12 @@ dataFile: './data/config.csv'
 ```
 
 ### 4. External References = {project-root}/...
-
 ```yaml
 # ✅ CORRECT
 advancedElicitationTask: '{project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml'
 ```
 
 ### 5. Output Files = Use folder variable
-
 ```yaml
 # ✅ CORRECT
 outputFile: '{planning_artifacts}/workflow-output-{project_name}.md'
@@ -185,7 +175,6 @@ Use `snake_case` with descriptive prefixes:
 Steps can define NEW variables that future steps will use.
 
 **Step 01 defines:**
-
 ```yaml
 ---
 targetWorkflowPath: '{bmb_creations_output_folder}/workflows/{workflow_name}'
@@ -194,7 +183,6 @@ targetWorkflowPath: '{bmb_creations_output_folder}/workflows/{workflow_name}'
 ```
 
 **Step 02 uses:**
-
 ```yaml
 ---
 targetWorkflowPath: '{bmb_creations_output_folder}/workflows/{workflow_name}'

@@ -46,14 +46,12 @@ Review critical_actions and route to the appropriate type-specific edit step (Si
 ### 1. Load Reference Documents
 
 Read `{criticalActions}` and `{editPlan}` to understand:
-
 - Current critical_actions (if any)
 - Target agent type after edits
 
 ### 2. Review Critical Actions
 
 If user wants to add/modify critical_actions:
-
 - Reference patterns from criticalActions.md
 - Define action name, description, invocation
 - For Expert agents: specify sidecar-folder and file paths
@@ -79,8 +77,8 @@ activationEdits:
     additions: []
     modifications: []
 routing:
-  destinationEdit: { e-08a|e-08b|e-08c }
-  sourceType: { simple|expert|module } # Derived from module + hasSidecar
+  destinationEdit: {e-08a|e-08b|e-08c}
+  sourceType: {simple|expert|module}  # Derived from module + hasSidecar
 ```
 
 ### 5. Present MENU OPTIONS

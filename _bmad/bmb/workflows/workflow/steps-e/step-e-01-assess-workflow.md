@@ -50,7 +50,6 @@ Load the target workflow, check if it follows BMAD step-file architecture, check
 ### 1. Get Workflow Path
 
 From the user input provided by workflow.md routing, extract:
-
 - `targetWorkflowPath` - path to workflow.md file
 - `workflowName` - derived from path
 
@@ -72,14 +71,12 @@ From the user input provided by workflow.md routing, extract:
 **Determine if workflow is BMAD-compliant:**
 
 **Compliant workflow has:**
-
 - ✅ workflow.md file exists at root
 - ✅ At least one step folder exists (steps-c/, steps-v/, or steps-e/)
 - ✅ Step files use markdown format (.md)
 - ✅ workflow.md has frontmatter (name, description)
 
 **Non-compliant workflow:**
-
 - ❌ No workflow.md file
 - ❌ Has workflow.yaml or instructions.md (legacy format)
 - ❌ No step folders
@@ -92,7 +89,6 @@ From the user input provided by workflow.md routing, extract:
 "**Workflow Assessment Result: Non-Compliant Format**
 
 I found that this workflow does not follow BMAD step-file architecture:
-
 - [Describe what was found - e.g., legacy format, missing workflow.md, etc.]
 
 **Recommendation:** This workflow should be converted using the create workflow process. The create workflow can use your existing workflow as input discovery material to build a new compliant workflow.
@@ -115,7 +111,6 @@ I found that this workflow does not follow BMAD step-file architecture:
 "**Workflow Assessment Result: Compliant Format**
 
 This workflow follows BMAD step-file architecture:
-
 - ✅ workflow.md found
 - ✅ Step folders: [list which ones exist]
 - ✅ Data folder: [yes/no]
@@ -126,7 +121,6 @@ Continue to step 5.
 ### 5. Check for Validation Report
 
 **Look for validation report:**
-
 - Check `{targetWorkflowPath}/validation-report-{workflow_name}.md`
 - Check if report exists and read completion status
 
@@ -148,7 +142,6 @@ Continue to step 5.
 **IF VALIDATION REPORT EXISTS:**
 
 Read the validation report and note:
-
 - Overall status (COMPLETE/INCOMPLETE)
 - Critical issues count
 - Warning issues count
@@ -196,13 +189,13 @@ validationStatus: [from report if exists]
 
 ## Edit Goals
 
-_To be populated in next step_
+*To be populated in next step*
 
 ---
 
 ## Edits Applied
 
-_To track changes made_
+*To track changes made*
 ```
 
 Write to `{editPlan}`.

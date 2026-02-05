@@ -118,7 +118,6 @@ Append to `{validationReport}`:
 **Status:** {✅ PASS / ⚠️ WARNING / ❌ FAIL}
 
 **Checks:**
-
 - [ ] A/P/C convention followed
 - [ ] Command names clear and descriptive
 - [ ] Command descriptions specific and actionable
@@ -127,13 +126,13 @@ Append to `{validationReport}`:
 
 **Detailed Findings:**
 
-_PASSING:_
+*PASSING:*
 {List of passing checks}
 
-_WARNINGS:_
+*WARNINGS:*
 {List of non-blocking issues}
 
-_FAILURES:_
+*FAILURES:*
 {List of blocking issues that must be fixed}
 ```
 

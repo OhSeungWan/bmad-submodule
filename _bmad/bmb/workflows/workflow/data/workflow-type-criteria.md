@@ -16,13 +16,11 @@
 ## 1. Module Affiliation
 
 ### Standalone Workflow
-
 - NOT part of any module
 - Stored in user's custom location
 - Only standard variables available
 
 ### Module-Based Workflow
-
 - Part of a specific module (e.g., BMB)
 - Has access to module-specific variables
 - Stored in module's workflows directory
@@ -34,17 +32,14 @@
 ## 2. Continuable or Single-Session?
 
 ### Continuable (Multi-Session)
-
 **Use when:** Workflow might consume MASSIVE tokens, complex, many steps
 
 **Required:**
-
 - `step-01-init.md` with continuation detection
 - `step-01b-continue.md` for resuming
 - `stepsCompleted` tracking in output frontmatter
 
 **Frontmatter:**
-
 ```yaml
 stepsCompleted: ['step-01-init', 'step-02-gather']
 lastStep: 'step-02-gather'
@@ -54,11 +49,9 @@ lastContinued: '2025-01-02'
 **Rule:** Each step appends its NAME to `stepsCompleted`
 
 ### Single-Session
-
 **Use when:** Simple, quick (<15 min), token-efficient
 
 **Required:**
-
 - Standard `step-01-init.md` (no continuation logic)
 - No `stepsCompleted` tracking needed
 
@@ -67,7 +60,6 @@ lastContinued: '2025-01-02'
 ## 3. Edit/Validate Support
 
 ### Create-Only
-
 ```
 workflow-folder/
 ├── workflow.md
@@ -80,7 +72,6 @@ workflow-folder/
 **Use when:** Simple workflows, experimental, one-off
 
 ### Create + Edit + Validate (Tri-Modal)
-
 ```
 workflow-folder/
 ├── workflow.md
@@ -91,7 +82,6 @@ workflow-folder/
 ```
 
 **Key:**
-
 - Each mode is SELF-CONTAINED
 - NO shared step files between modes
 - DATA folder is SHARED (prevents drift)
@@ -104,14 +94,12 @@ workflow-folder/
 ## 4. Document Output
 
 ### Document-Producing
-
 - Creates persistent output file
 - Uses templates for structure
 - Each step contributes to document
 - Consider final polish step
 
 ### Non-Document
-
 - Performs actions without persistent output
 - May produce temporary files
 - Focus on execution, not creation
@@ -145,19 +133,16 @@ START: Creating a workflow
 
 **Continuable:**
 "Could this workflow consume many tokens or require multiple sessions?
-
 - If YES: Add continuation support
 - If NO: Keep it simple for single-session"
 
 **Edit/Validate:**
 "Will this workflow need edit and validate capabilities, or just create?
-
 - Create only: Simpler, faster
 - Create + Edit + Validate: More robust, maintainable"
 
 **Document:**
 "Does this workflow produce a document/output file?"
-
 - If YES: Use free-form template (recommended)
 - If NO: What does it produce?
 
@@ -165,15 +150,14 @@ START: Creating a workflow
 
 ## Output Format Decision
 
-| Workflow Type             | Init Template            | Output Format |
-| ------------------------- | ------------------------ | ------------- |
-| Continuable + Document    | step-01-init-continuable | Free-form     |
-| Single-Session + Document | Standard init            | Free-form     |
-| Continuable + No Doc      | step-01-init-continuable | N/A           |
-| Single-Session + No Doc   | Standard init            | N/A           |
+| Workflow Type           | Init Template            | Output Format |
+| ----------------------- | ------------------------ | ------------- |
+| Continuable + Document  | step-01-init-continuable | Free-form     |
+| Single-Session + Document| Standard init           | Free-form     |
+| Continuable + No Doc    | step-01-init-continuable | N/A           |
+| Single-Session + No Doc  | Standard init            | N/A           |
 
 **Free-form template** (recommended):
-
 ```yaml
 ---
 stepsCompleted: []
@@ -181,6 +165,7 @@ lastStep: ''
 date: ''
 user_name: ''
 ---
+
 # {{document_title}}
 
 [Content appended progressively]

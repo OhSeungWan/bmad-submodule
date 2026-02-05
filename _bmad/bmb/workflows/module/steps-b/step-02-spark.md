@@ -53,7 +53,6 @@ Ignite and explore the user's idea — dig into the problem space, understand wh
 "**Let's explore your idea together.**"
 
 Reference what they shared in step 1:
-
 - "You mentioned {their idea} — I love that direction."
 - "Tell me more about the problem you're solving."
 
@@ -78,7 +77,6 @@ Ask questions to deepen understanding:
 **"Who is this module for?"**
 
 Help them think about:
-
 - Primary users — who will use this most?
 - Secondary users — who else benefits?
 - What do these users care about?
@@ -86,24 +84,20 @@ Help them think about:
 ### 4. Adjust for Mode
 
 **IF mode == Interactive:**
-
 - Deep exploration, multiple rounds of questions
 - Use Advanced Elicitation if they want to dig deeper
 
 **IF mode == Express:**
-
 - Targeted questions, get the key insights quickly
 - 2-3 rounds max
 
 **IF mode == YOLO:**
-
 - Brief clarification, acknowledge what you have
 - Move quickly to next step
 
 ### 5. Capture Insights
 
 Summarize what you've learned:
-
 - "So the core problem is {summary}"
 - "The primary users are {users}"
 - "What excites you most is {excitement}"

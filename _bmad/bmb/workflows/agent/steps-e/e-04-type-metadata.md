@@ -47,7 +47,6 @@ Read `{agentMetadata}` and `{agentTypesDoc}` to understand validation rules and 
 ### 2. Review Current Metadata
 
 From `{editPlan}`, display current:
-
 - agentType (simple/expert/module)
 - All metadata fields: id, name, title, icon, module, hasSidecar
 
@@ -56,13 +55,11 @@ From `{editPlan}`, display current:
 If user wants metadata changes:
 
 **For type conversion:**
-
 - "Converting from {current} to {target}"
 - Explain implications (e.g., Simple → Expert requires sidecar)
 - Update editPlan with type conversion
 
 **For metadata field changes:**
-
 - id: kebab-case requirements
 - name: display name conventions
 - title: function description format
@@ -77,13 +74,13 @@ Append to `{editPlan}`:
 ```yaml
 metadataEdits:
   typeConversion:
-    from: { current-type }
-    to: { target-type }
-    rationale: { explanation }
+    from: {current-type}
+    to: {target-type}
+    rationale: {explanation}
   fieldChanges:
-    - field: { field-name }
-      from: { current-value }
-      to: { target-value }
+    - field: {field-name}
+      from: {current-value}
+      to: {target-value}
 ```
 
 ### 5. Present MENU OPTIONS

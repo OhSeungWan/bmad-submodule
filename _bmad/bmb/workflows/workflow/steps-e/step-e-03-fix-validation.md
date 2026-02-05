@@ -60,7 +60,6 @@ Systematically fix all issues identified in the validation report, working throu
 ### 1. Read Context Files
 
 **Load these files first:**
-
 1. `{editPlan}` - Review fix goals
 2. `{validationReport}` - Get full list of issues
 
@@ -68,14 +67,14 @@ Systematically fix all issues identified in the validation report, working throu
 
 **From validation report, categorize issues:**
 
-| Issue Type             | Standard File           | Count |
-| ---------------------- | ----------------------- | ----- |
-| workflow.md violations | {architecture}          |       |
-| Step file structure    | {stepFileRules}         |       |
-| Frontmatter issues     | {frontmatterStandards}  |       |
-| Menu handling          | {menuHandlingStandards} |       |
-| Output format          | {outputFormatStandards} |       |
-| Step type issues       | {stepTypePatterns}      |       |
+| Issue Type | Standard File | Count |
+|------------|---------------|-------|
+| workflow.md violations | {architecture} | |
+| Step file structure | {stepFileRules} | |
+| Frontmatter issues | {frontmatterStandards} | |
+| Menu handling | {menuHandlingStandards} | |
+| Output format | {outputFormatStandards} | |
+| Step type issues | {stepTypePatterns} | |
 
 ### 3. Work Through Issues Systematically
 
@@ -84,7 +83,6 @@ Systematically fix all issues identified in the validation report, working throu
 #### A. Load Relevant Standard
 
 **Before proposing fix, load the relevant standard file:**
-
 - If workflow.md issue → Load {architecture}
 - If step file issue → Load {stepFileRules}
 - If frontmatter issue → Load {frontmatterStandards}
@@ -111,7 +109,6 @@ Systematically fix all issues identified in the validation report, working throu
 {Specific change needed}
 
 **This will:**
-
 - ✅ Fix the compliance issue
 - ✅ Align with: {specific standard}
 - ⚠️ Potential impact: {any side effects}
@@ -121,7 +118,6 @@ Systematically fix all issues identified in the validation report, working throu
 #### D. Get User Approval
 
 Wait for user response:
-
 - **Yes/Y** - Apply the fix
 - **No/N** - Skip this issue (document why)
 - **Modify** - User suggests alternative approach
@@ -144,12 +140,10 @@ Wait for user response:
 ```
 
 **Update editPlan:**
-
 ```markdown
 ### Fixes Applied
 
 **[{issue type}]** {file}
-
 - ✅ Fixed: {description}
 - Standard: {standard reference}
 - User approved: Yes
@@ -162,7 +156,6 @@ Wait for user response:
 "**Issue skipped.**
 
 Documenting in edit plan:
-
 - [{issue type}] {file} - SKIPPED per user request
 - Reason: {user's reason if provided}
 
@@ -188,7 +181,6 @@ Discuss alternative approach, get agreement, then apply modified fix.
 **Remaining Issues:** {list any skipped or remaining warnings}
 
 **Files Modified:**
-
 - {file1}
 - {file2}
 - etc."
@@ -202,7 +194,6 @@ Discuss alternative approach, get agreement, then apply modified fix.
 "Your edit plan also includes direct changes. After we apply these validation fixes, we'll proceed to those changes."
 
 Update editPlan frontmatter:
-
 ```yaml
 validationFixesComplete: true
 ```

@@ -16,7 +16,6 @@ Identify MCP tools, integrations, and external services the module might need.
 ## MANDATORY EXECUTION RULES:
 
 ### Universal Rules:
-
 - 🛑 NEVER generate content without user input
 - 📖 CRITICAL: Read the complete step file before taking any action
 - 🔄 CRITICAL: When loading next with 'C', ensure entire file is read
@@ -24,7 +23,6 @@ Identify MCP tools, integrations, and external services the module might need.
 - ✅ Speak in `{communication_language}`
 
 ### Role Reinforcement:
-
 - ✅ You are the **Module Architect** — integrations thinker
 - ✅ Keep it practical — only what's needed
 - 💬 Ask "what external capabilities would help?"
@@ -40,7 +38,6 @@ Identify MCP tools, integrations, and external services the module might need.
 Explain: MCP tools connect agents to external capabilities.
 
 Common MCP tools:
-
 - Database connectors
 - Git integration
 - Web automation (Playwright)
@@ -60,7 +57,7 @@ Common MCP tools:
 
 ### 3. Module Integrations
 
-"**Does this integrate with other BMAD modules?\*\***
+"**Does this integrate with other BMAD modules?****
 
 - Uses workflows from other modules?
 - Shares agents or extends them?
@@ -69,7 +66,6 @@ Common MCP tools:
 ### 4. Capture the List
 
 Document:
-
 - **MCP Tools:** {list or "none"}
 - **External Services:** {list or "none"}
 - **Module Integrations:** {list or "none"}

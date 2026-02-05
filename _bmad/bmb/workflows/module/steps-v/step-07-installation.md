@@ -17,7 +17,6 @@ Check if the module is ready for installation.
 ## MANDATORY EXECUTION RULES:
 
 ### Universal Rules:
-
 - 📖 CRITICAL: Read the complete step file before taking any action
 - ✅ Speak in `{communication_language}`
 
@@ -33,13 +32,11 @@ Check if the module is ready for installation.
 ### 1. Check Installer
 
 **IF `_module-installer/` exists:**
-
 - [ ] `installer.js` present
 - [ ] Has valid `install()` function
 - [ ] Platform-specific handlers (if any IDEs supported)
 
 **IF `_module-installer/` doesn't exist:**
-
 - Note: Module may not need installer
 - Check if this is intentional
 
@@ -48,43 +45,36 @@ Check if the module is ready for installation.
 Load `{moduleInstallerStandardsFile}` and check:
 
 **Function Signature:**
-
 - [ ] `async function install(options)`
 - [ ] Accepts: projectRoot, config, installedIDEs, logger
 - [ ] Returns: Promise<boolean>
 
 **Error Handling:**
-
 - [ ] Try/catch block present
 - [ ] Error logging present
 
 **Platform Validation:**
-
 - [ ] Uses platformCodes for IDE validation
 - [ ] Graceful handling of unknown platforms
 
 ### 3. Check module.yaml Install Variables
 
 **IF custom variables exist:**
-
 - [ ] All variables have prompts
 - [ ] Defaults are reasonable
 - [ ] Result templates are valid
 
 **Path Variables:**
-
 - [ ] Paths use `{project-root}/` prefix
 - [ ] Output paths are user-configurable
 
 ### 4. Module Type Installation
 
 **IF Extension:**
-
 - [ ] `code:` matches base (for proper merge)
 - [ ] Folder name is unique
 
 **IF Global:**
-
 - [ ] `global: true` or documented
 - [ ] Global impact is minimal/intentional
 

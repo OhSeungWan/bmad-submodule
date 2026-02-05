@@ -12,7 +12,7 @@ targetLocation: '{build_tracking_targetLocation}'
 
 ## STEP GOAL:
 
-Setup the \_module-installer folder and create installer.js if needed.
+Setup the _module-installer folder and create installer.js if needed.
 
 ## MANDATORY EXECUTION RULES:
 
@@ -41,7 +41,6 @@ Load `{moduleInstallerStandardsFile}` and ask:
 "**Does your module need an installer?**"
 
 Installers are needed when:
-
 - Creating directories from config variables
 - Copying template/assets
 - IDE-specific configuration
@@ -70,9 +69,7 @@ Create `{targetLocation}/_module-installer/installer.js`:
 const fs = require('fs-extra');
 const path = require('node:path');
 const chalk = require('chalk');
-const platformCodes = require(
-  path.join(__dirname, '../../../../tools/cli/lib/platform-codes'),
-);
+const platformCodes = require(path.join(__dirname, '../../../../tools/cli/lib/platform-codes'));
 
 /**
  * {module_name} Module Installer
@@ -85,10 +82,7 @@ async function install(options) {
 
     // Create directories
     if (config['{variable_name}']) {
-      const dirConfig = config['{variable_name}'].replace(
-        '{project-root}/',
-        '',
-      );
+      const dirConfig = config['{variable_name}'].replace('{project-root}/', '');
       const dirPath = path.join(projectRoot, dirConfig);
       if (!(await fs.pathExists(dirPath))) {
         logger.log(chalk.yellow(`Creating directory: ${dirConfig}`));
@@ -117,11 +111,7 @@ async function configureForIDE(ide, projectRoot, config, logger) {
     return;
   }
 
-  const platformSpecificPath = path.join(
-    __dirname,
-    'platform-specifics',
-    `${ide}.js`,
-  );
+  const platformSpecificPath = path.join(__dirname, 'platform-specifics', `${ide}.js`);
 
   try {
     if (await fs.pathExists(platformSpecificPath)) {
@@ -131,9 +121,7 @@ async function configureForIDE(ide, projectRoot, config, logger) {
       }
     }
   } catch (error) {
-    logger.warn(
-      chalk.yellow(`Warning: Could not configure ${ide}: ${error.message}`),
-    );
+    logger.warn(chalk.yellow(`Warning: Could not configure ${ide}: ${error.message}`));
   }
 }
 
@@ -145,7 +133,6 @@ Customize based on module requirements.
 ### 4. Platform-Specific Handlers (Optional)
 
 If IDE-specific setup needed, ask which IDEs and create:
-
 - `{targetLocation}/_module-installer/platform-specifics/claude-code.js`
 - `{targetLocation}/_module-installer/platform-specifics/windsurf.js`
 - etc.
@@ -153,7 +140,6 @@ If IDE-specific setup needed, ask which IDEs and create:
 ### 5. Update Build Tracking
 
 Update `{buildTrackingFile}`:
-
 - Add 'step-04-installer' to stepsCompleted
 - Note: installer created or skipped
 

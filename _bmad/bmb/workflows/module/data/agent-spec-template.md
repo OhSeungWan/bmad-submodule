@@ -11,11 +11,11 @@
 ```yaml
 agent:
   metadata:
-    id: '_bmad/{module_code}/agents/{agent_file_name}.md'
-    name: { agent_human_name }
-    title: { agent_title }
-    icon: { agent_icon }
-    module: { module_code }
+    id: "_bmad/{module_code}/agents/{agent_file_name}.md"
+    name: {agent_human_name}
+    title: {agent_title}
+    icon: {agent_icon}
+    module: {module_code}
     hasSidecar: false
 ```
 
@@ -46,8 +46,7 @@ agent:
 ### Planned Commands
 
 | Trigger | Command | Description | Workflow |
-| ------- | ------- | ----------- | -------- |
-
+|---------|---------|-------------|----------|
 {agent_menu_table}
 
 ---
@@ -70,7 +69,6 @@ agent:
 **Use the create-agent workflow to build this agent.**
 
 Inputs needed:
-
 - Agent name and human name
 - Role and expertise area
 - Communication style preferences

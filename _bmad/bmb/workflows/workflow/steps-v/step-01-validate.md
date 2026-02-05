@@ -50,8 +50,8 @@ Create {validationReportFile} with header structure:
 ```markdown
 ---
 validationDate: [current date]
-workflowName: { new_workflow_name }
-workflowPath: { workflow_folder_path }
+workflowName: {new_workflow_name}
+workflowPath: {workflow_folder_path}
 validationStatus: IN_PROGRESS
 ---
 
@@ -65,61 +65,48 @@ validationStatus: IN_PROGRESS
 
 ## File Structure & Size
 
-_Validation in progress..._
+*Validation in progress...*
 
 ## Frontmatter Validation
-
-_Pending..._
+*Pending...*
 
 ## Critical Path Violations
-
-_Pending..._
+*Pending...*
 
 ## Menu Handling Validation
-
-_Pending..._
+*Pending...*
 
 ## Step Type Validation
-
-_Pending..._
+*Pending...*
 
 ## Output Format Validation
-
-_Pending..._
+*Pending...*
 
 ## Validation Design Check
-
-_Pending..._
+*Pending...*
 
 ## Instruction Style Check
-
-_Pending..._
+*Pending...*
 
 ## Collaborative Experience Check
-
-_Pending..._
+*Pending...*
 
 ## Subprocess Optimization Opportunities
-
-_Pending..._
+*Pending...*
 
 ## Cohesive Review
-
-_Pending..._
+*Pending...*
 
 ## Plan Quality Validation
-
-_Pending..._
+*Pending...*
 
 ## Summary
-
-_Pending..._
+*Pending...*
 ```
 
 ### 2. Load File Structure Standards
 
 Load {stepFileRules} to understand:
-
 - File size limits (<200 recommended, 250 max)
 - Required folder structure
 - Required files
@@ -138,7 +125,6 @@ find {targetWorkflowPath} -type f -name "*.md" | sort
 ```
 
 **Expected structure:**
-
 ```
 {targetWorkflowPath}/
 ├── workflow.md
@@ -155,7 +141,6 @@ find {targetWorkflowPath} -type f -name "*.md" | sort
 ```
 
 **Check:**
-
 - ✅ workflow.md exists
 - ✅ step files are in a well organized folder
 - ✅ non step reference files are organized in other folders such as data, templates, or others that make sense for the workflow
@@ -170,7 +155,6 @@ find {targetWorkflowPath} -type f -name "*.md" | sort
 3. Returns structured findings to parent for aggregation
 
 **Limits:**
-
 - < 200 lines: ✅ Good
 - 200-250 lines: ⚠️ Approaching limit
 - > 250 lines: ❌ Exceeds limit
@@ -178,12 +162,10 @@ find {targetWorkflowPath} -type f -name "*.md" | sort
 **Subprocess returns:** File name, line count, status (Good/Approaching limit/Exceeds limit), and any issues found.
 
 **Subprocess must either:**
-
 - Update validation report directly with findings, OR
 - Return structured findings to parent for aggregation into report
 
 **Document findings in validation report:**
-
 - List all step files checked with their line counts
 - Note any files approaching or exceeding size limits (<200 recommended, 250 max)
 - Check data and reference files for size issues (large files should be sharded or indexed)
@@ -192,7 +174,6 @@ find {targetWorkflowPath} -type f -name "*.md" | sort
 ### 5. Verify File Presence
 
 From the design in {workflowPlanFile}, verify:
-
 - Every step from design has a corresponding file
 - Step files are numbered sequentially
 - No gaps in numbering
@@ -203,7 +184,6 @@ From the design in {workflowPlanFile}, verify:
 Replace the "## File Structure & Size" section in {validationReportFile} with actual findings:
 
 **Document the following:**
-
 - Folder structure assessment
 - Required files presence check
 - File size analysis results

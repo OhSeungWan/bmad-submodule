@@ -51,14 +51,12 @@ Read `{agentCompilation}`, `{simpleValidation}`, `{expertValidation}`, `{validat
 Perform these checks systematically - validate EVERY rule specified in agentCompilation.md:
 
 #### A. YAML Syntax Validation
-
 - [ ] Parse YAML without errors
 - [ ] Check indentation consistency (2-space standard)
 - [ ] Validate proper escaping of special characters
 - [ ] Verify no duplicate keys in any section
 
 #### B. Frontmatter Validation
-
 - [ ] All required fields present (name, description, version, etc.)
 - [ ] Field values are correct type (string, boolean, array)
 - [ ] No empty required fields
@@ -66,14 +64,12 @@ Perform these checks systematically - validate EVERY rule specified in agentComp
 - [ ] Boolean fields are actual booleans (not strings)
 
 #### C. Section Completeness
-
 - [ ] All required sections present based on agent type
 - [ ] Sections not empty unless explicitly optional
 - [ ] Proper markdown heading hierarchy (##, ###)
 - [ ] No orphaned content without section headers
 
 #### D. Field-Level Validation
-
 - [ ] Path references exist and are valid
 - [ ] Array fields properly formatted
 - [ ] No malformed YAML structures
@@ -82,7 +78,6 @@ Perform these checks systematically - validate EVERY rule specified in agentComp
 #### E. Agent Type Specific Checks
 
 **For Simple Agents (hasSidecar is false/absent, module is 'stand-alone'):**
-
 - [ ] No sidecar requirements
 - [ ] No sidecar-folder path in metadata
 - [ ] Basic fields complete
@@ -90,7 +85,6 @@ Perform these checks systematically - validate EVERY rule specified in agentComp
 - [ ] Menu handlers use only internal references (#) or inline prompts
 
 **For Expert Agents (hasSidecar is true):**
-
 - [ ] Sidecar flag set correctly in metadata
 - [ ] Sidecar folder path specified in metadata
 - [ ] All expert fields present
@@ -98,7 +92,6 @@ Perform these checks systematically - validate EVERY rule specified in agentComp
 - [ ] Menu handlers reference sidecar files or have inline prompts
 
 **For Module Agents (module is a module code like 'bmm', 'bmb', etc.):**
-
 - [ ] Module property is valid module code
 - [ ] Exec paths for menu handlers start with `{project-root}/_bmad/{module}/...`
 - [ ] Referenced files exist under the module directory
@@ -116,7 +109,6 @@ Append to `{validationReport}`:
 **Agent Type:** {simple|expert|module}
 
 **Checks:**
-
 - [ ] Valid YAML syntax
 - [ ] Required fields present (name, description, type, persona)
 - [ ] Field types correct (arrays, strings)
@@ -125,13 +117,13 @@ Append to `{validationReport}`:
 
 **Detailed Findings:**
 
-_PASSING:_
+*PASSING:*
 {List of passing checks}
 
-_WARNINGS:_
+*WARNINGS:*
 {List of non-blocking issues}
 
-_FAILURES:_
+*FAILURES:*
 {List of blocking issues that must be fixed}
 ```
 

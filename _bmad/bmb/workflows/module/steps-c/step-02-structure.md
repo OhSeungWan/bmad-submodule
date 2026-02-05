@@ -38,17 +38,14 @@ Create the module directory structure based on the module type (Standalone/Exten
 Load `{moduleStandardsFile}` and determine location:
 
 **IF Standalone:**
-
 - Target: `src/modules/{module_code}/`
 
 **IF Extension:**
-
 - Target: `src/modules/{base_module_code}/extensions/{extension_folder_name}/`
 - Get base_module_code from brief
 - extension_folder_name: unique name (e.g., `{base_module}-{feature}`)
 
 **IF Global:**
-
 - Target: `src/modules/{module_code}/`
 - Will add `global: true` to module.yaml
 
@@ -79,7 +76,6 @@ Load `{moduleStandardsFile}` and determine location:
 **IF confirmed:**
 
 Create folders:
-
 - `{target_location}/agents/`
 - `{target_location}/workflows/`
 - `{target_location}/_module-installer/`
@@ -88,7 +84,6 @@ Create folders:
 ### 4. Update Build Tracking
 
 Update `{buildTrackingFile}`:
-
 - Add 'step-02-structure' to stepsCompleted
 - Set targetLocation
 - Update status
@@ -110,5 +105,5 @@ Update `{buildTrackingFile}`:
 
 ✅ Directory structure created
 ✅ Location based on module type
-✅ Folders: agents/, workflows/, \_module-installer/
+✅ Folders: agents/, workflows/, _module-installer/
 ✅ Build tracking updated

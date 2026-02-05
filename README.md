@@ -1,7 +1,7 @@
 # BMAD Framework Submodule
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![BMAD](https://img.shields.io/badge/BMAD-6.0.0--alpha.23-orange.svg)
+![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
+![BMAD](https://img.shields.io/badge/BMAD-6.0.0--beta.7-orange.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-purple.svg)
 
@@ -11,8 +11,8 @@ BMAD-METHOD - 범용 AI 에이전트 프레임워크
 
 | 항목               | 버전              |
 | ------------------ | ----------------- |
-| Submodule Version  | v1.0.0            |
-| BMAD Framework     | 6.0.0-alpha.23    |
+| Submodule Version  | v1.1.0            |
+| BMAD Framework     | 6.0.0-beta.7      |
 
 > [Changelog](#changelog) 에서 변경 이력을 확인하세요.
 
@@ -76,13 +76,15 @@ Git을 처음 접하시거나 Submodule이 생소하신 분들을 위한 설명�
 
 ### 제공하는 모듈
 
-| 모듈   | 설명                 | 주요 에이전트/워크플로우               |
-| ------ | -------------------- | -------------------------------------- |
-| `core` | 핵심 기능            | bmad-master, brainstorming, party-mode |
-| `bmm`  | 소프트웨어 개발      | analyst, architect, dev, pm, sm, ux    |
-| `bmb`  | 모듈 빌더            | agent-builder, workflow-builder        |
-| `bmgd` | 게임 개발            | game-designer, game-dev, game-qa       |
-| `dae`  | 데이터 분석 (커스텀) | data-analyst, Amplitude 연동           |
+| 모듈   | 설명                      | 주요 에이전트/워크플로우                    |
+| ------ | ------------------------- | ------------------------------------------- |
+| `core` | 핵심 기능                 | bmad-master, brainstorming, party-mode      |
+| `bmm`  | 소프트웨어 개발           | analyst, architect, dev, pm, sm, ux         |
+| `bmb`  | 모듈 빌더                 | agent-builder, workflow-builder             |
+| `gds`  | 게임 개발 (구 bmgd)       | game-designer, game-dev, game-qa            |
+| `tea`  | 테스트 아키텍처           | test-engineer-architect                     |
+| `cis`  | 크리에이티브 & 혁신 전략  | design-thinking, innovation, storytelling   |
+| `dae`  | 데이터 분석 (커스텀)      | data-analyst, Amplitude 연동                |
 
 ---
 
@@ -96,7 +98,9 @@ bmad-submodule/
 │       │   ├── core/       # 핵심 워크플로우/에이전트
 │       │   ├── bmm/        # BMAD Method Module
 │       │   ├── bmb/        # BMAD Module Builder
-│       │   ├── bmgd/       # BMAD Game Dev
+│       │   ├── gds/        # Game Dev Studio
+│       │   ├── tea/        # Test Engineer Architect
+│       │   ├── cis/        # Creative & Innovation Strategy
 │       │   └── dae/        # Data Analysis Expert
 │       └── commit.md       # 커밋 커맨드
 ├── _bmad/                  # BMAD 프레임워크 리소스
@@ -105,7 +109,9 @@ bmad-submodule/
 │   ├── core/               # 핵심 모듈
 │   ├── bmm/                # 소프트웨어 개발 모듈
 │   ├── bmb/                # 모듈 빌더
-│   ├── bmgd/               # 게임 개발 모듈
+│   ├── gds/                # 게임 개발 모듈 (구 bmgd)
+│   ├── tea/                # 테스트 아키텍처 모듈
+│   ├── cis/                # 크리에이티브 & 혁신 전략 모듈
 │   └── dae/                # 데이터 분석 모듈
 ├── src/modules/            # 모듈 소스 코드
 ├── install.sh              # 심볼릭 링크 생성 스크립트
@@ -379,15 +385,14 @@ Claude Code 내에서 `/bmad`를 입력하면 사용 가능한 커맨드 목록�
 # BMM (소프트웨어 개발)
 /bmad:bmm:agents:dev           # 개발자 에이전트
 /bmad:bmm:agents:architect     # 아키텍트 에이전트
-/bmad:bmm:workflows:prd        # PRD 작성 워크플로우
 
 # Core (핵심)
 /bmad:core:agents:bmad-master  # 마스터 에이전트
 /bmad:core:workflows:brainstorming  # 브레인스토밍
 
-# BMGD (게임 개발)
-/bmad:bmgd:agents:game-designer    # 게임 디자이너
-/bmad:bmgd:workflows:gdd           # GDD 작성
+# DAE (데이터 분석)
+/bmad:dae:agents:data-analyst      # 데이터 분석가
+/bmad:dae:workflows:data-analysis  # 데이터 분석 워크플로우
 ```
 
 ### 5. 설치 실패 시 체크리스트
@@ -487,6 +492,18 @@ A: postinstall 스크립트에 `[ -z "$CI" ]` 조건이 있어 CI 환경에서�
 ---
 
 ## Changelog
+
+### v1.1.0 (2026-02-06)
+
+**BMAD Framework 6.0.0-beta.7 업그레이드**
+
+- BMGD → GDS (Game Dev Studio) 모듈 리네임 및 재편
+- TEA (Test Engineer Architect) BMM에서 독립 모듈로 분리
+- CIS (Creative & Innovation Strategy) 신규 모듈 추가
+- PRD 워크플로우 제거
+- Excalidraw 다이어그램 워크플로우 제거
+- BMM/BMB 모듈 전반 업데이트
+- 에이전트 및 워크플로우 설정 파일 업데이트
 
 ### v1.0.0 (2025-01-27)
 

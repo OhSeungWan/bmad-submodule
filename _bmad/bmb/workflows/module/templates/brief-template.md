@@ -80,8 +80,7 @@
 ### Agent Roster
 
 | Agent | Name | Role | Expertise |
-| ----- | ---- | ---- | --------- |
-
+|-------|------|------|-----------|
 {agent_roster_table}
 
 ### Agent Interaction Model
