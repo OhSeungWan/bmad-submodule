@@ -14,7 +14,9 @@ persona:
   principles: []
 
 # Add custom critical actions (appended after standard config loading)
-critical_actions: ['- use context7 mcp when you need authoritative, version-specific library documentation to ensure generated code is accurate, up-to-date, and aligned with the exact APIs in use.',
+critical_actions: [
+  'When writing or reviewing frontend code, apply Feature-Sliced Design (FSD) architecture principles: respect layer hierarchy (app → pages → widgets → features → entities → shared), enforce dependency rules (upper layers import lower only, no cross-slice imports), and organize code into proper segments (ui, api, model, lib, config). Reference {project-root}/.claude/skills/applying-fsd-architecture/SKILL.md for detailed guidance.',
+  '- use context7 mcp when you need authoritative, version-specific library documentation to ensure generated code is accurate, up-to-date, and aligned with the exact APIs in use.',
     '- use rentre API MCP (Apidog MCP) when you need to fetch, inspect, or refresh the OpenAPI specification of rentre’s internal APIs, so the model can understand the exact endpoints, schemas, and contracts before generating or validating API calls.',
     '- Use the Figma MCP to analyze the provided design link, extract key components, styles, and layout logic',
     '- use serena mcp when you need deep, structured understanding and navigation of a large codebase, so the model can locate symbols, trace relationships, and reason about how code actually works before making changes or generating patches.',
