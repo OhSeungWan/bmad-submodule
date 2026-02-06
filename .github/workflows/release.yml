@@ -1,0 +1,167 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract and validate version from tag
+        id: version
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          VERSION="${TAG_NAME#v}"
+          if ! printf '%s' "$VERSION" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9.]+)?$'; then
+            echo "::error::Invalid semver version: ${VERSION}"
+            exit 1
+          fi
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Detect previous tag
+        id: prev_tag
+        env:
+          CURRENT_TAG: ${{ github.ref_name }}
+        run: |
+          if git rev-parse "${CURRENT_TAG}^" >/dev/null 2>&1; then
+            PREV_TAG=$(git describe --tags --abbrev=0 "${CURRENT_TAG}^" 2>/dev/null || echo "")
+          else
+            PREV_TAG=""
+          fi
+          echo "tag=$PREV_TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Collect and parse commits
+        id: notes
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          PREV_TAG: ${{ steps.prev_tag.outputs.tag }}
+          CURRENT_TAG: ${{ github.ref_name }}
+        run: |
+          if [ -n "$PREV_TAG" ]; then
+            RANGE="${PREV_TAG}..${CURRENT_TAG}"
+          else
+            RANGE="$CURRENT_TAG"
+          fi
+
+          FEAT=""
+          FIX=""
+          DOCS=""
+          OTHER=""
+
+          while IFS= read -r line; do
+            [ -z "$line" ] && continue
+
+            # Strip leading emoji(s) and whitespace
+            clean=$(printf '%s' "$line" | sed 's/^[[:space:]]*//;s/^[^a-zA-Z]*//')
+
+            # Extract type (text before colon, ignoring ! for breaking changes)
+            type=$(printf '%s' "$clean" | sed -n 's/^\([a-zA-Z]*\)[!]*:.*/\1/p' | tr '[:upper:]' '[:lower:]')
+
+            # Extract message (text after first colon)
+            msg=$(printf '%s' "$clean" | sed 's/^[a-zA-Z]*[!]*:[[:space:]]*//')
+            if [ -z "$msg" ]; then
+              msg="$line"
+            fi
+
+            case "$type" in
+              feat)     FEAT="${FEAT}- ${msg}\n" ;;
+              fix)      FIX="${FIX}- ${msg}\n" ;;
+              docs)     DOCS="${DOCS}- ${msg}\n" ;;
+              chore|style|refactor|perf|ci|build|init)
+                        OTHER="${OTHER}- ${msg}\n" ;;
+              *)        OTHER="${OTHER}- ${msg}\n" ;;
+            esac
+          done < <(git log --pretty=format:"%s" "$RANGE")
+
+          # Build release notes
+          NOTES="## [${VERSION}] - $(date +%Y-%m-%d)"
+          NOTES="${NOTES}\n"
+
+          if [ -n "$FEAT" ]; then
+            NOTES="${NOTES}\n### ✨ 새 기능\n\n${FEAT}"
+          fi
+          if [ -n "$FIX" ]; then
+            NOTES="${NOTES}\n### 🐛 버그 수정\n\n${FIX}"
+          fi
+          if [ -n "$DOCS" ]; then
+            NOTES="${NOTES}\n### 📝 문서\n\n${DOCS}"
+          fi
+          if [ -n "$OTHER" ]; then
+            NOTES="${NOTES}\n### 🔧 기타 변경\n\n${OTHER}"
+          fi
+
+          printf '%b\n' "$NOTES" > /tmp/release-notes.md
+
+          DELIMITER=$(uuidgen)
+          {
+            printf 'notes<<%s\n' "$DELIMITER"
+            printf '%b\n' "$NOTES"
+            printf '%s\n' "$DELIMITER"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Check for duplicate release entry
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          if [ -f CHANGELOG.md ] && grep -q "^## \[${VERSION}\]" CHANGELOG.md; then
+            echo "::error::CHANGELOG.md already contains entry for version ${VERSION}"
+            exit 1
+          fi
+
+      - name: Update CHANGELOG.md
+        run: |
+          if [ -f CHANGELOG.md ]; then
+            FIRST_VERSION_LINE=$(grep -n '^## \[' CHANGELOG.md | head -1 | cut -d: -f1)
+            if [ -n "$FIRST_VERSION_LINE" ]; then
+              head -n $((FIRST_VERSION_LINE - 1)) CHANGELOG.md > /tmp/changelog-new.md
+              cat /tmp/release-notes.md >> /tmp/changelog-new.md
+              printf '\n' >> /tmp/changelog-new.md
+              tail -n +"$FIRST_VERSION_LINE" CHANGELOG.md >> /tmp/changelog-new.md
+              mv /tmp/changelog-new.md CHANGELOG.md
+            else
+              printf '\n' >> CHANGELOG.md
+              cat /tmp/release-notes.md >> CHANGELOG.md
+            fi
+          else
+            {
+              printf '# Changelog\n\n'
+              printf '이 프로젝트의 모든 주요 변경사항을 기록합니다.\n'
+              printf '형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.\n\n'
+              cat /tmp/release-notes.md
+            } > CHANGELOG.md
+          fi
+
+      - name: Update package.json version
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"${VERSION}\"/" package.json
+
+      - name: Commit and push changes
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md package.json
+          git commit -m "🔖 release: v${VERSION} [skip ci]"
+          git push origin HEAD:master
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh release create "v${VERSION}" \
+            --title "v${VERSION}" \
+            --notes-file /tmp/release-notes.md
