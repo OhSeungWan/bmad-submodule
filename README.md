@@ -491,38 +491,7 @@ A: postinstall 스크립트에 `[ -z "$CI" ]` 조건이 있어 CI 환경에서�
 
 ---
 
-## Changelog
-
-### v1.1.0 (2026-02-06)
-
-**BMAD Framework 6.0.0-beta.7 업그레이드**
-
-- BMGD → GDS (Game Dev Studio) 모듈 리네임 및 재편
-- TEA (Test Engineer Architect) BMM에서 독립 모듈로 분리
-- CIS (Creative & Innovation Strategy) 신규 모듈 추가
-- PRD 워크플로우 제거
-- Excalidraw 다이어그램 워크플로우 제거
-- BMM/BMB 모듈 전반 업데이트
-- 에이전트 및 워크플로우 설정 파일 업데이트
-
-### v1.0.0 (2025-01-27)
-
-**포함 모듈:**
-
-- **Core** - 핵심 에이전트 및 워크플로우 (bmad-master, brainstorming, party-mode)
-- **BMM** - 소프트웨어 개발 모듈 (analyst, architect, dev, pm, sm, ux)
-- **BMB** - 모듈 빌더 (agent-builder, workflow-builder, module-builder)
-- **BMGD** - 게임 개발 모듈 (game-designer, game-dev, game-qa)
-- **DAE** - 데이터 분석 모듈 (data-analyst, Amplitude 연동)
-
-**주요 기능:**
-
-- Git Submodule 기반 설치 지원
-- 심볼릭 링크 자동 생성 스크립트
-- npm postinstall 자동화
-- Claude Code 슬래시 커맨드 통합
-
----
+## [Changelog](#changelog)
 
 ## 라이선스
 
