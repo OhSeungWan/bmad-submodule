@@ -14,7 +14,7 @@ BMAD-METHOD - 범용 AI 에이전트 프레임워크
 | Submodule Version  | v1.1.0            |
 | BMAD Framework     | 6.0.0-beta.7      |
 
-> [Changelog](#changelog) 에서 변경 이력을 확인하세요.
+> [Changelog](./CHANGELOG.md) 에서 변경 이력을 확인하세요.
 
 ---
 
@@ -491,7 +491,7 @@ A: postinstall 스크립트에 `[ -z "$CI" ]` 조건이 있어 CI 환경에서�
 
 ---
 
-## [Changelog](#changelog)
+## [Changelog](./CHANGELOG.md)
 
 ## 라이선스
 
