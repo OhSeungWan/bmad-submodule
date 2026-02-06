@@ -1,6 +1,6 @@
 {
   "name": "bmad-submodule",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "scripts": {
     "format": "prettier --write \"**/*.{md,yaml,yml}\"",
