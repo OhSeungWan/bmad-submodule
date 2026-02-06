@@ -3,6 +3,17 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [1.1.2] - 2026-02-06
+
+### 🐛 버그 수정
+
+- update install.sh symlink logic for BMAD 6.0 flat command structure
+
+### 🔧 기타 변경
+
+- bump version to 1.1.2
+
+
 ## [1.1.1] - 2026-02-06
 
 ### ✨ 새 기능
