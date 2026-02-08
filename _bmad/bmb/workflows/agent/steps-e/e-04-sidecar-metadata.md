@@ -1,5 +1,5 @@
 ---
-name: 'e-04-type-metadata'
+name: 'e-04-sidecar-metadata'
 description: 'Review and plan metadata edits'
 
 nextStepFile: './e-05-persona.md'
@@ -11,11 +11,11 @@ advancedElicitationTask: '{project-root}/_bmad/core/workflows/advanced-elicitati
 partyModeWorkflow: '{project-root}/_bmad/core/workflows/party-mode/workflow.md'
 ---
 
-# Edit Step 4: Type and Metadata
+# Edit Step 4: Sidecar and Metadata
 
 ## STEP GOAL:
 
-Review the agent's type and metadata, and plan any changes. If edits involve type conversion, identify the implications.
+Review the agent's hasSidecar decision and metadata, and plan any changes. If edits involve sidecar conversion, identify the implications.
 
 ## MANDATORY EXECUTION RULES:
 
@@ -26,7 +26,7 @@ Review the agent's type and metadata, and plan any changes. If edits involve typ
 ### Step-Specific Rules:
 
 - 🎯 Load reference documents before discussing edits
-- 📊 Document type conversion requirements if applicable
+- 📊 Document sidecar conversion requirements if applicable
 - 💬 Focus on metadata that user wants to change
 
 ## EXECUTION PROTOCOLS:
@@ -42,22 +42,24 @@ Review the agent's type and metadata, and plan any changes. If edits involve typ
 
 ### 1. Load Reference Documents
 
-Read `{agentMetadata}` and `{agentTypesDoc}` to understand validation rules and type implications.
+Read `{agentMetadata}` and `{agentTypesDoc}` to understand validation rules and sidecar implications.
 
 ### 2. Review Current Metadata
 
 From `{editPlan}`, display current:
-- agentType (simple/expert/module)
-- All metadata fields: id, name, title, icon, module, hasSidecar
+- hasSidecar (true/false)
+- All metadata fields: id, name, title, icon, module
 
 ### 3. Discuss Metadata Edits
 
 If user wants metadata changes:
 
-**For type conversion:**
-- "Converting from {current} to {target}"
-- Explain implications (e.g., Simple → Expert requires sidecar)
-- Update editPlan with type conversion
+**For sidecar conversion:**
+- "Converting from hasSidecar: {current} to {target}"
+- Explain implications:
+  - false → true: Need to create sidecar folder, add critical_actions with sidecar file loading
+  - true → false: Remove sidecar fields; if critical_actions only has sidecar references, remove section; otherwise keep non-sidecar critical_actions
+- Update editPlan with conversion
 
 **For metadata field changes:**
 - id: kebab-case requirements
@@ -65,7 +67,6 @@ If user wants metadata changes:
 - title: function description format
 - icon: emoji/symbol
 - module: path format
-- hasSidecar: boolean implications
 
 ### 4. Document to Edit Plan
 
@@ -73,9 +74,9 @@ Append to `{editPlan}`:
 
 ```yaml
 metadataEdits:
-  typeConversion:
-    from: {current-type}
-    to: {target-type}
+  sidecarConversion:
+    from: {current-hasSidecar}
+    to: {target-hasSidecar}
     rationale: {explanation}
   fieldChanges:
     - field: {field-name}
@@ -112,13 +113,13 @@ ONLY WHEN [C continue option] is selected and [metadata changes documented], wil
 
 - Reference documents loaded
 - Metadata changes discussed and documented
-- Type conversion implications understood
+- Sidecar conversion implications understood
 - Edit plan updated
 
 ### ❌ SYSTEM FAILURE:
 
 - Proceeded without loading reference documents
-- Type conversion without understanding implications
+- Sidecar conversion without understanding implications
 - Changes not documented to edit plan
 
 **Master Rule:** Skipping steps, optimizing sequences, or not following exact instructions is FORBIDDEN and constitutes SYSTEM FAILURE.

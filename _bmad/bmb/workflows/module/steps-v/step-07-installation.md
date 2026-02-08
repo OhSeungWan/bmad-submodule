@@ -4,8 +4,10 @@ description: 'Installation readiness check'
 
 nextStepFile: './step-08-report.md'
 moduleInstallerStandardsFile: '../../data/module-installer-standards.md'
+moduleHelpGenerateWorkflow: '../module-help-generate.md'
 validationReportOutput: '{validation_report_output}'
 targetPath: '{validation_target_path}'
+moduleHelpCsvFile: '{validation_target_path}/module-help.csv'
 ---
 
 # Step 7: Installation Readiness
@@ -68,7 +70,22 @@ Load `{moduleInstallerStandardsFile}` and check:
 - [ ] Paths use `{project-root}/` prefix
 - [ ] Output paths are user-configurable
 
-### 4. Module Type Installation
+### 4. Check module-help.csv
+
+**CRITICAL:** Every module must have `module-help.csv` at its root.
+
+**Check:**
+- [ ] `module-help.csv` exists at `{moduleHelpCsvFile}`
+- [ ] Has valid header: `module,phase,name,code,sequence,workflow-file,command,required,agent,options,description,output-location,outputs,`
+- [ ] `anytime` entries at TOP with EMPTY sequence
+- [ ] Phased entries BELOW anytime (phase-1, phase-2, etc.)
+- [ ] Agent-only entries have EMPTY `workflow-file`
+
+**If missing:**
+- FAIL - Module is not ready for installation without help registry
+- Suggest running `{moduleHelpGenerateWorkflow}`
+
+### 5. Module Type Installation
 
 **IF Extension:**
 - [ ] `code:` matches base (for proper merge)
@@ -78,7 +95,7 @@ Load `{moduleInstallerStandardsFile}` and check:
 - [ ] `global: true` or documented
 - [ ] Global impact is minimal/intentional
 
-### 5. Record Results
+### 6. Record Results
 
 Append to `{validationReportOutput}`:
 
@@ -89,13 +106,14 @@ Append to `{validationReportOutput}`:
 
 **Installer:** {present/missing} - {status}
 **Install Variables:** {count} variables
+**Help Registry:** {present/missing} - {status}
 **Ready to Install:** {yes/no}
 
 **Issues Found:**
 {list any issues}
 ```
 
-### 6. Auto-Proceed
+### 7. Auto-Proceed
 
 "**✓ Installation readiness check complete.**"
 
@@ -109,5 +127,6 @@ Load `{nextStepFile}`
 
 ✅ Installation readiness assessed
 ✅ Installer validated (if present)
+✅ module-help.csv presence and structure validated
 ✅ Module type compatibility checked
 ✅ Results recorded
