@@ -1,54 +1,54 @@
 installation:
   version: 6.0.0-Beta.7
   installDate: 2026-02-05T23:33:04.101Z
-  lastUpdated: 2026-02-05T23:33:04.101Z
+  lastUpdated: 2026-02-08T09:21:50.894Z
 modules:
   - name: core
     version: 6.0.0-Beta.7
     installDate: 2026-02-05T23:33:03.141Z
-    lastUpdated: 2026-02-05T23:33:03.141Z
+    lastUpdated: 2026-02-08T09:21:49.824Z
     source: built-in
     npmPackage: null
     repoUrl: null
   - name: bmm
     version: 6.0.0-Beta.7
     installDate: 2026-02-05T23:32:56.539Z
-    lastUpdated: 2026-02-05T23:33:03.141Z
+    lastUpdated: 2026-02-08T09:21:49.824Z
     source: built-in
     npmPackage: null
     repoUrl: null
   - name: bmb
     version: 0.1.5
     installDate: 2026-02-05T23:32:58.355Z
-    lastUpdated: 2026-02-05T23:33:03.400Z
+    lastUpdated: 2026-02-08T09:21:50.104Z
     source: external
     npmPackage: bmad-builder
     repoUrl: https://github.com/bmad-code-org/bmad-builder
   - name: cis
     version: 0.1.4
     installDate: 2026-02-05T23:32:59.937Z
-    lastUpdated: 2026-02-05T23:33:03.642Z
+    lastUpdated: 2026-02-08T09:21:50.383Z
     source: external
     npmPackage: bmad-creative-intelligence-suite
     repoUrl: https://github.com/bmad-code-org/bmad-module-creative-intelligence-suite
   - name: gds
     version: 0.1.5
     installDate: 2026-02-05T23:33:01.664Z
-    lastUpdated: 2026-02-05T23:33:03.884Z
+    lastUpdated: 2026-02-08T09:21:50.611Z
     source: external
     npmPackage: bmad-game-dev-studio
     repoUrl: https://github.com/bmad-code-org/bmad-module-game-dev-studio.git
   - name: tea
-    version: 0.1.1-beta.3
+    version: 1.0.0
     installDate: 2026-02-05T23:33:03.093Z
-    lastUpdated: 2026-02-05T23:33:04.100Z
+    lastUpdated: 2026-02-08T09:21:50.892Z
     source: external
     npmPackage: bmad-method-test-architecture-enterprise
     repoUrl: https://github.com/bmad-code-org/bmad-method-test-architecture-enterprise
   - name: dae
     version: null
     installDate: 2026-02-05T23:33:03.105Z
-    lastUpdated: 2026-02-05T23:33:04.101Z
+    lastUpdated: 2026-02-08T09:21:50.894Z
     source: custom
     npmPackage: null
     repoUrl: null
