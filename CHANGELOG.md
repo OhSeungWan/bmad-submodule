@@ -3,6 +3,17 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [1.3.1] - 2026-02-09
+
+### 📝 문서
+
+- update README versions and command examples for v1.3.1
+
+### 🔧 기타 변경
+
+- reinstall BMAD modules to v6.0.0-Beta.8
+
+
 ## [1.3.0] - 2026-02-08
 
 ### ✨ 새 기능
