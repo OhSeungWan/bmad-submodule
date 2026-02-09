@@ -1,7 +1,7 @@
 # BMAD Framework Submodule
 
-![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
-![BMAD](https://img.shields.io/badge/BMAD-6.0.0--beta.7-orange.svg)
+![Version](https://img.shields.io/badge/version-1.3.1-blue.svg)
+![BMAD](https://img.shields.io/badge/BMAD-6.0.0--beta.8-orange.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-purple.svg)
 
@@ -11,8 +11,8 @@ BMAD-METHOD - 범용 AI 에이전트 프레임워크
 
 | 항목               | 버전              |
 | ------------------ | ----------------- |
-| Submodule Version  | v1.1.0            |
-| BMAD Framework     | 6.0.0-beta.7      |
+| Submodule Version  | v1.3.1            |
+| BMAD Framework     | 6.0.0-beta.8      |
 
 > [Changelog](./CHANGELOG.md) 에서 변경 이력을 확인하세요.
 
@@ -94,28 +94,27 @@ Git을 처음 접하시거나 Submodule이 생소하신 분들을 위한 설명�
 bmad-submodule/
 ├── .claude/
 │   └── commands/
-│       ├── bmad/           # 모듈별 슬래시 커맨드
-│       │   ├── core/       # 핵심 워크플로우/에이전트
-│       │   ├── bmm/        # BMAD Method Module
-│       │   ├── bmb/        # BMAD Module Builder
-│       │   ├── gds/        # Game Dev Studio
-│       │   ├── tea/        # Test Engineer Architect
-│       │   ├── cis/        # Creative & Innovation Strategy
-│       │   └── dae/        # Data Analysis Expert
-│       └── commit.md       # 커밋 커맨드
-├── _bmad/                  # BMAD 프레임워크 리소스
-│   ├── _config/            # 설정 파일 (manifest, IDE 설정)
-│   ├── _memory/            # 메모리/사이드카 템플릿
-│   ├── core/               # 핵심 모듈
-│   ├── bmm/                # 소프트웨어 개발 모듈
-│   ├── bmb/                # 모듈 빌더
-│   ├── gds/                # 게임 개발 모듈 (구 bmgd)
-│   ├── tea/                # 테스트 아키텍처 모듈
-│   ├── cis/                # 크리에이티브 & 혁신 전략 모듈
-│   └── dae/                # 데이터 분석 모듈
-├── src/modules/            # 모듈 소스 코드
-├── install.sh              # 심볼릭 링크 생성 스크립트
-└── uninstall.sh            # 심볼릭 링크 제거 스크립트
+│       ├── bmad-agent-*.md     # 에이전트 슬래시 커맨드 (플랫 구조)
+│       ├── bmad-bmm-*.md       # BMM 워크플로우 커맨드
+│       ├── bmad-bmb-*.md       # BMB 빌더 커맨드
+│       ├── bmad-gds-*.md       # GDS 게임 개발 커맨드
+│       ├── bmad-tea-*.md       # TEA 테스트 커맨드
+│       ├── bmad-cis-*.md       # CIS 크리에이티브 커맨드
+│       ├── bmad-dae-*.md       # DAE 데이터 분석 커맨드
+│       └── commit.md           # 커밋 커맨드
+├── _bmad/                      # BMAD 프레임워크 리소스
+│   ├── _config/                # 설정 파일 (manifest, IDE 설정)
+│   ├── _memory/                # 메모리/사이드카 템플릿
+│   ├── core/                   # 핵심 모듈
+│   ├── bmm/                    # 소프트웨어 개발 모듈
+│   ├── bmb/                    # 모듈 빌더
+│   ├── gds/                    # 게임 개발 모듈
+│   ├── tea/                    # 테스트 아키텍처 모듈
+│   ├── cis/                    # 크리에이티브 & 혁신 전략 모듈
+│   └── dae/                    # 데이터 분석 모듈
+├── src/modules/                # 모듈 소스 코드
+├── install.sh                  # 심볼릭 링크 생성 스크립트
+└── uninstall.sh                # 심볼릭 링크 제거 스크립트
 ```
 
 ---
@@ -146,7 +145,8 @@ git config -f .gitmodules submodule.bmad-submodule.ignore dirty
 
 이 스크립트는 다음 심볼릭 링크를 생성합니다:
 
-- `프로젝트/.claude/commands/bmad` → `bmad-submodule/.claude/commands/bmad`
+- `프로젝트/.claude/commands/bmad-*.md` → `bmad-submodule/.claude/commands/bmad-*.md`
+- `프로젝트/.claude/commands/commit.md` → `bmad-submodule/.claude/commands/commit.md`
 - `프로젝트/_bmad` → `bmad-submodule/_bmad`
 
 ### 3단계: package.json 설정 (권장)
@@ -331,14 +331,14 @@ claude
 
 ### 2. 슬래시 커맨드 확인
 
-Claude Code 내에서 `/bmad`를 입력하면 사용 가능한 커맨드 목록이 자동완성됩니다.
+Claude Code 내에서 `/bmad-`를 입력하면 사용 가능한 커맨드 목록이 자동완성됩니다.
 
 ### 3. 에이전트 실행 테스트
 
 예시로 Data Analyst 에이전트를 실행해봅니다:
 
 ```
-/bmad:dae:agents:data-analyst
+/bmad-agent-dae-data-analyst
 ```
 
 **정상 실행 시 출력 예시:**
@@ -383,16 +383,16 @@ Claude Code 내에서 `/bmad`를 입력하면 사용 가능한 커맨드 목록�
 
 ```bash
 # BMM (소프트웨어 개발)
-/bmad:bmm:agents:dev           # 개발자 에이전트
-/bmad:bmm:agents:architect     # 아키텍트 에이전트
+/bmad-agent-bmm-dev            # 개발자 에이전트
+/bmad-agent-bmm-architect      # 아키텍트 에이전트
 
 # Core (핵심)
-/bmad:core:agents:bmad-master  # 마스터 에이전트
-/bmad:core:workflows:brainstorming  # 브레인스토밍
+/bmad-agent-bmad-master        # 마스터 에이전트
+/bmad-brainstorming            # 브레인스토밍
 
 # DAE (데이터 분석)
-/bmad:dae:agents:data-analyst      # 데이터 분석가
-/bmad:dae:workflows:data-analysis  # 데이터 분석 워크플로우
+/bmad-agent-dae-data-analyst   # 데이터 분석가
+/bmad-dae-data-analysis        # 데이터 분석 워크플로우
 ```
 
 ### 5. 설치 실패 시 체크리스트
