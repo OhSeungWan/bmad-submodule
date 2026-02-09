@@ -1,5 +1,5 @@
 ---
-name: 'step-08-complete'
+name: 'step-07-complete'
 description: 'Finalize, offer to run validation'
 
 buildTrackingFile: '{bmb_creations_output_folder}/modules/module-build-{module_code}.md'
@@ -9,7 +9,7 @@ validationWorkflow: '../steps-v/step-01-validate.md'
 moduleHelpCsvFile: '{build_tracking_targetLocation}/module-help.csv'
 ---
 
-# Step 8: Complete
+# Step 7: Complete
 
 ## STEP GOAL:
 
@@ -75,7 +75,6 @@ Load and execute the module-help-generate workflow:
 | Configuration | 1 | module.yaml |
 | Help Registry | 1 | module-help.csv |
 | Documentation | 2 | README.md, TODO.md |
-| Installer | {yes/no} | _module-installer/ |
 
 ### 3. Update Build Tracking
 
@@ -86,7 +85,7 @@ moduleCode: {module_code}
 moduleName: {name}
 moduleType: {type}
 targetLocation: {location}
-stepsCompleted: ['step-01-load-brief', 'step-02-structure', 'step-03-config', 'step-04-installer', 'step-05-agents', 'step-06-workflows', 'step-07-docs', 'step-08-complete']
+stepsCompleted: ['step-01-load-brief', 'step-02-structure', 'step-03-config', 'step-04-agents', 'step-05-workflows', 'step-06-docs', 'step-07-complete']
 created: {created_date}
 completed: {date}
 status: COMPLETE

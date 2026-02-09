@@ -1,14 +1,14 @@
 ---
-name: 'step-06-workflows'
+name: 'step-05-workflows'
 description: 'Create workflow placeholder/spec files'
 
-nextStepFile: './step-07-docs.md'
+nextStepFile: './step-06-docs.md'
 workflowSpecTemplate: '../../templates/workflow-spec-template.md'
 buildTrackingFile: '{bmad_creations_output_folder}/modules/module-build-{module_code}.md'
 targetLocation: '{build_tracking_targetLocation}'
 ---
 
-# Step 6: Workflow Specs
+# Step 5: Workflow Specs
 
 ## STEP GOAL:
 
@@ -154,7 +154,7 @@ Iterate through each workflow from the brief and create their spec file.
 ### 4. Update Build Tracking
 
 Update `{buildTrackingFile}`:
-- Add 'step-06-workflows' to stepsCompleted
+- Add 'step-05-workflows' to stepsCompleted
 - List all workflow specs created
 
 ### 5. Report Success

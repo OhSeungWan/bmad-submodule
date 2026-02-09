@@ -77,7 +77,7 @@ critical_actions:
 - [ ] ALL sidecar paths: `{project-root}/_bmad/_memory/{sidecar-folder}/...`
 - [ ] `{project-root}` is literal (not replaced)
 - [ ] `{sidecar-folder}` = actual folder name
-- [ ] No `./` or `/Users/` paths
+- [ ] No `./` or `/Users/` paths <!-- validate-file-refs:ignore -->
 
 ### Persona Addition
 - [ ] `communication_style` includes memory reference patterns

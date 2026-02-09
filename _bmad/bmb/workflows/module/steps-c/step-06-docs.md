@@ -1,13 +1,13 @@
 ---
-name: 'step-07-docs'
+name: 'step-06-docs'
 description: 'Generate README.md, TODO.md, and docs/ folder'
 
-nextStepFile: './step-08-complete.md'
+nextStepFile: './step-07-complete.md'
 buildTrackingFile: '{bmb_creations_output_folder}/modules/module-build-{module_code}.md'
 targetLocation: '{build_tracking_targetLocation}'
 ---
 
-# Step 7: Documentation
+# Step 6: Documentation
 
 ## STEP GOAL:
 
@@ -102,8 +102,7 @@ The module supports these configuration options (set during installation):
 │   ├── workflows.md
 │   └── examples.md
 ├── agents/
-├── workflows/
-└── _module-installer/
+└── workflows/
 ```
 
 ---
@@ -173,8 +172,7 @@ Development roadmap for {module_code} module.
 
 - [ ] Test installation with `bmad install`
 - [ ] Verify module.yaml prompts work correctly
-- [ ] Test installer.js (if present)
-- [ ] Test IDE-specific handlers (if present)
+- [ ] Verify all agents and workflows are discoverable
 
 ---
 
@@ -363,7 +361,7 @@ This section provides practical examples for using {module_display_name}.
 ### 4. Update Build Tracking
 
 Update `{buildTrackingFile}`:
-- Add 'step-07-docs' to stepsCompleted
+- Add 'step-06-docs' to stepsCompleted
 - Note: README.md, TODO.md, and docs/ folder created
 
 ### 5. Report Success

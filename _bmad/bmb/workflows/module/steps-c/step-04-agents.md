@@ -1,15 +1,15 @@
 ---
-name: 'step-05-agents'
+name: 'step-04-agents'
 description: 'Create agent placeholder/spec files'
 
-nextStepFile: './step-06-workflows.md'
+nextStepFile: './step-05-workflows.md'
 agentSpecTemplate: '../../templates/agent-spec-template.md'
 agentArchitectureFile: '../../data/agent-architecture.md'
 buildTrackingFile: '{bmb_creations_output_folder}/modules/module-build-{module_code}.md'
 targetLocation: '{build_tracking_targetLocation}'
 ---
 
-# Step 5: Agent Specs
+# Step 4: Agent Specs
 
 ## STEP GOAL:
 
@@ -138,7 +138,7 @@ Iterate through each agent from the brief and create their spec file.
 ### 5. Update Build Tracking
 
 Update `{buildTrackingFile}`:
-- Add 'step-05-agents' to stepsCompleted
+- Add 'step-04-agents' to stepsCompleted
 - List all agent specs created
 
 ### 6. Report Success
