@@ -1,6 +1,7 @@
 # BMAD Framework Submodule
 
-![Version](https://img.shields.io/badge/version-1.3.1-blue.svg)
+![Version](https://img.shields.io/badge/version-1.4.0-blue.svg)
+![npm](https://img.shields.io/npm/v/bmad-setup.svg)
 ![BMAD](https://img.shields.io/badge/BMAD-6.0.0--beta.8-orange.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-purple.svg)
@@ -11,7 +12,7 @@ BMAD-METHOD - 범용 AI 에이전트 프레임워크
 
 | 항목               | 버전              |
 | ------------------ | ----------------- |
-| Submodule Version  | v1.3.1            |
+| Submodule Version  | v1.4.0            |
 | BMAD Framework     | 6.0.0-beta.8      |
 
 > [Changelog](./CHANGELOG.md) 에서 변경 이력을 확인하세요.
