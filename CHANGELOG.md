@@ -3,6 +3,17 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [1.5.0] - 2026-02-10
+
+### ✨ 새 기능
+
+- add --update flag for submodule update & symlink refresh
+
+### 📝 문서
+
+- update README version badges to v1.4.0 and add npm badge
+
+
 ## [1.4.0] - 2026-02-10
 
 ### ✨ 새 기능
