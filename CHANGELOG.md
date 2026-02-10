@@ -3,6 +3,17 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [1.5.1] - 2026-02-10
+
+### 🐛 버그 수정
+
+- correct duplicated test artifact output paths in tea config
+
+### 📝 문서
+
+- update README to v1.5.0 and add --update usage guide
+
+
 ## [1.5.0] - 2026-02-10
 
 ### ✨ 새 기능
