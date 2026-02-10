@@ -10,8 +10,11 @@ const VERSION = require('../package.json').version;
 const REPO_URL = 'https://github.com/OhSeungWan/bmad-submodule.git';
 const SUBMODULE_DIR = 'bmad-submodule';
 
+const args = process.argv.slice(2);
+const isUpdate = args.includes('--update') || args.includes('-u');
+
 const log = (icon, msg) => console.log(`${icon} ${msg}`);
-const logStep = (n, msg) => log(`[${n}/6]`, msg);
+const logStep = (n, total, msg) => log(`[${n}/${total}]`, msg);
 
 function run(cmd, opts = {}) {
   return execSync(cmd, { stdio: 'inherit', ...opts });
@@ -31,7 +34,6 @@ function runSafe(cmd, stepName) {
 
 // --- --help / --version ---
 function handleFlags() {
-  const args = process.argv.slice(2);
   if (args.includes('--version') || args.includes('-v')) {
     console.log(VERSION);
     process.exit(0);
@@ -43,17 +45,23 @@ bmad-setup v${VERSION}
 BMAD Framework 서브모듈을 한 줄로 설치합니다.
 
 Usage:
-  npx bmad-setup          전체 설치 실행
-  npx bmad-setup --help   도움말 표시
-  npx bmad-setup --version 버전 표시
+  npx bmad-setup            전체 설치 실행
+  npx bmad-setup --update   서브모듈 최신화 + 심링크 재생성
+  npx bmad-setup --help     도움말 표시
+  npx bmad-setup --version  버전 표시
 
-Steps:
+Install steps:
   1. git submodule add (bmad-submodule)
   2. git submodule init & update
   3. .gitmodules ignore=dirty 설정
   4. install.sh 실행 (심볼릭 링크)
   5. .gitignore 패치
   6. package.json 스크립트 패치
+
+Update steps (--update):
+  1. git submodule update --init --recursive
+  2. git -C bmad-submodule pull origin master
+  3. install.sh 재실행 (심링크 갱신)
 `);
     process.exit(0);
   }
@@ -79,9 +87,40 @@ function validateGitRepo() {
   }
 }
 
+// --- Update mode ---
+function updateSubmodule() {
+  logStep(1, 3, 'Submodule 동기화');
+  if (!fs.existsSync(SUBMODULE_DIR)) {
+    log('  \u274c', `${SUBMODULE_DIR}/ 디렉토리가 없습니다. 먼저 \`npx bmad-setup\`으로 설치하세요.`);
+    process.exit(1);
+  }
+  runSafe('git submodule update --init --recursive', 'Submodule 동기화');
+  log('  \u2714', 'Submodule 동기화 완료');
+  return 'done';
+}
+
+function pullLatest() {
+  logStep(2, 3, 'Submodule 최신화 (pull origin master)');
+  runSafe(`git -C ${SUBMODULE_DIR} pull origin master`, 'Submodule pull');
+  log('  \u2714', '최신 버전으로 업데이트 완료');
+  return 'done';
+}
+
+function reinstallSymlinks() {
+  logStep(3, 3, 'install.sh 재실행 (심링크 갱신)');
+  const scriptPath = `./${SUBMODULE_DIR}/install.sh`;
+  if (!fs.existsSync(scriptPath)) {
+    log('  \u26a0', `${scriptPath} 파일을 찾을 수 없습니다. 스킵합니다.`);
+    return 'skipped';
+  }
+  runSafe(`bash ${scriptPath}`, 'install.sh 실행');
+  log('  \u2714', '심링크 갱신 완료');
+  return 'done';
+}
+
 // --- Step 1: Submodule 추가 ---
 function addSubmodule() {
-  logStep(1, 'Submodule 추가');
+  logStep(1, 6, 'Submodule 추가');
   if (fs.existsSync(SUBMODULE_DIR)) {
     log('  \u2714', `${SUBMODULE_DIR}/ 이미 존재합니다. 스킵합니다.`);
     return 'skipped';
@@ -93,7 +132,7 @@ function addSubmodule() {
 
 // --- Step 2: Submodule 초기화 ---
 function initSubmodule() {
-  logStep(2, 'Submodule 초기화');
+  logStep(2, 6, 'Submodule 초기화');
   runSafe('git submodule init && git submodule update', 'Submodule 초기화');
   log('  \u2714', '초기화 완료');
   return 'done';
@@ -101,7 +140,7 @@ function initSubmodule() {
 
 // --- Step 3: dirty ignore 설정 ---
 function configureDirtyIgnore() {
-  logStep(3, 'dirty ignore 설정');
+  logStep(3, 6, 'dirty ignore 설정');
   runSafe(
     `git config -f .gitmodules submodule.${SUBMODULE_DIR}.ignore dirty`,
     'dirty ignore 설정',
@@ -112,7 +151,7 @@ function configureDirtyIgnore() {
 
 // --- Step 4: install.sh 실행 ---
 function runInstallScript() {
-  logStep(4, 'install.sh 실행 (심볼릭 링크 생성)');
+  logStep(4, 6, 'install.sh 실행 (심볼릭 링크 생성)');
   const scriptPath = `./${SUBMODULE_DIR}/install.sh`;
   if (!fs.existsSync(scriptPath)) {
     log('  \u26a0', `${scriptPath} 파일을 찾을 수 없습니다. 스킵합니다.`);
@@ -125,7 +164,7 @@ function runInstallScript() {
 
 // --- Step 5: .gitignore 패치 ---
 function patchGitignore() {
-  logStep(5, '.gitignore 패치');
+  logStep(5, 6, '.gitignore 패치');
 
   const MARKER_START = '# BMAD symlinks (auto-generated)';
   const MARKER_END = '# End BMAD';
@@ -159,7 +198,7 @@ function patchGitignore() {
 
 // --- Step 6: package.json 패치 ---
 function patchPackageJson() {
-  logStep(6, 'package.json 패치');
+  logStep(6, 6, 'package.json 패치');
 
   const pkgPath = 'package.json';
   if (!fs.existsSync(pkgPath)) {
@@ -221,11 +260,25 @@ function patchPackageJson() {
 function main() {
   handleFlags();
 
+  validateGitRepo();
+
+  if (isUpdate) {
+    console.log('');
+    console.log('=== BMAD Submodule Update ===');
+    console.log('');
+
+    const steps = [
+      { key: 'sync', label: 'Submodule 동기화', fn: updateSubmodule },
+      { key: 'pull', label: 'Submodule 최신화', fn: pullLatest },
+      { key: 'reinstall', label: '심링크 갱신', fn: reinstallSymlinks },
+    ];
+
+    return runSteps(steps, 'BMAD 업데이트가 완료되었습니다!');
+  }
+
   console.log('');
   console.log('=== BMAD Submodule Setup ===');
   console.log('');
-
-  validateGitRepo();
 
   const steps = [
     { key: 'submodule', label: 'Submodule 추가', fn: addSubmodule },
@@ -236,6 +289,10 @@ function main() {
     { key: 'packageJson', label: 'package.json 패치', fn: patchPackageJson },
   ];
 
+  runSteps(steps, 'BMAD 설치가 완료되었습니다!');
+}
+
+function runSteps(steps, doneMessage) {
   const results = {};
   for (const step of steps) {
     try {
@@ -247,7 +304,7 @@ function main() {
   }
 
   console.log('');
-  console.log('=== Setup Summary ===');
+  console.log('=== Summary ===');
   console.log('');
 
   for (const step of steps) {
@@ -262,7 +319,7 @@ function main() {
     log('\u26a0', '일부 단계가 실패했습니다. 위 로그를 확인하세요.');
     process.exit(1);
   } else {
-    log('\ud83d\ude80', 'BMAD 설치가 완료되었습니다!');
+    log('\ud83d\ude80', doneMessage);
   }
   console.log('');
 }
