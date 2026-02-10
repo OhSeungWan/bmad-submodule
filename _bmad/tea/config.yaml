@@ -8,9 +8,9 @@ tea_use_playwright_utils: true
 tea_browser_automation: auto
 test_framework: playwright
 risk_threshold: p1
-test_design_output: _bmad-output/test-artifacts/_bmad-output/test-artifacts/test-design
-test_review_output: _bmad-output/test-artifacts/_bmad-output/test-artifacts/test-reviews
-trace_output: _bmad-output/test-artifacts/_bmad-output/test-artifacts/traceability
+test_design_output: _bmad-output/test-artifacts/test-design
+test_review_output: _bmad-output/test-artifacts/test-reviews
+trace_output: _bmad-output/test-artifacts/traceability
 
 # Core Configuration Values
 user_name: 렌트리 개발팀
