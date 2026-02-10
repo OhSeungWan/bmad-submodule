@@ -3,6 +3,18 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [1.4.0] - 2026-02-10
+
+### ✨ 새 기능
+
+- add npx bmad-setup CLI for one-command installation
+
+### 🔧 기타 변경
+
+- v1.4.0
+- add Unity MCP usage guidelines to game-solo-dev agent
+
+
 ## [1.3.1] - 2026-02-09
 
 ### 📝 문서
