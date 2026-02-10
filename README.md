@@ -1,6 +1,6 @@
 # BMAD Framework Submodule
 
-![Version](https://img.shields.io/badge/version-1.4.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.5.0-blue.svg)
 ![npm](https://img.shields.io/npm/v/bmad-setup.svg)
 ![BMAD](https://img.shields.io/badge/BMAD-6.0.0--beta.8-orange.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
@@ -12,7 +12,7 @@ BMAD-METHOD - 범용 AI 에이전트 프레임워크
 
 | 항목               | 버전              |
 | ------------------ | ----------------- |
-| Submodule Version  | v1.4.0            |
+| Submodule Version  | v1.5.0            |
 | BMAD Framework     | 6.0.0-beta.8      |
 
 > [Changelog](./CHANGELOG.md) 에서 변경 이력을 확인하세요.
@@ -139,6 +139,20 @@ npx bmad-setup
 5. `package.json`에 postinstall / bmad:install / bmad:uninstall 스크립트 추가
 
 > 이미 설치된 항목은 자동으로 스킵됩니다 (멱등성 보장).
+
+#### 서브모듈 업데이트
+
+이미 설치된 프로젝트에서 BMAD를 최신 버전으로 업데이트:
+
+```bash
+npx bmad-setup --update
+```
+
+이 명령어는 다음을 수행합니다:
+
+1. `git submodule update --init --recursive`
+2. `git -C bmad-submodule pull origin master` (최신 버전 pull)
+3. `install.sh` 재실행 (심링크 갱신)
 
 ---
 
