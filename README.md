@@ -121,7 +121,31 @@ bmad-submodule/
 
 ## 설치 가이드
 
-### 1단계: Submodule 추가
+### 빠른 설치 (권장)
+
+프로젝트 루트 디렉토리에서 한 줄로 설치:
+
+```bash
+npx bmad-setup
+```
+
+이 명령어는 다음을 자동으로 수행합니다:
+
+1. `bmad-submodule` Git Submodule 추가 및 초기화
+2. `.gitmodules`에 `ignore = dirty` 설정
+3. `install.sh` 실행 (심볼릭 링크 생성)
+4. `.gitignore`에 BMAD 항목 추가
+5. `package.json`에 postinstall / bmad:install / bmad:uninstall 스크립트 추가
+
+> 이미 설치된 항목은 자동으로 스킵됩니다 (멱등성 보장).
+
+---
+
+### 수동 설치
+
+아래는 수동으로 단계별 설치하는 방법입니다.
+
+#### 1단계: Submodule 추가
 
 프로젝트 루트 디렉토리에서 실행:
 
@@ -137,7 +161,7 @@ git submodule update
 git config -f .gitmodules submodule.bmad-submodule.ignore dirty
 ```
 
-### 2단계: 심볼릭 링크 생성
+#### 2단계: 심볼릭 링크 생성
 
 ```bash
 ./bmad-submodule/install.sh
@@ -149,7 +173,7 @@ git config -f .gitmodules submodule.bmad-submodule.ignore dirty
 - `프로젝트/.claude/commands/commit.md` → `bmad-submodule/.claude/commands/commit.md`
 - `프로젝트/_bmad` → `bmad-submodule/_bmad`
 
-### 3단계: package.json 설정 (권장)
+#### 3단계: package.json 설정 (권장)
 
 팀원들의 자동 설치를 위해 추가:
 
@@ -181,7 +205,7 @@ git config -f .gitmodules submodule.bmad-submodule.ignore dirty
 || true                                   # 실패해도 npm install은 계속 진행
 ```
 
-### 4단계: .gitignore 추가
+#### 4단계: .gitignore 추가
 
 루트 프로젝트의 `.gitignore`에 추가:
 
