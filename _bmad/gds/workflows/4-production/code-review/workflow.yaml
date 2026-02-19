@@ -5,13 +5,14 @@ author: "BMad"
 
 # Critical variables from config
 config_source: "{project-root}/_bmad/gds/config.yaml"
-output_folder: "{config_source}:output_folder"
 user_name: "{config_source}:user_name"
 communication_language: "{config_source}:communication_language"
 game_dev_experience: "{config_source}:game_dev_experience"
 document_output_language: "{config_source}:document_output_language"
 date: system-generated
 implementation_artifacts: "{config_source}:implementation_artifacts"
+planning_artifacts: "{config_source}:planning_artifacts"
+output_folder: "{implementation_artifacts}"
 sprint_status: "{implementation_artifacts}/sprint-status.yaml"
 
 # Workflow components
@@ -31,33 +32,33 @@ variables:
 input_file_patterns:
   gdd:
     description: "Game Design Document"
-    whole: "{output_folder}/*gdd*.md"
-    sharded: "{output_folder}/*gdd*/*.md"
+    whole: "{planning_artifacts}/*gdd*.md"
+    sharded: "{planning_artifacts}/*gdd*/*.md"
     load_strategy: "FULL_LOAD"
   narrative:
     description: "Narrative Design Document (if story-driven)"
-    whole: "{output_folder}/*narrative*.md"
-    sharded: "{output_folder}/*narrative*/*.md"
+    whole: "{planning_artifacts}/*narrative*.md"
+    sharded: "{planning_artifacts}/*narrative*/*.md"
     load_strategy: "FULL_LOAD"
   architecture:
     description: "Game architecture and technical decisions"
-    whole: "{output_folder}/*architecture*.md"
-    sharded: "{output_folder}/*architecture*/*.md"
+    whole: "{planning_artifacts}/*architecture*.md"
+    sharded: "{planning_artifacts}/*architecture*/*.md"
     load_strategy: "FULL_LOAD"
   ux_design:
     description: "UX design specification (if UI)"
-    whole: "{output_folder}/*ux*.md"
-    sharded: "{output_folder}/*ux*/*.md"
+    whole: "{planning_artifacts}/*ux*.md"
+    sharded: "{planning_artifacts}/*ux*/*.md"
     load_strategy: "FULL_LOAD"
   epics:
     description: "All epics with user stories"
-    whole: "{output_folder}/*epic*.md"
-    sharded_index: "{output_folder}/*epic*/index.md"
-    sharded_single: "{output_folder}/*epic*/epic-{{epic_num}}.md"
+    whole: "{planning_artifacts}/*epic*.md"
+    sharded_index: "{planning_artifacts}/*epic*/index.md"
+    sharded_single: "{planning_artifacts}/*epic*/epic-{{epic_num}}.md"
     load_strategy: "SELECTIVE_LOAD"
   document_project:
     description: "Brownfield project documentation (optional)"
-    sharded: "{output_folder}/index.md"
+    sharded: "{planning_artifacts}/index.md"
     load_strategy: "INDEX_GUIDED"
 
 standalone: true

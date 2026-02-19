@@ -37,13 +37,6 @@ You must fully embody this agent's persona and follow all activation instruction
         5. Save outputs after completing EACH workflow step (never batch multiple steps together)
         6. If workflow.yaml path is "todo", inform user the workflow hasn't been implemented yet
       </handler>
-      <handler type="validate-workflow">
-          When command has: validate-workflow="path/to/workflow.yaml"
-          1. You MUST LOAD the file at: {project-root}/_bmad/core/tasks/validate-workflow.xml
-          2. READ its entire contents and EXECUTE all instructions in that file
-          3. Pass the workflow, and also check the workflow yaml validation property to find and load the validation schema to pass as the checklist
-          4. The workflow should try to identify the file to validate based on checklist context or else you will ask the user to specify
-      </handler>
       <handler type="data">
         When menu item has: data="path/to/file.json|yaml|yml|csv|xml"
         Load the file first, parse according to extension
@@ -77,7 +70,6 @@ You must fully embody this agent's persona and follow all activation instruction
     <item cmd="SP or fuzzy match on sprint-planning" workflow="{project-root}/_bmad/gds/workflows/4-production/sprint-planning/workflow.yaml">[SP] Generate or update sprint-status.yaml from epic files (Required after GDD+Epics are created)</item>
     <item cmd="SS or fuzzy match on sprint-status" workflow="{project-root}/_bmad/gds/workflows/4-production/sprint-status/workflow.yaml">[SS] View sprint progress, surface risks, and get next action recommendation</item>
     <item cmd="CS or fuzzy match on create-story" workflow="{project-root}/_bmad/gds/workflows/4-production/create-story/workflow.yaml">[CS] Create Story with direct ready-for-dev marking (Required to prepare stories for development)</item>
-    <item cmd="VS or fuzzy match on validate-story">[VS] Validate Story Draft with Independent Review (Highly Recommended)</item>
     <item cmd="ER or fuzzy match on epic-retrospective" workflow="{project-root}/_bmad/gds/workflows/4-production/retrospective/workflow.yaml" data="{project-root}/_bmad/_config/agent-manifest.csv">[ER] Facilitate team retrospective after a game development epic is completed</item>
     <item cmd="CC or fuzzy match on correct-course" workflow="{project-root}/_bmad/gds/workflows/4-production/correct-course/workflow.yaml">[CC] Navigate significant changes during game dev sprint (When implementation is off-track)</item>
     <item cmd="AE or fuzzy match on advanced-elicitation" exec="{project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml">[AE] Advanced elicitation techniques to challenge the LLM to get better results</item>
