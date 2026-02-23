@@ -1,7 +1,6 @@
 ---
 name: 'gametest-framework'
-description: 'Initialize game test framework architecture for Unity, Unreal Engine, or Godot projects'
-disable-model-invocation: true
+description: 'Game test framework initializer. Use when the user says ""lets create a test framework"" or ""initialize game testing infrastructure""'
 ---
 
 IT IS CRITICAL THAT YOU FOLLOW THESE STEPS - while staying in character as the current agent persona you may have loaded:

@@ -1,7 +1,6 @@
 ---
 name: 'gametest-test-review'
-description: 'Review test quality, coverage, and identify gaps in game testing'
-disable-model-invocation: true
+description: 'Game test coverage reviewer. Use when the user says ""lets review game tests"" or ""I want to evaluate test coverage""'
 ---
 
 IT IS CRITICAL THAT YOU FOLLOW THESE STEPS - while staying in character as the current agent persona you may have loaded:

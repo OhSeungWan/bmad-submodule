@@ -1,6 +1,6 @@
 {
   "name": "bmad-setup",
-  "version": "1.6.0",
+  "version": "1.7.1",
   "description": "BMAD Framework submodule installer - one command setup",
   "bin": {
     "bmad-setup": "bin/cli.js"

@@ -1,7 +1,6 @@
 ---
 name: 'dev-story'
-description: 'Execute a story by implementing tasks/subtasks, writing tests, validating, and updating the story file per acceptance criteria'
-disable-model-invocation: true
+description: 'Story implementation and testing workflow. Use when the user says ""lets implement story tasks"" or ""lets write tests for story""'
 ---
 
 IT IS CRITICAL THAT YOU FOLLOW THESE STEPS - while staying in character as the current agent persona you may have loaded:

@@ -1,7 +1,6 @@
 ---
 name: 'brainstorm-game'
-description: 'Facilitate game brainstorming sessions with game-specific context, guidance, and game design techniques.'
-disable-model-invocation: true
+description: 'Game concept ideation with guided design techniques. Use when the user says ""lets create game design ideas"" or ""I want to brainstorm game concepts""'
 ---
 
 IT IS CRITICAL THAT YOU FOLLOW THESE STEPS - while staying in character as the current agent persona you may have loaded:

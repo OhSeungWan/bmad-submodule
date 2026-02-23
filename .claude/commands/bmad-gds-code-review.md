@@ -1,7 +1,6 @@
 ---
 name: 'code-review'
-description: 'Perform an ADVERSARIAL Senior Developer code review that finds 3-10 specific problems in every story. Challenges everything: code quality, test coverage, architecture compliance, security, performance. NEVER accepts `looks good` - must find minimum issues and can auto-fix with user approval. Game-specific focus on 60fps, feel, and platform considerations.'
-disable-model-invocation: true
+description: 'Adversarial game dev code review. Use when the user says ""lets review this code for game dev issues""'
 ---
 
 IT IS CRITICAL THAT YOU FOLLOW THESE STEPS - while staying in character as the current agent persona you may have loaded:

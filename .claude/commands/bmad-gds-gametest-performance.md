@@ -1,7 +1,6 @@
 ---
 name: 'gametest-performance'
-description: 'Design performance testing strategy for frame rate, memory, and loading times'
-disable-model-invocation: true
+description: 'Performance test strategy designer. Use when the user says ""lets create a performance test plan""'
 ---
 
 IT IS CRITICAL THAT YOU FOLLOW THESE STEPS - while staying in character as the current agent persona you may have loaded:

@@ -1,7 +1,6 @@
 ---
 name: 'game-architecture'
-description: 'Collaborative game architecture workflow for AI-agent consistency. Intelligent, adaptive conversation that produces a decision-focused game architecture document covering engine, systems, networking, and technical design optimized for game development.'
-disable-model-invocation: true
+description: 'Technical game systems architecture design. Use when the user says ""lets create a game architecture"" or ""I want to design technical game systems""'
 ---
 
 IT IS CRITICAL THAT YOU FOLLOW THESE STEPS - while staying in character as the current agent persona you may have loaded:

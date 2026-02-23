@@ -1,7 +1,6 @@
 ---
 name: 'gametest-playtest-plan'
-description: 'Create structured playtesting sessions for gameplay validation and user feedback'
-disable-model-invocation: true
+description: 'Playtest session planner. Use when the user says ""lets create a playtest plan"" or ""I want to schedule gameplay testing""'
 ---
 
 IT IS CRITICAL THAT YOU FOLLOW THESE STEPS - while staying in character as the current agent persona you may have loaded:
