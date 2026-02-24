@@ -1,7 +1,7 @@
 # Document Project Workflow Configuration
 name: "document-project"
 version: "1.2.0"
-description: "Document brownfield projects for AI context. Use when the user says 'document this project' or 'generate project docs'"
+description: 'Document brownfield projects for AI context. Use when the user says "document this project" or "generate project docs"'
 author: "BMad"
 
 # Critical variables
