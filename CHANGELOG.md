@@ -3,6 +3,14 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [1.7.2] - 2026-03-03
+
+### 🔧 기타 변경
+
+- v1.7.2
+- update BMAD to v6.0.3 with quote fixes and QA workflow path correction
+
+
 ## [1.7.1] - 2026-02-23
 
 ### 🔧 기타 변경
