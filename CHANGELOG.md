@@ -3,6 +3,17 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [1.8.0] - 2026-03-06
+
+### ✨ 새 기능
+
+- stabilize --update flow and add git worktree support
+
+### 🔧 기타 변경
+
+- v1.8.0
+
+
 ## [1.7.2] - 2026-03-03
 
 ### 🔧 기타 변경
