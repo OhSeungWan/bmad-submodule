@@ -3,6 +3,13 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [1.8.1] - 2026-03-06
+
+### ✨ 새 기능
+
+- add npm registry version check and @latest usage guidance
+
+
 ## [1.8.0] - 2026-03-06
 
 ### ✨ 새 기능
