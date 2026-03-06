@@ -3,6 +3,13 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [1.8.2] - 2026-03-06
+
+### 📝 문서
+
+- update README versions (v1.8.2, BMAD 6.0.4) and @latest usage
+
+
 ## [1.8.1] - 2026-03-06
 
 ### ✨ 새 기능
