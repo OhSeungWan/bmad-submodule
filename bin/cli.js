@@ -2,7 +2,7 @@
 
 'use strict';
 
-const { execSync } = require('child_process');
+const { execSync, execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
@@ -32,6 +32,14 @@ function runSafe(cmd, stepName) {
   }
 }
 
+function runFile(file, args, stepName) {
+  try {
+    execFileSync(file, args, { stdio: 'inherit' });
+  } catch (e) {
+    throw new Error(`${stepName} 실패: ${e.message}`);
+  }
+}
+
 // --- --help / --version ---
 function handleFlags() {
   if (args.includes('--version') || args.includes('-v')) {
@@ -45,8 +53,8 @@ bmad-setup v${VERSION}
 BMAD Framework 서브모듈을 한 줄로 설치합니다.
 
 Usage:
-  npx bmad-setup            전체 설치 실행
-  npx bmad-setup --update   서브모듈 최신화 + 심링크 재생성
+  npx bmad-setup            전체 설치 실행 (worktree 자동 감지)
+  npx bmad-setup --update   서브모듈 최신화 + 심링크 재생성 + 부모 참조 갱신
   npx bmad-setup --help     도움말 표시
   npx bmad-setup --version  버전 표시
 
@@ -55,13 +63,21 @@ Install steps:
   2. git submodule init & update
   3. .gitmodules ignore=dirty 설정
   4. install.sh 실행 (심볼릭 링크)
-  5. .gitignore 패치
-  6. package.json 스크립트 패치
+  5. post-checkout hook 설치 (worktree 자동 지원)
+  6. .gitignore 패치
+  7. package.json 스크립트 패치
+
+Worktree 감지 시 (자동):
+  1. git submodule init & update
+  2. install.sh 실행 (심볼릭 링크)
 
 Update steps (--update):
-  1. git submodule update --init --recursive
-  2. git -C bmad-submodule pull origin master
+  1. git -C bmad-submodule fetch + checkout origin/master
+  2. 부모 repo submodule 참조 갱신 (git add)
   3. install.sh 재실행 (심링크 갱신)
+
+Requirements:
+  - git 2.13+
 `);
     process.exit(0);
   }
@@ -87,40 +103,72 @@ function validateGitRepo() {
   }
 }
 
+// --- Task 1: git version check ---
+function validateGitVersion() {
+  try {
+    const versionOutput = runCapture('git --version');
+    const match = versionOutput.match(/(\d+)\.(\d+)/);
+    if (!match) {
+      log('\u26a0', `Warning: git 버전을 파싱할 수 없습니다. (출력: ${versionOutput})`);
+      return;
+    }
+    const major = parseInt(match[1], 10);
+    const minor = parseInt(match[2], 10);
+    if (major < 2 || (major === 2 && minor < 13)) {
+      log('\u274c', `Error: git 2.13 이상이 필요합니다. (현재: ${versionOutput})`);
+      process.exit(1);
+    }
+  } catch (e) {
+    log('\u274c', 'Error: git 버전을 확인할 수 없습니다.');
+    process.exit(1);
+  }
+}
+
+// --- Task 2: worktree detection ---
+function isWorktree() {
+  try {
+    return fs.existsSync('.git') && fs.statSync('.git').isFile();
+  } catch (e) {
+    return false;
+  }
+}
+
 // --- Update mode ---
-function updateSubmodule() {
-  logStep(1, 3, 'Submodule 동기화');
+function pullLatest() {
   if (!fs.existsSync(SUBMODULE_DIR)) {
     log('  \u274c', `${SUBMODULE_DIR}/ 디렉토리가 없습니다. 먼저 \`npx bmad-setup\`으로 설치하세요.`);
     process.exit(1);
   }
-  runSafe('git submodule update --init --recursive', 'Submodule 동기화');
-  log('  \u2714', 'Submodule 동기화 완료');
-  return 'done';
-}
-
-function pullLatest() {
-  logStep(2, 3, 'Submodule 최신화 (pull origin master)');
-  runSafe(`git -C ${SUBMODULE_DIR} pull origin master`, 'Submodule pull');
+  runSafe(`git -C ${SUBMODULE_DIR} fetch origin master`, 'Submodule fetch');
+  runSafe(`git -C ${SUBMODULE_DIR} checkout origin/master`, 'Submodule checkout');
   log('  \u2714', '최신 버전으로 업데이트 완료');
   return 'done';
 }
 
+// --- Task 4: update parent ref ---
+function updateParentRef() {
+  if (isWorktree()) {
+    log('  \u2139', 'Worktree 환경에서는 부모 참조 갱신을 건너뜁니다. 메인 worktree에서 --update를 실행하세요.');
+    return 'skipped';
+  }
+  runSafe(`git add ${SUBMODULE_DIR}`, '부모 repo 참조 갱신');
+  log('  \u2714', '부모 repo의 submodule 참조가 staged 되었습니다. 필요 시 commit 하세요.');
+  return 'done';
+}
+
 function reinstallSymlinks() {
-  logStep(3, 3, 'install.sh 재실행 (심링크 갱신)');
   const scriptPath = `./${SUBMODULE_DIR}/install.sh`;
   if (!fs.existsSync(scriptPath)) {
     log('  \u26a0', `${scriptPath} 파일을 찾을 수 없습니다. 스킵합니다.`);
     return 'skipped';
   }
-  runSafe(`bash ${scriptPath}`, 'install.sh 실행');
+  runFile('bash', [scriptPath, process.cwd()], 'install.sh 실행');
   log('  \u2714', '심링크 갱신 완료');
   return 'done';
 }
 
 // --- Step 1: Submodule 추가 ---
 function addSubmodule() {
-  logStep(1, 6, 'Submodule 추가');
   if (fs.existsSync(SUBMODULE_DIR)) {
     log('  \u2714', `${SUBMODULE_DIR}/ 이미 존재합니다. 스킵합니다.`);
     return 'skipped';
@@ -132,7 +180,6 @@ function addSubmodule() {
 
 // --- Step 2: Submodule 초기화 ---
 function initSubmodule() {
-  logStep(2, 6, 'Submodule 초기화');
   runSafe('git submodule init && git submodule update', 'Submodule 초기화');
   log('  \u2714', '초기화 완료');
   return 'done';
@@ -140,7 +187,6 @@ function initSubmodule() {
 
 // --- Step 3: dirty ignore 설정 ---
 function configureDirtyIgnore() {
-  logStep(3, 6, 'dirty ignore 설정');
   runSafe(
     `git config -f .gitmodules submodule.${SUBMODULE_DIR}.ignore dirty`,
     'dirty ignore 설정',
@@ -151,21 +197,74 @@ function configureDirtyIgnore() {
 
 // --- Step 4: install.sh 실행 ---
 function runInstallScript() {
-  logStep(4, 6, 'install.sh 실행 (심볼릭 링크 생성)');
   const scriptPath = `./${SUBMODULE_DIR}/install.sh`;
   if (!fs.existsSync(scriptPath)) {
     log('  \u26a0', `${scriptPath} 파일을 찾을 수 없습니다. 스킵합니다.`);
     return 'skipped';
   }
-  runSafe(`bash ${scriptPath}`, 'install.sh 실행');
+  runFile('bash', [scriptPath, process.cwd()], 'install.sh 실행');
   log('  \u2714', '심볼릭 링크 생성 완료');
+  return 'done';
+}
+
+// --- Task 8: post-checkout hook 설치 ---
+function installPostCheckoutHook() {
+  const MARKER_START = '# BMAD-POST-CHECKOUT-START';
+  const MARKER_END = '# BMAD-POST-CHECKOUT-END';
+
+  let hooksDir;
+  try {
+    const gitCommonDir = runCapture('git rev-parse --git-common-dir');
+    hooksDir = path.join(gitCommonDir, 'hooks');
+  } catch (e) {
+    log('  \u26a0', 'git hooks 디렉토리를 찾을 수 없습니다. 스킵합니다.');
+    return 'skipped';
+  }
+
+  if (!fs.existsSync(hooksDir)) {
+    fs.mkdirSync(hooksDir, { recursive: true });
+  }
+
+  const hookPath = path.join(hooksDir, 'post-checkout');
+  let content = '';
+
+  if (fs.existsSync(hookPath)) {
+    content = fs.readFileSync(hookPath, 'utf8');
+    if (content.includes(MARKER_START)) {
+      log('  \u2714', 'post-checkout hook에 BMAD 섹션이 이미 존재합니다. 스킵합니다.');
+      return 'skipped';
+    }
+  }
+
+  const bmadSection = `
+${MARKER_START}
+# Auto-generated by bmad-setup. Do not edit this section.
+if [ "$3" = "1" ] && [ -d "${SUBMODULE_DIR}" ]; then
+  # Branch checkout (including worktree creation)
+  git submodule update --init --recursive 2>/dev/null
+  if [ -f "${SUBMODULE_DIR}/install.sh" ]; then
+    bash ${SUBMODULE_DIR}/install.sh "$(pwd)" 2>/dev/null
+  fi
+fi
+${MARKER_END}
+`;
+
+  if (content) {
+    // Append to existing hook
+    fs.writeFileSync(hookPath, content.trimEnd() + '\n' + bmadSection, 'utf8');
+  } else {
+    // Create new hook
+    fs.writeFileSync(hookPath, '#!/bin/bash\n' + bmadSection, 'utf8');
+  }
+
+  // Make executable
+  fs.chmodSync(hookPath, 0o755);
+  log('  \u2714', 'post-checkout hook 설치 완료');
   return 'done';
 }
 
 // --- Step 5: .gitignore 패치 ---
 function patchGitignore() {
-  logStep(5, 6, '.gitignore 패치');
-
   const MARKER_START = '# BMAD symlinks (auto-generated)';
   const MARKER_END = '# End BMAD';
   const entries = ['_bmad', '.claude/commands/bmad-*'];
@@ -198,8 +297,6 @@ function patchGitignore() {
 
 // --- Step 6: package.json 패치 ---
 function patchPackageJson() {
-  logStep(6, 6, 'package.json 패치');
-
   const pkgPath = 'package.json';
   if (!fs.existsSync(pkgPath)) {
     log('  \u26a0', 'package.json이 없습니다. 이 단계를 스킵합니다.');
@@ -226,9 +323,9 @@ function patchPackageJson() {
 
   const scriptsToAdd = {
     postinstall:
-      '[ -z "$CI" ] && git submodule update --init --recursive && git -C bmad-submodule pull origin master && ./bmad-submodule/install.sh || true',
-    'bmad:install': './bmad-submodule/install.sh',
-    'bmad:uninstall': './bmad-submodule/uninstall.sh',
+      '[ -z "$CI" ] && git -C bmad-submodule fetch origin master && git -C bmad-submodule checkout origin/master && git add bmad-submodule && ./bmad-submodule/install.sh "$(pwd)" || true',
+    'bmad:install': './bmad-submodule/install.sh "$(pwd)"',
+    'bmad:uninstall': './bmad-submodule/uninstall.sh "$(pwd)"',
   };
 
   let added = 0;
@@ -261,6 +358,7 @@ function main() {
   handleFlags();
 
   validateGitRepo();
+  validateGitVersion();
 
   if (isUpdate) {
     console.log('');
@@ -268,12 +366,27 @@ function main() {
     console.log('');
 
     const steps = [
-      { key: 'sync', label: 'Submodule 동기화', fn: updateSubmodule },
       { key: 'pull', label: 'Submodule 최신화', fn: pullLatest },
+      { key: 'parentRef', label: '부모 참조 갱신', fn: updateParentRef },
       { key: 'reinstall', label: '심링크 갱신', fn: reinstallSymlinks },
     ];
 
     return runSteps(steps, 'BMAD 업데이트가 완료되었습니다!');
+  }
+
+  // Task 7: worktree auto-detect
+  if (isWorktree()) {
+    console.log('');
+    console.log('=== BMAD Worktree Setup ===');
+    console.log('\u2139 Git worktree 환경이 감지되었습니다.');
+    console.log('');
+
+    const steps = [
+      { key: 'init', label: 'Submodule 초기화', fn: initSubmodule },
+      { key: 'installSh', label: '심볼릭 링크 생성', fn: runInstallScript },
+    ];
+
+    return runSteps(steps, 'Worktree BMAD 설정이 완료되었습니다!');
   }
 
   console.log('');
@@ -284,7 +397,8 @@ function main() {
     { key: 'submodule', label: 'Submodule 추가', fn: addSubmodule },
     { key: 'init', label: 'Submodule 초기화', fn: initSubmodule },
     { key: 'dirtyIgnore', label: 'dirty ignore 설정', fn: configureDirtyIgnore },
-    { key: 'installSh', label: 'install.sh 실행', fn: runInstallScript },
+    { key: 'installSh', label: '심볼릭 링크 생성', fn: runInstallScript },
+    { key: 'hook', label: 'post-checkout hook 설치', fn: installPostCheckoutHook },
     { key: 'gitignore', label: '.gitignore 패치', fn: patchGitignore },
     { key: 'packageJson', label: 'package.json 패치', fn: patchPackageJson },
   ];
@@ -292,9 +406,12 @@ function main() {
   runSteps(steps, 'BMAD 설치가 완료되었습니다!');
 }
 
+// Task 3: dynamic logStep in runSteps
 function runSteps(steps, doneMessage) {
   const results = {};
-  for (const step of steps) {
+  for (let i = 0; i < steps.length; i++) {
+    const step = steps[i];
+    logStep(i + 1, steps.length, step.label);
     try {
       results[step.key] = step.fn();
     } catch (e) {

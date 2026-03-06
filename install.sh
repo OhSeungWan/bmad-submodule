@@ -13,8 +13,12 @@ set -e
 # Get the directory where this script is located (submodule path)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Get the root project path (parent of submodule)
-ROOT_PROJECT="$(cd "$SCRIPT_DIR/.." && pwd)"
+# Get the root project path (argument or parent of submodule)
+if [ -n "$1" ]; then
+  ROOT_PROJECT="$(cd "$1" && pwd)"
+else
+  ROOT_PROJECT="$(cd "$SCRIPT_DIR/.." && pwd)"
+fi
 
 # Get the submodule directory name (for relative paths)
 SUBMODULE_NAME="$(basename "$SCRIPT_DIR")"
