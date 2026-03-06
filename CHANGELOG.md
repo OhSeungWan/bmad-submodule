@@ -3,6 +3,17 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [1.9.0] - 2026-03-06
+
+### ✨ 새 기능
+
+- add WDS (Web Design System) module
+
+### 🔧 기타 변경
+
+- v1.9.0
+
+
 ## [1.8.2] - 2026-03-06
 
 ### 📝 문서
