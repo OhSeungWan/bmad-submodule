@@ -3,6 +3,7 @@
 'use strict';
 
 const { execSync, execFileSync } = require('child_process');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
@@ -53,10 +54,10 @@ bmad-setup v${VERSION}
 BMAD Framework 서브모듈을 한 줄로 설치합니다.
 
 Usage:
-  npx bmad-setup            전체 설치 실행 (worktree 자동 감지)
-  npx bmad-setup --update   서브모듈 최신화 + 심링크 재생성 + 부모 참조 갱신
-  npx bmad-setup --help     도움말 표시
-  npx bmad-setup --version  버전 표시
+  npx bmad-setup@latest            전체 설치 실행 (worktree 자동 감지)
+  npx bmad-setup@latest --update   서브모듈 최신화 + 심링크 재생성 + 부모 참조 갱신
+  npx bmad-setup@latest --help     도움말 표시
+  npx bmad-setup@latest --version  버전 표시
 
 Install steps:
   1. git submodule add (bmad-submodule)
@@ -81,6 +82,39 @@ Requirements:
 `);
     process.exit(0);
   }
+}
+
+// --- Version check against npm registry ---
+function checkLatestVersion() {
+  return new Promise((resolve) => {
+    const req = https.get(
+      'https://registry.npmjs.org/bmad-setup/latest',
+      { timeout: 3000 },
+      (res) => {
+        let data = '';
+        res.on('data', (chunk) => (data += chunk));
+        res.on('end', () => {
+          try {
+            const latest = JSON.parse(data).version;
+            if (latest && latest !== VERSION) {
+              console.log('');
+              log('\u26a0', `새 버전이 있습니다: v${latest} (현재: v${VERSION})`);
+              log('', '  최신 버전으로 실행하세요: npx bmad-setup@latest');
+              console.log('');
+            }
+          } catch (e) {
+            // ignore parse errors
+          }
+          resolve();
+        });
+      },
+    );
+    req.on('error', () => resolve());
+    req.on('timeout', () => {
+      req.destroy();
+      resolve();
+    });
+  });
 }
 
 // --- Step 0: Pre-validation ---
@@ -136,7 +170,7 @@ function isWorktree() {
 // --- Update mode ---
 function pullLatest() {
   if (!fs.existsSync(SUBMODULE_DIR)) {
-    log('  \u274c', `${SUBMODULE_DIR}/ 디렉토리가 없습니다. 먼저 \`npx bmad-setup\`으로 설치하세요.`);
+    log('  \u274c', `${SUBMODULE_DIR}/ 디렉토리가 없습니다. 먼저 \`npx bmad-setup@latest\`으로 설치하세요.`);
     process.exit(1);
   }
   runSafe(`git -C ${SUBMODULE_DIR} fetch origin master`, 'Submodule fetch');
@@ -354,8 +388,10 @@ function patchPackageJson() {
 }
 
 // --- Main ---
-function main() {
+async function main() {
   handleFlags();
+
+  await checkLatestVersion();
 
   validateGitRepo();
   validateGitVersion();
@@ -441,4 +477,7 @@ function runSteps(steps, doneMessage) {
   console.log('');
 }
 
-main();
+main().catch((e) => {
+  log('\u274c', e.message);
+  process.exit(1);
+});
