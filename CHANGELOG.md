@@ -3,6 +3,13 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [2.0.0] - 2026-03-10
+
+### 🔧 기타 변경
+
+- rename package from bmad-setup to rentre-bmad-setup
+
+
 ## [1.9.0] - 2026-03-06
 
 ### ✨ 새 기능
