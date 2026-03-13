@@ -3,6 +3,17 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [2.1.1] - 2026-03-13
+
+### 🐛 버그 수정
+
+- keep .claude/commands/bmad-* in .gitignore for backward compat
+
+### 🔧 기타 변경
+
+- v2.1.1
+
+
 ## [2.1.0] - 2026-03-13
 
 ### 🔧 기타 변경
