@@ -301,7 +301,7 @@ ${MARKER_END}
 function patchGitignore() {
   const MARKER_START = '# BMAD symlinks (auto-generated)';
   const MARKER_END = '# End BMAD';
-  const entries = ['_bmad', '.claude/skills/bmad-*'];
+  const entries = ['_bmad', '.claude/skills/bmad-*', '.claude/commands/bmad-*'];
   const gitignorePath = '.gitignore';
 
   let content = '';
