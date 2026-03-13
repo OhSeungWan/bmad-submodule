@@ -42,3 +42,26 @@ input_file_patterns:
 default_output_file: "{output_folder}/game-brief.md"
 
 standalone: true
+
+web_bundle:
+  name: "game-brief"
+  description: "Interactive game brief creation workflow that guides users through defining their game vision with multiple input sources and conversational collaboration"
+  author: "BMad"
+  instructions: "_bmad/gds/workflows/1-preproduction/game-brief/workflow.md"
+  web_bundle_files:
+    # Main workflow file
+    - "_bmad/gds/workflows/1-preproduction/game-brief/workflow.md"
+    # Step files
+    - "_bmad/gds/workflows/1-preproduction/game-brief/steps/step-01-init.md"
+    - "_bmad/gds/workflows/1-preproduction/game-brief/steps/step-01b-continue.md"
+    - "_bmad/gds/workflows/1-preproduction/game-brief/steps/step-02-vision.md"
+    - "_bmad/gds/workflows/1-preproduction/game-brief/steps/step-03-market.md"
+    - "_bmad/gds/workflows/1-preproduction/game-brief/steps/step-04-fundamentals.md"
+    - "_bmad/gds/workflows/1-preproduction/game-brief/steps/step-05-scope.md"
+    - "_bmad/gds/workflows/1-preproduction/game-brief/steps/step-06-references.md"
+    - "_bmad/gds/workflows/1-preproduction/game-brief/steps/step-07-content.md"
+    - "_bmad/gds/workflows/1-preproduction/game-brief/steps/step-08-complete.md"
+    # Template
+    - "_bmad/gds/workflows/1-preproduction/game-brief/templates/game-brief-template.md"
+    # Validation checklist
+    - "_bmad/gds/workflows/1-preproduction/game-brief/checklist.md"

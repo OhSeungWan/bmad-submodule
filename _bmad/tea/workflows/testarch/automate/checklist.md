@@ -191,6 +191,33 @@ Before starting this workflow, verify:
 - [ ] Error cases tested (400, 401, 403, 404, 500)
 - [ ] JWT token format validated (if auth tests)
 
+### Consumer Contract Tests / CDC (If `use_pactjs_utils` Enabled)
+
+**Provider Endpoint Comments:**
+
+- [ ] Every Pact interaction has `// Provider endpoint:` comment
+- [ ] Comment includes exact file path to provider route handler, OR uses the TODO form when provider is inaccessible
+- [ ] Comment follows format: `// Provider endpoint: <path> -> <METHOD> <route>` or `// Provider endpoint: TODO — provider source not accessible, verify manually`
+
+**Provider Source Scrutiny:**
+
+- [ ] Provider route handlers and/or OpenAPI spec read before generating each interaction
+- [ ] Status codes verified against provider source (e.g., 201 not assumed 200)
+- [ ] Field names cross-referenced with provider type/DTO definitions
+- [ ] Data types verified (string ID vs number ID, date formats)
+- [ ] Enum/union values extracted from provider validation schemas
+- [ ] Required request fields and headers checked against provider validation
+- [ ] Nested response structures match provider's actual response construction
+- [ ] Scrutiny evidence documented as block comment in each test file
+
+**CDC Quality Gates:**
+
+- [ ] Postel's Law enforced: exact values in `withRequest`, matchers in `willRespondWith`
+- [ ] Response matchers (`like`, `eachLike`, `string`, `integer`) used only in `willRespondWith`
+- [ ] Provider state names are consistent with provider's state handler naming
+- [ ] DI pattern used for consumer function imports (actual consumer code, not raw `fetch()`)
+- [ ] One logical endpoint per Pact interaction (no multi-endpoint interactions)
+
 ### Component Tests (If Applicable)
 
 - [ ] Component test files created in `tests/component/`
@@ -467,6 +494,8 @@ All of the following must be true before marking this workflow as complete:
 - [ ] **Output file formatted correctly**
 - [ ] **Knowledge base references applied** and documented (including healing fragments if used)
 - [ ] **No test quality issues** (flaky patterns, race conditions, hardcoded data, page objects)
+- [ ] **Provider scrutiny completed or gracefully degraded** for all CDC interactions — each interaction either has scrutiny evidence or a TODO marker (if `use_pactjs_utils` enabled)
+- [ ] **Provider endpoint comments present** on every Pact interaction (if `use_pactjs_utils` enabled)
 
 ---
 

@@ -79,3 +79,37 @@ features:
   - "State tracking via frontmatter"
 
 standalone: true
+
+web_bundle:
+  name: "game-architecture"
+  description: "Collaborative game architecture workflow for AI-agent consistency"
+  author: "BMad"
+  instructions: "_bmad/gds/workflows/3-technical/game-architecture/workflow.md"
+  web_bundle_files:
+    # Main workflow file
+    - "_bmad/gds/workflows/3-technical/game-architecture/workflow.md"
+    # Step files
+    - "_bmad/gds/workflows/3-technical/game-architecture/steps/step-01-init.md"
+    - "_bmad/gds/workflows/3-technical/game-architecture/steps/step-01b-continue.md"
+    - "_bmad/gds/workflows/3-technical/game-architecture/steps/step-02-context.md"
+    - "_bmad/gds/workflows/3-technical/game-architecture/steps/step-03-starter.md"
+    - "_bmad/gds/workflows/3-technical/game-architecture/steps/step-04-decisions.md"
+    - "_bmad/gds/workflows/3-technical/game-architecture/steps/step-05-crosscutting.md"
+    - "_bmad/gds/workflows/3-technical/game-architecture/steps/step-06-structure.md"
+    - "_bmad/gds/workflows/3-technical/game-architecture/steps/step-07-patterns.md"
+    - "_bmad/gds/workflows/3-technical/game-architecture/steps/step-08-validation.md"
+    - "_bmad/gds/workflows/3-technical/game-architecture/steps/step-09-complete.md"
+    # Template
+    - "_bmad/gds/workflows/3-technical/game-architecture/templates/architecture-template.md"
+    # Validation checklist
+    - "_bmad/gds/workflows/3-technical/game-architecture/checklist.md"
+    # Knowledge bases
+    - "_bmad/gds/workflows/3-technical/game-architecture/decision-catalog.yaml"
+    - "_bmad/gds/workflows/3-technical/game-architecture/architecture-patterns.yaml"
+    - "_bmad/gds/workflows/3-technical/game-architecture/pattern-categories.csv"
+    - "_bmad/gds/workflows/3-technical/game-architecture/engine-mcps.yaml"
+    # Engine knowledge fragments
+    - "_bmad/gds/workflows/3-technical/game-architecture/knowledge/godot-engine.md"
+    - "_bmad/gds/workflows/3-technical/game-architecture/knowledge/unity-engine.md"
+    - "_bmad/gds/workflows/3-technical/game-architecture/knowledge/unreal-engine.md"
+    - "_bmad/gds/workflows/3-technical/game-architecture/knowledge/phaser-engine.md"

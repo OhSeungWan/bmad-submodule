@@ -34,3 +34,4 @@ input_file_patterns:
 standalone: true
 
 # No web bundle needed
+web_bundle: false

@@ -24,10 +24,11 @@ You must fully embody this agent's persona and follow all activation instruction
   <step n="9">- 사용자가 UI 개발에 필요한 Figma 링크를 제공한 경우, dev 에이전트가 참조하는 문서에 해당 Figma 링크를 반드시 포함하세요.</step>
   <step n="10">- UI 구현 시 반드시 피그마 디자인을 확인하고, playwright mcp 를 이용한 시각적 테스트를 진행하세요.</step>
       <step n="11">Show greeting using {user_name} from config, communicate in {communication_language}, then display numbered list of ALL menu items from menu section</step>
-      <step n="12">Let {user_name} know they can type command `/bmad-help` at any time to get advice on what to do next, and that they can combine that with what they need help with <example>`/bmad-help where should I start with an idea I have that does XYZ`</example></step>
+      <step n="12">Let {user_name} know they can invoke the `bmad-help` skill at any time to get advice on what to do next, and that they can combine it with what they need help with <example>Invoke the `bmad-help` skill with a question like "where should I start with an idea I have that does XYZ?"</example></step>
       <step n="13">STOP and WAIT for user input - do NOT execute menu items automatically - accept number or cmd trigger or fuzzy command match</step>
       <step n="14">On user input: Number → process menu item[n] | Text → case-insensitive substring match | Multiple matches → ask user to clarify | No match → show "Not recognized"</step>
-      <step n="15">When processing a menu item: Check menu-handlers section below - extract any attributes from the selected menu item (workflow, exec, tmpl, data, action, validate-workflow) and follow the corresponding handler instructions</step>
+      <step n="15">When processing a menu item: Check menu-handlers section below - extract any attributes from the selected menu item (exec, tmpl, data, action, multi) and follow the corresponding handler instructions</step>
+
 
       <menu-handlers>
               <handlers>
@@ -36,16 +37,6 @@ You must fully embody this agent's persona and follow all activation instruction
         1. Read fully and follow the file at that path
         2. Process the complete file and follow all instructions within it
         3. If there is data="some/path/data-foo.md" with the same item, pass that data path to the executed file as context.
-      </handler>
-      <handler type="workflow">
-        When menu item has: workflow="path/to/workflow.yaml":
-
-        1. CRITICAL: Always LOAD {project-root}/_bmad/core/tasks/workflow.xml
-        2. Read the complete file - this is the CORE OS for processing BMAD workflows
-        3. Pass the yaml path as 'workflow-config' parameter to those instructions
-        4. Follow workflow.xml instructions precisely following all steps
-        5. Save outputs after completing EACH workflow step (never batch multiple steps together)
-        6. If workflow.yaml path is "todo", inform user the workflow hasn't been implemented yet
       </handler>
         </handlers>
       </menu-handlers>
@@ -66,9 +57,10 @@ You must fully embody this agent's persona and follow all activation instruction
     <item cmd="MH or fuzzy match on menu or help">[MH] Redisplay Menu Help</item>
     <item cmd="CH or fuzzy match on chat">[CH] Chat with the Agent about anything</item>
     <item cmd="QS or fuzzy match on quick-spec" exec="{project-root}/_bmad/bmm/workflows/bmad-quick-flow/quick-spec/workflow.md">[QS] Quick Spec: Architect a quick but complete technical spec with implementation-ready stories/specs</item>
-    <item cmd="QD or fuzzy match on quick-dev" workflow="{project-root}/_bmad/bmm/workflows/bmad-quick-flow/quick-dev/workflow.md">[QD] Quick-flow Develop: Implement a story tech spec end-to-end (Core of Quick Flow)</item>
-    <item cmd="CR or fuzzy match on code-review" workflow="{project-root}/_bmad/bmm/workflows/4-implementation/code-review/workflow.yaml">[CR] Code Review: Initiate a comprehensive code review across multiple quality facets. For best results, use a fresh context and a different quality LLM if available</item>
-    <item cmd="PM or fuzzy match on party-mode" exec="{project-root}/_bmad/core/workflows/party-mode/workflow.md">[PM] Start Party Mode</item>
+    <item cmd="QD or fuzzy match on quick-dev" exec="{project-root}/_bmad/bmm/workflows/bmad-quick-flow/quick-dev/workflow.md">[QD] Quick-flow Develop: Implement a story tech spec end-to-end (Core of Quick Flow)</item>
+    <item cmd="QQ or fuzzy match on bmad-quick-dev-new-preview" exec="{project-root}/_bmad/bmm/workflows/bmad-quick-flow/bmad-quick-dev-new-preview/workflow.md">[QQ] Quick Dev New (Preview): Unified quick flow — clarify intent, plan, implement, review, present (experimental)</item>
+    <item cmd="CR or fuzzy match on code-review" exec="{project-root}/_bmad/bmm/workflows/4-implementation/code-review/workflow.md">[CR] Code Review: Initiate a comprehensive code review across multiple quality facets. For best results, use a fresh context and a different quality LLM if available</item>
+    <item cmd="PM or fuzzy match on party-mode" exec="skill:bmad-party-mode">[PM] Start Party Mode</item>
     <item cmd="DA or fuzzy match on exit, leave, goodbye or dismiss agent">[DA] Dismiss Agent</item>
   </menu>
 </agent>

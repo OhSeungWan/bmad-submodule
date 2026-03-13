@@ -49,3 +49,29 @@ features:
   - "State tracking via frontmatter"
 
 standalone: true
+
+web_bundle:
+  name: "narrative"
+  description: "Narrative design workflow for story-driven games"
+  author: "BMad"
+  instructions: "_bmad/gds/workflows/2-design/narrative/workflow.md"
+  web_bundle_files:
+    # Main workflow file
+    - "_bmad/gds/workflows/2-design/narrative/workflow.md"
+    # Step files
+    - "_bmad/gds/workflows/2-design/narrative/steps/step-01-init.md"
+    - "_bmad/gds/workflows/2-design/narrative/steps/step-01b-continue.md"
+    - "_bmad/gds/workflows/2-design/narrative/steps/step-02-foundation.md"
+    - "_bmad/gds/workflows/2-design/narrative/steps/step-03-story.md"
+    - "_bmad/gds/workflows/2-design/narrative/steps/step-04-characters.md"
+    - "_bmad/gds/workflows/2-design/narrative/steps/step-05-world.md"
+    - "_bmad/gds/workflows/2-design/narrative/steps/step-06-dialogue.md"
+    - "_bmad/gds/workflows/2-design/narrative/steps/step-07-environmental.md"
+    - "_bmad/gds/workflows/2-design/narrative/steps/step-08-delivery.md"
+    - "_bmad/gds/workflows/2-design/narrative/steps/step-09-integration.md"
+    - "_bmad/gds/workflows/2-design/narrative/steps/step-10-production.md"
+    - "_bmad/gds/workflows/2-design/narrative/steps/step-11-complete.md"
+    # Template
+    - "_bmad/gds/workflows/2-design/narrative/templates/narrative-template.md"
+    # Validation checklist
+    - "_bmad/gds/workflows/2-design/narrative/checklist.md"

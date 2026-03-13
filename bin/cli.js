@@ -301,7 +301,7 @@ ${MARKER_END}
 function patchGitignore() {
   const MARKER_START = '# BMAD symlinks (auto-generated)';
   const MARKER_END = '# End BMAD';
-  const entries = ['_bmad', '.claude/commands/bmad-*'];
+  const entries = ['_bmad', '.claude/skills/bmad-*'];
   const gitignorePath = '.gitignore';
 
   let content = '';
@@ -309,10 +309,19 @@ function patchGitignore() {
     content = fs.readFileSync(gitignorePath, 'utf8');
   }
 
-  // Check if BMAD section already exists
-  if (content.includes(MARKER_START)) {
-    log('  \u2714', '.gitignore에 BMAD 섹션이 이미 존재합니다. 스킵합니다.');
-    return 'skipped';
+  const section = ['', MARKER_START, ...entries, MARKER_END, ''].join('\n');
+
+  // Replace existing BMAD section if present (handles migration from old entries)
+  if (content.includes(MARKER_START) && content.includes(MARKER_END)) {
+    const regex = new RegExp(`\\n?${MARKER_START.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[\\s\\S]*?${MARKER_END.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`);
+    const updated = content.replace(regex, section);
+    if (updated === content) {
+      log('  \u2714', '.gitignore BMAD 섹션이 이미 최신 상태입니다.');
+      return 'skipped';
+    }
+    fs.writeFileSync(gitignorePath, updated, 'utf8');
+    log('  \u2714', '.gitignore BMAD 섹션 업데이트 완료');
+    return 'done';
   }
 
   // Check if individual entries already exist
@@ -321,8 +330,6 @@ function patchGitignore() {
     log('  \u2714', '.gitignore에 BMAD 항목이 이미 존재합니다. 스킵합니다.');
     return 'skipped';
   }
-
-  const section = ['', MARKER_START, ...entries, MARKER_END, ''].join('\n');
 
   fs.writeFileSync(gitignorePath, content.trimEnd() + '\n' + section, 'utf8');
   log('  \u2714', `.gitignore에 BMAD 항목 추가 완료`);
@@ -405,6 +412,7 @@ async function main() {
       { key: 'pull', label: 'Submodule 최신화', fn: pullLatest },
       { key: 'parentRef', label: '부모 참조 갱신', fn: updateParentRef },
       { key: 'reinstall', label: '심링크 갱신', fn: reinstallSymlinks },
+      { key: 'gitignore', label: '.gitignore 갱신', fn: patchGitignore },
     ];
 
     return runSteps(steps, 'BMAD 업데이트가 완료되었습니다!');

@@ -97,6 +97,69 @@ test.describe('[Feature] API Tests', () => {
 - ✅ Generate request filter helpers in `pact/http/helpers/` using `createRequestFilter({ tokenGenerator: () => string })`
 - ✅ Generate shared state constants in `pact/http/helpers/states.ts`
 - ✅ If async/message patterns detected, generate message consumer tests in `pact/message/` using `buildMessageVerifierOptions`
+- ✅ **Provider endpoint comment MANDATORY** on every Pact interaction: `// Provider endpoint: <path> -> <METHOD> <route>`
+- ⚠️ **Postel's Law for matchers**: Use `like()`, `eachLike()`, `string()`, `integer()` matchers ONLY in `willRespondWith` (responses). Request bodies in `withRequest` MUST use exact values — never wrap request bodies in `like()`. The consumer controls what it sends, so contracts should be strict about request shape.
+
+### 1.5 Provider Source Scrutiny (CDC Only)
+
+**CRITICAL**: Before generating ANY Pact consumer interaction, perform provider source scrutiny per the **Seven-Point Scrutiny Checklist** defined in `contract-testing.md`. Do NOT generate response matchers from consumer-side types alone — this is the #1 cause of contract verification failures.
+
+The seven points to verify for each interaction:
+
+1. Response shape
+2. Status codes
+3. Field names
+4. Enum values
+5. Required fields
+6. Data types
+7. Nested structures
+
+**Source priority**: Provider source code is most authoritative. When an OpenAPI/Swagger spec exists (`openapi.yaml`, `openapi.json`, `swagger.json`), use it as a complementary or alternative source — it documents the provider's contract explicitly and can be faster to parse than tracing through handler code. When both exist, cross-reference them; if they disagree, the source code wins. Document the discrepancy in the scrutiny evidence block (e.g., `OpenAPI shows 200 but handler returns 201; using handler behavior`) and flag it in the output JSON `summary` so it is discoverable by downstream consumers or audits.
+
+**Scrutiny Sequence** (for each endpoint in the coverage plan):
+
+1. **READ provider route handler and/or OpenAPI spec**: Find the handler file from `subagentContext.config.provider_endpoint_map` or by scanning the provider codebase. Also check for OpenAPI/Swagger spec files. Extract:
+   - Exact status codes returned (`res.status(201)` / OpenAPI `responses` keys)
+   - Response construction (`res.json({ data: ... })` / OpenAPI `schema`)
+   - Error handling paths (what status codes for what conditions)
+
+2. **READ provider type/model/DTO definitions**: Find the response type referenced by the handler or OpenAPI `$ref` schemas. Extract:
+   - Exact field names (`transaction_id` not `transactionId`)
+   - Field types (`string` ID vs `number` ID / OpenAPI `type` + `format`)
+   - Optional vs required fields (OpenAPI `required` array)
+   - Nested object structures (OpenAPI `$ref`, `allOf`, `oneOf`)
+
+3. **READ provider validation schemas**: Find Joi/Zod/class-validator schemas or OpenAPI request body `schema.required`. Extract:
+   - Required request fields and headers
+   - Enum/union type allowed values (`"active" | "inactive"` / OpenAPI `enum`)
+   - Request body constraints
+
+4. **Cross-reference findings** against consumer expectations:
+   - Does the consumer expect the same field names the provider sends?
+   - Does the consumer expect the same status codes the provider returns?
+   - Does the consumer expect the same nesting the provider produces?
+
+5. **Document scrutiny evidence** as a block comment in the generated test:
+
+```typescript
+/*
+ * Provider Scrutiny Evidence:
+ * - Handler: server/src/routes/userHandlers.ts:45
+ * - OpenAPI: server/openapi.yaml paths./api/v2/users/{userId}.get (if available)
+ * - Response type: UserResponseDto (server/src/types/user.ts:12)
+ * - Status: 201 for creation (line 52), 400 for validation error (line 48)
+ * - Fields: { id: number, name: string, email: string, role: "user" | "admin" }
+ * - Required request headers: Authorization (Bearer token)
+ */
+```
+
+6. **Graceful degradation** when provider source is not accessible (follows the canonical four-step protocol from `contract-testing.md`):
+   1. **OpenAPI/Swagger spec available**: Use the spec as the source of truth for response shapes, status codes, and field names
+   2. **Pact Broker available** (when `pact_mcp` is `"mcp"` in `subagentContext.config`): Use SmartBear MCP tools to fetch existing provider states and verified interactions as reference
+   3. **Neither available**: Generate from consumer types but use the TODO form of the mandatory comment: `// Provider endpoint: TODO — provider source not accessible, verify manually`. Set `provider_scrutiny: "pending"` in output JSON
+   4. **Never silently guess**: Document all assumptions in the scrutiny evidence block
+
+> ⚠️ **Anti-pattern**: Generating response matchers from consumer-side types alone. This produces contracts that reflect what the consumer _wishes_ the provider returns, not what it _actually_ returns. Always read provider source or OpenAPI spec first.
 
 ### 3. Track Fixture Needs
 
@@ -144,6 +207,8 @@ Write JSON to temp file: `/tmp/tea-automate-api-tests-{{timestamp}}.json`
   ],
   "fixture_needs": ["authToken", "userDataFactory", "productDataFactory"],
   "knowledge_fragments_used": ["api-request", "data-factories", "api-testing-patterns"],
+  "provider_scrutiny": "completed",
+  "provider_files_read": ["server/src/routes/authHandlers.ts", "server/src/routes/checkoutHandlers.ts", "server/src/types/auth.ts"],
   "test_count": 12,
   "summary": "Generated 12 API test cases covering 3 features"
 }
@@ -184,6 +249,9 @@ Subagent completes when:
 - All API tests generated following patterns
 - JSON output valid and complete
 - No E2E/component/unit tests included (out of scope)
+- Every Pact interaction has `// Provider endpoint:` comment (if CDC enabled)
+- Provider source scrutiny completed or gracefully degraded with TODO markers (if CDC enabled)
+- Scrutiny evidence documented as block comments in test files (if CDC enabled)
 
 ### ❌ FAILURE:
 
@@ -191,3 +259,5 @@ Subagent completes when:
 - Did not follow knowledge fragment patterns
 - Invalid or missing JSON output
 - Ran tests (not subagent responsibility)
+- Pact interactions missing provider endpoint comments (if CDC enabled)
+- Response matchers generated from consumer-side types without provider scrutiny (if CDC enabled)

@@ -154,6 +154,51 @@ You must fully embody this agent's persona and follow all activation instruction
         - 권장 사항
       </output_format>
     </prompt>
+    <prompt id="risk-monitoring">
+      <instructions>주요 지표의 이상 징후를 감지하고 선제적으로 알린다.</instructions>
+      <process>
+        1. 주요 지표 현재 상태 확인
+        2. 이상 징후 감지 (표준편차, 추세 이탈)
+        3. 원인 분석
+        4. 심각도 평가 및 대응 방안 제안
+      </process>
+      <output_format>
+        - 지표 상태 요약
+        - 이상 징후 (있는 경우)
+        - 원인 분석
+        - 권장 대응
+      </output_format>
+    </prompt>
+    <prompt id="service-context">
+      <instructions>서비스의 퍼널 구조, 주요 지표, 이벤트 정의를 학습하여 사이드카 메모리에 저장한다.</instructions>
+      <process>
+        1. 서비스 정보 수집 (Amplitude 프로젝트 탐색)
+        2. 주요 퍼널 매핑
+        3. 핵심 지표 정의
+        4. 사이드카 메모리에 저장
+      </process>
+      <output_format>
+        - 서비스 개요
+        - 퍼널 구조
+        - 핵심 지표 목록
+        - 저장 확인
+      </output_format>
+    </prompt>
+    <prompt id="report-generation">
+      <instructions>대화형 분석 결과나 다른 워크플로우 결과물을 정리된 리포트 형태로 문서화한다.</instructions>
+      <process>
+        1. 리포트 내용 수집 (현재 세션 또는 지정 내용)
+        2. 리포트 템플릿 선택
+        3. 리포트 생성
+        4. {analysis_output_folder}에 저장
+      </process>
+      <output_format>
+        - 리포트 제목
+        - 분석 요약
+        - 상세 분석
+        - 인사이트 및 권장 액션
+      </output_format>
+    </prompt>
   </prompts>
   <menu>
     <item cmd="MH or fuzzy match on menu or help">[MH] 메뉴 도움말 다시 표시</item>
@@ -163,9 +208,9 @@ You must fully embody this agent's persona and follow all activation instruction
     <item cmd="ED or fuzzy match on experiment-design" action="#experiment-design">[ED] 실험 설계 - A/B 테스트 계획 수립</item>
     <item cmd="ER or fuzzy match on experiment-results" action="#experiment-results">[ER] 실험 결과 분석 - 테스트 결과 해석</item>
     <item cmd="IA or fuzzy match on impact-analysis" action="#impact-analysis">[IA] 영향도 분석 - 기능 변경 영향 예측</item>
-    <item cmd="RM or fuzzy match on risk-monitoring">[RM] 위험 모니터링 - 이상 징후 감지</item>
-    <item cmd="SC or fuzzy match on service-context">[SC] 서비스 컨텍스트 설정 - 퍼널, 지표 학습</item>
-    <item cmd="GR or fuzzy match on generate-report">[GR] 리포트 생성 - 분석 결과 문서화</item>
+    <item cmd="RM or fuzzy match on risk-monitoring" action="#risk-monitoring">[RM] 위험 모니터링 - 이상 징후 감지</item>
+    <item cmd="SC or fuzzy match on service-context" action="#service-context">[SC] 서비스 컨텍스트 설정 - 퍼널, 지표 학습</item>
+    <item cmd="GR or fuzzy match on generate-report" action="#report-generation">[GR] 리포트 생성 - 분석 결과 문서화</item>
     <item cmd="DA or fuzzy match on exit, leave, goodbye or dismiss agent">[DA] 에이전트 종료</item>
   </menu>
   <easter-eggs>

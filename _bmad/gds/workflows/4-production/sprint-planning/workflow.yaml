@@ -51,3 +51,5 @@ input_file_patterns:
 default_output_file: "{status_file}"
 
 standalone: true
+
+web_bundle: false

@@ -77,6 +77,30 @@ Use CLI to explore the application and identify testable pages/flows:
 
 ---
 
+**If `use_pactjs_utils` is enabled — Provider Endpoint Mapping (all stacks):**
+
+When consumer-driven contract tests will be generated, build a Provider Endpoint Map during target identification. This applies to all `{detected_stack}` values — frontend, backend, and fullstack consumers all need provider scrutiny.
+
+1. **Locate provider source and/or OpenAPI spec**: Scan workspace for provider project (from config, monorepo structure, or adjacent repositories). Also check for OpenAPI/Swagger spec files (`openapi.yaml`, `openapi.json`, `swagger.json`) — these document the provider's contract explicitly and can supplement or replace handler code analysis.
+2. **Map each consumer endpoint** to its provider counterpart:
+   - Provider file path (route handler)
+   - Route pattern (METHOD + path)
+   - Validation schema location (Joi, Zod, class-validator) or OpenAPI request schema
+   - Response type/DTO definition location or OpenAPI response schema
+   - OpenAPI spec path (if available, e.g., `server/openapi.yaml`)
+3. **Output as "Provider Endpoint Map" table** in the coverage plan:
+
+```markdown
+| Consumer Endpoint     | Provider File                     | Route                     | Validation Schema                   | Response Type   | OpenAPI Spec                                      |
+| --------------------- | --------------------------------- | ------------------------- | ----------------------------------- | --------------- | ------------------------------------------------- |
+| GET /api/v2/users/:id | server/src/routes/userHandlers.ts | GET /api/v2/users/:userId | server/src/validation/user.ts       | UserResponseDto | server/openapi.yaml#/paths/~1api~1v2~1users~1{id} |
+| POST /api/v2/users    | server/src/routes/userHandlers.ts | POST /api/v2/users        | server/src/validation/createUser.ts | UserResponseDto | server/openapi.yaml#/paths/~1api~1v2~1users       |
+```
+
+4. **If provider source not accessible**: Mark entries with `TODO — provider source not accessible` and note in coverage plan that provider scrutiny will use graceful degradation (see `contract-testing.md` Provider Scrutiny Protocol)
+
+---
+
 ## 2. Choose Test Levels
 
 Use `test-levels-framework.md` to select:

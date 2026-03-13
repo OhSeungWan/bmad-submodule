@@ -44,3 +44,5 @@ execution_hints:
   interactive: false
   autonomous: true
   iterative: true
+
+web_bundle: false

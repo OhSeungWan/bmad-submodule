@@ -74,6 +74,7 @@ const subagentContext = {
     detected_stack: '{detected_stack}',  // "frontend" | "backend" | "fullstack"
     execution_mode: config.tea_execution_mode || 'auto',  // "auto" | "subagent" | "agent-team" | "sequential"
     capability_probe: parseBooleanFlag(config.tea_capability_probe, true),  // supports booleans and "false"/"true" strings
+    provider_endpoint_map: /* from Step 2 coverage plan, if use_pactjs_utils enabled */,
   },
   timestamp: timestamp
 };
@@ -190,6 +191,7 @@ When `use_pactjs_utils` is enabled, the API test generation subagent (step-03a) 
 - **Provider verification tests**: Using `buildVerifierOptions` for one-call verifier setup
 - **Message contract tests**: Using `buildMessageVerifierOptions` if async/Kafka patterns detected
 - **Helper files**: Request filter setup with `createRequestFilter`, shared state constants
+- **Provider scrutiny**: Subagent reads provider route handlers, types, and validation schemas before generating each interaction (see `contract-testing.md` Provider Scrutiny Protocol)
 
 When `pact_mcp` is `"mcp"`, the subagent can use SmartBear MCP tools to fetch existing provider states and generate tests informed by broker data.
 

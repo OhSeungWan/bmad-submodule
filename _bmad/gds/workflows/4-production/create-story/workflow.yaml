@@ -57,3 +57,5 @@ input_file_patterns:
     load_strategy: "SELECTIVE_LOAD" # Only load needed epic
 
 standalone: true
+
+web_bundle: false

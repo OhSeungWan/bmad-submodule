@@ -1,11 +1,10 @@
 #!/bin/bash
 
-# BMAD Claude Commands Uninstaller
+# BMAD Claude Skills Uninstaller
 # This script removes symlinks from the root project:
-# 1. .claude/commands/bmad (directory symlink)
-# 2. .claude/commands/bmad-* (individual file symlinks)
-# 3. _bmad
-# 4. post-checkout hook BMAD section
+# 1. .claude/skills/bmad-* (individual directory symlinks)
+# 2. _bmad
+# 3. post-checkout hook BMAD section
 
 set -e
 
@@ -41,26 +40,38 @@ remove_target() {
     fi
 }
 
-# === 1. Remove .claude/commands/bmad ===
-echo "=== Removing .claude/commands/bmad ==="
-remove_target "$ROOT_PROJECT/.claude/commands/bmad" "commands/bmad"
-
-# === 2. Remove individual bmad-* symlinks ===
-echo "=== Removing .claude/commands/bmad-* symlinks ==="
+# === 1. Remove .claude/skills/bmad-* symlinks ===
+echo "=== Removing .claude/skills/bmad-* symlinks ==="
 REMOVED=0
-for item in "$ROOT_PROJECT/.claude/commands"/bmad-*; do
+for item in "$ROOT_PROJECT/.claude/skills"/bmad-*; do
     if [ -L "$item" ]; then
         rm "$item"
         REMOVED=$((REMOVED + 1))
     fi
 done
-echo "Removed $REMOVED bmad-* symlinks"
+echo "Removed $REMOVED bmad-* skill symlinks"
 
-# === 3. Remove _bmad ===
+# === Legacy cleanup: Remove old .claude/commands/bmad-* symlinks ===
+LEGACY_REMOVED=0
+for item in "$ROOT_PROJECT/.claude/commands"/bmad-*; do
+    if [ -L "$item" ]; then
+        rm "$item"
+        LEGACY_REMOVED=$((LEGACY_REMOVED + 1))
+    fi
+done
+if [ -L "$ROOT_PROJECT/.claude/commands/bmad" ]; then
+    rm "$ROOT_PROJECT/.claude/commands/bmad"
+    LEGACY_REMOVED=$((LEGACY_REMOVED + 1))
+fi
+if [ "$LEGACY_REMOVED" -gt 0 ]; then
+    echo "Removed $LEGACY_REMOVED legacy commands symlinks"
+fi
+
+# === 2. Remove _bmad ===
 echo "=== Removing _bmad ==="
 remove_target "$ROOT_PROJECT/_bmad" "_bmad"
 
-# === 4. Remove post-checkout hook BMAD section ===
+# === 3. Remove post-checkout hook BMAD section ===
 echo "=== Removing post-checkout hook BMAD section ==="
 GIT_COMMON_DIR="$(git rev-parse --git-common-dir 2>/dev/null)"
 if [ -z "$GIT_COMMON_DIR" ]; then

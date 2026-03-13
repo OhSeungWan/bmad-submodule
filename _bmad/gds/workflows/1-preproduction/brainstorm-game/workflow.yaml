@@ -41,5 +41,22 @@ features:
 
 standalone: true
 
+web_bundle:
+  name: "brainstorm-game"
+  description: "Facilitate game brainstorming sessions with game-specific context and techniques"
+  author: "BMad"
+  instructions: "_bmad/gds/workflows/1-preproduction/brainstorm-game/workflow.md"
+  template: false
+  web_bundle_files:
+    # Main workflow file
+    - "_bmad/gds/workflows/1-preproduction/brainstorm-game/workflow.md"
+    # Step files
+    - "_bmad/gds/workflows/1-preproduction/brainstorm-game/steps/step-01-init.md"
+    - "_bmad/gds/workflows/1-preproduction/brainstorm-game/steps/step-02-context.md"
+    - "_bmad/gds/workflows/1-preproduction/brainstorm-game/steps/step-03-ideation.md"
+    - "_bmad/gds/workflows/1-preproduction/brainstorm-game/steps/step-04-complete.md"
+    # Context files
+    - "_bmad/gds/workflows/1-preproduction/brainstorm-game/game-context.md"
+    - "_bmad/gds/workflows/1-preproduction/brainstorm-game/game-brain-methods.csv"
 dependencies:
   - "_bmad/core/workflows/brainstorming/workflow.md"

@@ -18,10 +18,11 @@ You must fully embody this agent's persona and follow all activation instruction
       <step n="3">Remember: user's name is {user_name}</step>
       
       <step n="4">Show greeting using {user_name} from config, communicate in {communication_language}, then display numbered list of ALL menu items from menu section</step>
-      <step n="5">Let {user_name} know they can type command `/bmad-help` at any time to get advice on what to do next, and that they can combine that with what they need help with <example>`/bmad-help where should I start with an idea I have that does XYZ`</example></step>
+      <step n="5">Let {user_name} know they can invoke the `bmad-help` skill at any time to get advice on what to do next, and that they can combine it with what they need help with <example>Invoke the `bmad-help` skill with a question like "where should I start with an idea I have that does XYZ?"</example></step>
       <step n="6">STOP and WAIT for user input - do NOT execute menu items automatically - accept number or cmd trigger or fuzzy command match</step>
       <step n="7">On user input: Number → process menu item[n] | Text → case-insensitive substring match | Multiple matches → ask user to clarify | No match → show "Not recognized"</step>
-      <step n="8">When processing a menu item: Check menu-handlers section below - extract any attributes from the selected menu item (workflow, exec, tmpl, data, action, validate-workflow) and follow the corresponding handler instructions</step>
+      <step n="8">When processing a menu item: Check menu-handlers section below - extract any attributes from the selected menu item (exec, tmpl, data, action, multi) and follow the corresponding handler instructions</step>
+
 
       <menu-handlers>
               <handlers>
@@ -30,16 +31,6 @@ You must fully embody this agent's persona and follow all activation instruction
         1. Read fully and follow the file at that path
         2. Process the complete file and follow all instructions within it
         3. If there is data="some/path/data-foo.md" with the same item, pass that data path to the executed file as context.
-      </handler>
-      <handler type="workflow">
-        When menu item has: workflow="path/to/workflow.yaml":
-
-        1. CRITICAL: Always LOAD {project-root}/_bmad/core/tasks/workflow.xml
-        2. Read the complete file - this is the CORE OS for processing BMAD workflows
-        3. Pass the yaml path as 'workflow-config' parameter to those instructions
-        4. Follow workflow.xml instructions precisely following all steps
-        5. Save outputs after completing EACH workflow step (never batch multiple steps together)
-        6. If workflow.yaml path is "todo", inform user the workflow hasn't been implemented yet
       </handler>
         </handlers>
       </menu-handlers>
@@ -64,10 +55,10 @@ You must fully embody this agent's persona and follow all activation instruction
     <item cmd="SP or fuzzy match on specifications" exec="{project-root}/_bmad/wds/workflows/4-ux-design/workflow.md">[SP] Specifications — Write content, interaction and functionality specs</item>
     <item cmd="SA or fuzzy match on audit-spec" exec="{project-root}/_bmad/wds/workflows/4-ux-design/data/specification-audit-workflow.md">[SA] Audit — Check spec completeness and quality</item>
     <item cmd="GA or fuzzy match on generate-assets" exec="{project-root}/_bmad/wds/workflows/6-asset-generation/workflow.md">[GA] Generate Assets — Nano Banana, Stitch and other services</item>
-    <item cmd="DS or fuzzy match on design-system" workflow="{project-root}/_bmad/wds/workflows/7-design-system/workflow.md">[DS] Design System — Build component library with design tokens</item>
+    <item cmd="DS or fuzzy match on design-system">[DS] Design System — Build component library with design tokens</item>
     <item cmd="DD or fuzzy match on design-delivery" exec="{project-root}/_bmad/wds/workflows/4-ux-design/workflow-handover.md">[DD] Design Delivery — Package flows for development handoff</item>
     <item cmd="PE or fuzzy match on product-evolution" exec="{project-root}/_bmad/wds/workflows/8-product-evolution/workflow.md">[PE] Product Evolution — Continuous improvement for living products</item>
-    <item cmd="PM or fuzzy match on party-mode" exec="{project-root}/_bmad/core/workflows/party-mode/workflow.md">[PM] Start Party Mode</item>
+    <item cmd="PM or fuzzy match on party-mode" exec="skill:bmad-party-mode">[PM] Start Party Mode</item>
     <item cmd="DA or fuzzy match on exit, leave, goodbye or dismiss agent">[DA] Dismiss Agent</item>
   </menu>
 </agent>

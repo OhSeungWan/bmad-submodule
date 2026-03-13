@@ -71,9 +71,12 @@ const subagentContext = {
   config: {
     test_framework: config.test_framework,
     use_playwright_utils: config.tea_use_playwright_utils,
+    use_pactjs_utils: config.tea_use_pactjs_utils,
+    pact_mcp: config.tea_pact_mcp,  // "mcp" | "none"
     browser_automation: config.tea_browser_automation,
     execution_mode: config.tea_execution_mode || 'auto',  // "auto" | "subagent" | "agent-team" | "sequential"
     capability_probe: parseBooleanFlag(config.tea_capability_probe, true),  // supports booleans and "false"/"true" strings
+    provider_endpoint_map: /* from Step 1/3 context, if use_pactjs_utils enabled */,
   },
   timestamp: timestamp
 };

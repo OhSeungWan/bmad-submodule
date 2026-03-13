@@ -64,3 +64,5 @@ checklist: "{installed_path}/checklist.md"
 default_output_file: "{planning_artifacts}/sprint-change-proposal-{date}.md"
 
 standalone: true
+
+web_bundle: false

@@ -23,3 +23,5 @@ sprint_status: "{implementation_artifacts}/sprint-status.yaml"
 project_context: "**/project-context.md"
 
 standalone: true
+
+web_bundle: false

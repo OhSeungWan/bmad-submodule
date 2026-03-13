@@ -95,7 +95,7 @@ dae/
 │   ├── workflows.md
 │   └── examples.md
 ├── agents/
-│   └── data-analyst.spec.md
+│   └── data-analyst.md
 ├── workflows/
 │   ├── data-analysis/
 │   ├── experiment-design/
