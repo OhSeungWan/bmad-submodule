@@ -1,0 +1,4 @@
+canonicalId: gds-quick-dev
+type: workflow
+installedPath: "_bmad/gds/workflows/gds-quick-flow/gds-quick-dev"
+description: "Flexible development workflow - execute tech-specs or direct instructions with optional planning for game development tasks"

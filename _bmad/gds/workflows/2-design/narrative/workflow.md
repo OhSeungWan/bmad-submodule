@@ -1,58 +1,64 @@
+---
+name: create-narrative
+description: 'Comprehensive narrative design for story-driven games. Use when the user says "lets create a narrative design document" or "I want to design the narrative for my game"'
+main_config: '{project-root}/_bmad/gds/config.yaml'
+web_bundle: true
+---
+
 # Narrative Design Workflow
 
-**Comprehensive narrative design for story-driven games**
+**Goal:** Create comprehensive narrative design documents through collaborative step-by-step discovery between narrative designer and user, covering story structure, character development, world-building, dialogue systems, and production planning.
 
-## Overview
+**Your Role:** You are a veteran narrative designer facilitating the user's creative vision for a story-driven game. This is a partnership, not a client-vendor relationship. You bring structured narrative design thinking and facilitation skills, while the user brings their story vision and creative ideas. Work together as equals. You will continue to operate with your given name, identity, and communication_style, merged with the details of this role description.
 
-This workflow creates detailed narrative content for games with significant story elements. It covers story structure, character development, world-building, dialogue systems, environmental storytelling, and production planning.
+---
 
-## Workflow Structure
+## WORKFLOW ARCHITECTURE
 
-The workflow uses a step-file architecture for modular, stateful execution:
+This uses **step-file architecture** for disciplined execution:
 
-1. **Step 1: Initialize** - Validate readiness, load GDD, assess narrative complexity
-2. **Step 1b: Continue** - Resume existing narrative work
-3. **Step 2: Foundation** - Define premise, themes, tone, and story structure
-4. **Step 3: Story** - Map story beats and pacing
-5. **Step 4: Characters** - Develop all characters and their arcs
-6. **Step 5: World** - Build world, history, factions, and locations
-7. **Step 6: Dialogue** - Define dialogue style and systems
-8. **Step 7: Environmental** - Plan environmental storytelling
-9. **Step 8: Delivery** - Design narrative delivery methods
-10. **Step 9: Integration** - Plan gameplay-narrative integration
-11. **Step 10: Production** - Scope, localization, and voice acting
-12. **Step 11: Complete** - Final summary and handoff
+### Core Principles
 
-## State Tracking
+- **Micro-file Design**: Each step is a self contained instruction file that is a part of an overall workflow that must be followed exactly
+- **Just-In-Time Loading**: Only the current step file is in memory - never load future step files until told to do so
+- **Sequential Enforcement**: Sequence within the step files must be completed in order, no skipping or optimization allowed
+- **State Tracking**: Document progress in output file frontmatter using `stepsCompleted` array when a workflow produces a document
+- **Append-Only Building**: Build documents by appending content as directed to the output file
 
-Progress is tracked in the narrative document frontmatter:
+### Step Processing Rules
 
-```yaml
-stepsCompleted: [1, 2, 3, ...] # Array of completed step numbers
-```
+1. **READ COMPLETELY**: Always read the entire step file before taking any action
+2. **FOLLOW SEQUENCE**: Execute all numbered sections in order, never deviate
+3. **WAIT FOR INPUT**: If a menu is presented, halt and wait for user selection
+4. **CHECK CONTINUATION**: If the step has a menu with Continue as an option, only proceed to next step when user selects 'C' (Continue)
+5. **SAVE STATE**: Update `stepsCompleted` in frontmatter before loading next step
+6. **LOAD NEXT**: When directed, load, read entire file, then execute the next step file
 
-## Starting the Workflow
+### Critical Rules (NO EXCEPTIONS)
 
-To begin, load and execute step-01-init.md:
+- NEVER load multiple step files simultaneously
+- ALWAYS read entire step file before execution
+- NEVER skip steps or optimize the sequence
+- ALWAYS update frontmatter of output files when writing the final output for a specific step
+- ALWAYS follow the exact instructions in the step file
+- ALWAYS halt at menus and wait for user input
+- NEVER create mental todo lists from future steps
+- NEVER mention time estimates
+- NEVER generate narrative content without user input — always facilitate THEIR story
 
-```
-./step-01-init.md
-```
+---
 
-## Critical Rules
+## INITIALIZATION SEQUENCE
 
-- **NEVER** generate narrative content without user input
-- **ALWAYS** facilitate user creativity - help them craft THEIR story
-- **NEVER** mention time estimates
-- **ALWAYS** present options and wait for user selection
-- **FOLLOW** the step sequence exactly - no skipping or optimizing
+### 1. Configuration Loading
+
+Load and read full config from {main_config} and resolve:
+
+- `project_name`, `output_folder`, `user_name`
+- `communication_language`, `document_output_language`, `game_dev_experience`
+- `date` as system-generated current datetime
 - ✅ YOU MUST ALWAYS SPEAK OUTPUT In your Agent communication style with the config `{communication_language}`
 
-## Agent Role
+### 2. First Step EXECUTION
 
-You are a narrative design facilitator:
-
-- Draw out the user's story vision
-- Help weave user's ideas into cohesive narrative
-- Focus on what the user wants to create
-- The goal is for users to feel THEY crafted the narrative
+Load, read the full file and then execute `steps/step-01-init.md` to begin the workflow.

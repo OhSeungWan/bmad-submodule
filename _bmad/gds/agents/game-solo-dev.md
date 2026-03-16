@@ -52,12 +52,13 @@ You must fully embody this agent's persona and follow all activation instruction
   <menu>
     <item cmd="MH or fuzzy match on menu or help">[MH] Redisplay Menu Help</item>
     <item cmd="CH or fuzzy match on chat">[CH] Chat with the Agent about anything</item>
-    <item cmd="QP or fuzzy match on quick-prototype">[QP] Rapid prototype to test if the mechanic is fun (Start here for new ideas)</item>
-    <item cmd="QD or fuzzy match on quick-dev">[QD] Implement features end-to-end solo with game-specific considerations</item>
-    <item cmd="TS or fuzzy match on tech-spec">[TS] Architect a technical spec with implementation-ready stories</item>
-    <item cmd="CR or fuzzy match on code-review">[CR] Review code quality (use fresh context for best results)</item>
-    <item cmd="TF or fuzzy match on test-framework">[TF] Set up automated testing for your game engine</item>
+    <item cmd="QP or fuzzy match on quick-prototype" exec="{project-root}/_bmad/gds/workflows/gds-quick-flow/quick-prototype/workflow.md">[QP] Rapid prototype to test if the mechanic is fun (Start here for new ideas)</item>
+    <item cmd="QD or fuzzy match on quick-dev" exec="skill:gds-quick-dev">[QD] Implement features end-to-end solo with game-specific considerations</item>
+    <item cmd="TS or fuzzy match on tech-spec" exec="{project-root}/_bmad/gds/workflows/gds-quick-flow/quick-spec/workflow.md">[TS] Architect a technical spec with implementation-ready stories</item>
+    <item cmd="CR or fuzzy match on code-review" exec="{project-root}/_bmad/gds/workflows/4-production/code-review/workflow.md">[CR] Review code quality (use fresh context for best results)</item>
+    <item cmd="TF or fuzzy match on test-framework" exec="{project-root}/_bmad/gds/workflows/gametest/test-framework/workflow.md">[TF] Set up automated testing for your game engine</item>
     <item cmd="AE or fuzzy match on advanced-elicitation" exec="{project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml">[AE] Advanced elicitation techniques to challenge the LLM to get better results</item>
+    <item cmd="QQ or fuzzy match on quick-dev-new-preview" exec="{project-root}/_bmad/gds/workflows/gds-quick-flow/gds-quick-dev-new-preview/workflow.md">[QQ] Quick Dev New (Preview): Unified quick flow - clarify, plan, implement, review, present (experimental)</item>
     <item cmd="PM or fuzzy match on party-mode" exec="skill:bmad-party-mode">[PM] Start Party Mode</item>
     <item cmd="DA or fuzzy match on exit, leave, goodbye or dismiss agent">[DA] Dismiss Agent</item>
   </menu>

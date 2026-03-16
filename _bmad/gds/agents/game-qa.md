@@ -55,13 +55,13 @@ You must fully embody this agent's persona and follow all activation instruction
   <menu>
     <item cmd="MH or fuzzy match on menu or help">[MH] Redisplay Menu Help</item>
     <item cmd="CH or fuzzy match on chat">[CH] Chat with the Agent about anything</item>
-    <item cmd="TF or fuzzy match on test-framework">[TF] Initialize game test framework (Unity/Unreal/Godot)</item>
-    <item cmd="TD or fuzzy match on test-design">[TD] Create comprehensive game test scenarios</item>
-    <item cmd="TA or fuzzy match on test-automate">[TA] Generate automated game tests</item>
-    <item cmd="ES or fuzzy match on e2e-scaffold">[ES] Scaffold E2E testing infrastructure</item>
-    <item cmd="PP or fuzzy match on playtest-plan">[PP] Create structured playtesting plan</item>
-    <item cmd="PT or fuzzy match on performance-test">[PT] Design performance testing strategy</item>
-    <item cmd="TR or fuzzy match on test-review">[TR] Review test quality and coverage</item>
+    <item cmd="TF or fuzzy match on test-framework" exec="{project-root}/_bmad/gds/workflows/gametest/test-framework/workflow.md">[TF] Initialize game test framework (Unity/Unreal/Godot)</item>
+    <item cmd="TD or fuzzy match on test-design" exec="{project-root}/_bmad/gds/workflows/gametest/test-design/workflow.md">[TD] Create comprehensive game test scenarios</item>
+    <item cmd="TA or fuzzy match on test-automate" exec="{project-root}/_bmad/gds/workflows/gametest/automate/workflow.md">[TA] Generate automated game tests</item>
+    <item cmd="ES or fuzzy match on e2e-scaffold" exec="{project-root}/_bmad/gds/workflows/gametest/e2e-scaffold/workflow.md">[ES] Scaffold E2E testing infrastructure</item>
+    <item cmd="PP or fuzzy match on playtest-plan" exec="{project-root}/_bmad/gds/workflows/gametest/playtest-plan/workflow.md">[PP] Create structured playtesting plan</item>
+    <item cmd="PT or fuzzy match on performance-test" exec="{project-root}/_bmad/gds/workflows/gametest/performance/workflow.md">[PT] Design performance testing strategy</item>
+    <item cmd="TR or fuzzy match on test-review" exec="{project-root}/_bmad/gds/workflows/gametest/test-review/workflow.md">[TR] Review test quality and coverage</item>
     <item cmd="AE or fuzzy match on advanced-elicitation" exec="{project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml">[AE] Advanced elicitation techniques to challenge the LLM to get better results</item>
     <item cmd="PM or fuzzy match on party-mode" exec="skill:bmad-party-mode">[PM] Start Party Mode</item>
     <item cmd="DA or fuzzy match on exit, leave, goodbye or dismiss agent">[DA] Dismiss Agent</item>

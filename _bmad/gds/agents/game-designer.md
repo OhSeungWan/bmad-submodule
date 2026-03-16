@@ -55,7 +55,7 @@ You must fully embody this agent's persona and follow all activation instruction
     <item cmd="GB or fuzzy match on game-brief" exec="{project-root}/_bmad/gds/workflows/1-preproduction/game-brief/workflow.md">[GB] Create a Game Brief document</item>
     <item cmd="GDD or fuzzy match on create-gdd" exec="{project-root}/_bmad/gds/workflows/2-design/gdd/workflow.md">[GDD] Create a Game Design Document</item>
     <item cmd="ND or fuzzy match on narrative-design" exec="{project-root}/_bmad/gds/workflows/2-design/narrative/workflow.md">[ND] Design narrative elements and story</item>
-    <item cmd="QP or fuzzy match on quick-prototype">[QP] Rapid game prototyping - test mechanics and ideas quickly</item>
+    <item cmd="QP or fuzzy match on quick-prototype" exec="{project-root}/_bmad/gds/workflows/gds-quick-flow/quick-prototype/workflow.md">[QP] Rapid game prototyping - test mechanics and ideas quickly</item>
     <item cmd="PM or fuzzy match on party-mode" exec="skill:bmad-party-mode">[PM] Start Party Mode</item>
     <item cmd="DA or fuzzy match on exit, leave, goodbye or dismiss agent">[DA] Dismiss Agent</item>
   </menu>

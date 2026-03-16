@@ -28,18 +28,18 @@ You must fully embody this agent's persona and follow all activation instruction
 
       <menu-handlers>
               <handlers>
-          <handler type="data">
-        When menu item has: data="path/to/file.json|yaml|yml|csv|xml"
-        Load the file first, parse according to extension
-        Make available as {data} variable to subsequent handler operations
-      </handler>
-
-      <handler type="exec">
+          <handler type="exec">
         When menu item or handler has: exec="path/to/file.md":
         1. Read fully and follow the file at that path
         2. Process the complete file and follow all instructions within it
         3. If there is data="some/path/data-foo.md" with the same item, pass that data path to the executed file as context.
       </handler>
+      <handler type="data">
+        When menu item has: data="path/to/file.json|yaml|yml|csv|xml"
+        Load the file first, parse according to extension
+        Make available as {data} variable to subsequent handler operations
+      </handler>
+
         </handlers>
       </menu-handlers>
 
@@ -58,11 +58,11 @@ You must fully embody this agent's persona and follow all activation instruction
   <menu>
     <item cmd="MH or fuzzy match on menu or help">[MH] Redisplay Menu Help</item>
     <item cmd="CH or fuzzy match on chat">[CH] Chat with the Agent about anything</item>
-    <item cmd="SP or fuzzy match on sprint-planning">[SP] Generate or update sprint-status.yaml from epic files (Required after GDD+Epics are created)</item>
-    <item cmd="SS or fuzzy match on sprint-status">[SS] View sprint progress, surface risks, and get next action recommendation</item>
-    <item cmd="CS or fuzzy match on create-story">[CS] Create Story with direct ready-for-dev marking (Required to prepare stories for development)</item>
-    <item cmd="ER or fuzzy match on epic-retrospective" data="{project-root}/_bmad/_config/agent-manifest.csv">[ER] Facilitate team retrospective after a game development epic is completed</item>
-    <item cmd="CC or fuzzy match on correct-course">[CC] Navigate significant changes during game dev sprint (When implementation is off-track)</item>
+    <item cmd="SP or fuzzy match on sprint-planning" exec="{project-root}/_bmad/gds/workflows/4-production/sprint-planning/workflow.md">[SP] Generate or update sprint-status.yaml from epic files (Required after GDD+Epics are created)</item>
+    <item cmd="SS or fuzzy match on sprint-status" exec="{project-root}/_bmad/gds/workflows/4-production/sprint-status/workflow.md">[SS] View sprint progress, surface risks, and get next action recommendation</item>
+    <item cmd="CS or fuzzy match on create-story" exec="skill:gds-create-story">[CS] Create Story with direct ready-for-dev marking (Required to prepare stories for development)</item>
+    <item cmd="ER or fuzzy match on epic-retrospective" exec="{project-root}/_bmad/gds/workflows/4-production/retrospective/workflow.md" data="{project-root}/_bmad/_config/agent-manifest.csv">[ER] Facilitate team retrospective after a game development epic is completed</item>
+    <item cmd="CC or fuzzy match on correct-course" exec="{project-root}/_bmad/gds/workflows/4-production/correct-course/workflow.md">[CC] Navigate significant changes during game dev sprint (When implementation is off-track)</item>
     <item cmd="AE or fuzzy match on advanced-elicitation" exec="{project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml">[AE] Advanced elicitation techniques to challenge the LLM to get better results</item>
     <item cmd="PM or fuzzy match on party-mode" exec="skill:bmad-party-mode">[PM] Start Party Mode</item>
     <item cmd="DA or fuzzy match on exit, leave, goodbye or dismiss agent">[DA] Dismiss Agent</item>

@@ -54,7 +54,8 @@ You must fully embody this agent's persona and follow all activation instruction
     <item cmd="CH or fuzzy match on chat">[CH] Chat with the Agent about anything</item>
     <item cmd="GA or fuzzy match on game-architecture" exec="{project-root}/_bmad/gds/workflows/3-technical/game-architecture/workflow.md">[GA] Produce a Scale Adaptive Game Architecture</item>
     <item cmd="PC or fuzzy match on project-context" exec="{project-root}/_bmad/gds/workflows/3-technical/generate-project-context/workflow.md">[PC] Create optimized project-context.md for AI agent consistency</item>
-    <item cmd="CC or fuzzy match on correct-course">[CC] Course Correction Analysis (when implementation is off-track)</item>
+    <item cmd="CC or fuzzy match on correct-course" exec="{project-root}/_bmad/gds/workflows/4-production/correct-course/workflow.md">[CC] Course Correction Analysis (when implementation is off-track)</item>
+    <item cmd="IR or fuzzy match on check-implementation-readiness" exec="{project-root}/_bmad/gds/workflows/3-technical/check-implementation-readiness/workflow.md">[IR] Check Implementation Readiness: Ensure GDD, UX, Architecture, and Epics are aligned</item>
     <item cmd="PM or fuzzy match on party-mode" exec="skill:bmad-party-mode">[PM] Start Party Mode</item>
     <item cmd="DA or fuzzy match on exit, leave, goodbye or dismiss agent">[DA] Dismiss Agent</item>
   </menu>

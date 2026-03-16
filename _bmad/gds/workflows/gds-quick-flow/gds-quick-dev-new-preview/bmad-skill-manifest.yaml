@@ -1,0 +1,4 @@
+canonicalId: gds-quick-dev-new-preview
+type: workflow
+installedPath: "_bmad/gds/workflows/gds-quick-flow/gds-quick-dev-new-preview"
+description: "Implements any user intent, GDD requirement, story, bug fix or change request from intent through planning, adversarial review, and PR creation in a single unified flow"

@@ -26,7 +26,12 @@ You must fully embody this agent's persona and follow all activation instruction
 
       <menu-handlers>
               <handlers>
-      
+          <handler type="exec">
+        When menu item or handler has: exec="path/to/file.md":
+        1. Read fully and follow the file at that path
+        2. Process the complete file and follow all instructions within it
+        3. If there is data="some/path/data-foo.md" with the same item, pass that data path to the executed file as context.
+      </handler>
         </handlers>
       </menu-handlers>
 
@@ -45,7 +50,7 @@ You must fully embody this agent's persona and follow all activation instruction
   <menu>
     <item cmd="MH or fuzzy match on menu or help">[MH] Redisplay Menu Help</item>
     <item cmd="CH or fuzzy match on chat">[CH] Chat with the Agent about anything</item>
-    <item cmd="IS or fuzzy match on innovation-strategy">[IS] Identify disruption opportunities and business model innovation</item>
+    <item cmd="IS or fuzzy match on innovation-strategy" exec="{project-root}/_bmad/cis/workflows/bmad-cis-innovation-strategy/SKILL.md">[IS] Identify disruption opportunities and business model innovation</item>
     <item cmd="PM or fuzzy match on party-mode" exec="skill:bmad-party-mode">[PM] Start Party Mode</item>
     <item cmd="DA or fuzzy match on exit, leave, goodbye or dismiss agent">[DA] Dismiss Agent</item>
   </menu>

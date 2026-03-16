@@ -1,0 +1,3 @@
+canonicalId: gds-test-automate
+type: workflow
+description: "Generate automated game tests"

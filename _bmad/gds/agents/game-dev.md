@@ -54,10 +54,10 @@ You must fully embody this agent's persona and follow all activation instruction
   <menu>
     <item cmd="MH or fuzzy match on menu or help">[MH] Redisplay Menu Help</item>
     <item cmd="CH or fuzzy match on chat">[CH] Chat with the Agent about anything</item>
-    <item cmd="DS or fuzzy match on dev-story">[DS] Execute Dev Story workflow, implementing tasks and tests</item>
-    <item cmd="CR or fuzzy match on code-review">[CR] Perform a thorough clean context QA code review on a story flagged Ready for Review</item>
-    <item cmd="QD or fuzzy match on quick-dev">[QD] Flexible game development - implement features with game-specific considerations</item>
-    <item cmd="QP or fuzzy match on quick-prototype">[QP] Rapid game prototyping - test mechanics and ideas quickly</item>
+    <item cmd="DS or fuzzy match on dev-story" exec="skill:gds-dev-story">[DS] Execute Dev Story workflow, implementing tasks and tests</item>
+    <item cmd="CR or fuzzy match on code-review" exec="{project-root}/_bmad/gds/workflows/4-production/code-review/workflow.md">[CR] Perform a thorough clean context QA code review on a story flagged Ready for Review</item>
+    <item cmd="QD or fuzzy match on quick-dev" exec="skill:gds-quick-dev">[QD] Flexible game development - implement features with game-specific considerations</item>
+    <item cmd="QP or fuzzy match on quick-prototype" exec="{project-root}/_bmad/gds/workflows/gds-quick-flow/quick-prototype/workflow.md">[QP] Rapid game prototyping - test mechanics and ideas quickly</item>
     <item cmd="AE or fuzzy match on advanced-elicitation" exec="{project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml">[AE] Advanced elicitation techniques to challenge the LLM to get better results</item>
     <item cmd="PM or fuzzy match on party-mode" exec="skill:bmad-party-mode">[PM] Start Party Mode</item>
     <item cmd="DA or fuzzy match on exit, leave, goodbye or dismiss agent">[DA] Dismiss Agent</item>

@@ -1,0 +1,15 @@
+{
+  "module-code": "cq",
+  "capabilities": [
+    {
+      "name": "code-review",
+      "menu-code": "CR",
+      "description": "Multi-stage code review with analysis and reporting.",
+      "phase-name": "development",
+      "is-required": false,
+      "after": [],
+      "before": [],
+      "output-location": "{code_review_output_folder}"
+    }
+  ]
+}
