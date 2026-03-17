@@ -3,6 +3,13 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [2.3.0] - 2026-03-17
+
+### ✨ 새 기능
+
+- add symlink support for gds-*, wds, applying-fsd-architecture skills
+
+
 ## [2.2.0] - 2026-03-16
 
 ### ✨ 새 기능
