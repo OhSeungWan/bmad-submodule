@@ -2,7 +2,7 @@
 
 # BMAD Claude Skills Uninstaller
 # This script removes symlinks from the root project:
-# 1. .claude/skills/bmad-* (individual directory symlinks)
+# 1. .claude/skills/{bmad-*,gds-*,wds,applying-fsd-architecture} (individual directory symlinks)
 # 2. _bmad
 # 3. post-checkout hook BMAD section
 
@@ -40,16 +40,31 @@ remove_target() {
     fi
 }
 
-# === 1. Remove .claude/skills/bmad-* symlinks ===
-echo "=== Removing .claude/skills/bmad-* symlinks ==="
+# === 1. Remove .claude/skills managed symlinks ===
+echo "=== Removing .claude/skills managed symlinks ==="
 REMOVED=0
-for item in "$ROOT_PROJECT/.claude/skills"/bmad-*; do
+
+shopt -s nullglob
+
+# Glob patterns: bmad-*, gds-*
+for item in "$ROOT_PROJECT/.claude/skills"/bmad-* "$ROOT_PROJECT/.claude/skills"/gds-*; do
     if [ -L "$item" ]; then
         rm "$item"
         REMOVED=$((REMOVED + 1))
     fi
 done
-echo "Removed $REMOVED bmad-* skill symlinks"
+
+# Exact names: wds, applying-fsd-architecture
+for exact in wds applying-fsd-architecture; do
+    if [ -L "$ROOT_PROJECT/.claude/skills/$exact" ]; then
+        rm "$ROOT_PROJECT/.claude/skills/$exact"
+        REMOVED=$((REMOVED + 1))
+    fi
+done
+
+shopt -u nullglob
+
+echo "Removed $REMOVED skill symlinks"
 
 # === Legacy cleanup: Remove old .claude/commands/bmad-* symlinks ===
 LEGACY_REMOVED=0

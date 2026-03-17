@@ -2,9 +2,9 @@
 
 # BMAD Claude Skills Installer
 # This script creates symlinks from the root project to this submodule:
-# 1. .claude/skills/bmad-*/ -> submodule/.claude/skills/bmad-*/ (개별 디렉토리 심링크)
-#    Only symlinks are managed; user-created regular directories matching bmad-* are preserved
-#    (user-created symlinks matching bmad-* will be removed during cleanup)
+# 1. .claude/skills/{bmad-*,gds-*,wds,applying-fsd-architecture}/ -> submodule/.claude/skills/.../ (개별 디렉토리 심링크)
+#    Only symlinks are managed; user-created regular directories are preserved
+#    (user-created symlinks matching managed patterns will be removed during cleanup)
 # 2. _bmad -> submodule/_bmad
 
 set -e
@@ -22,34 +22,55 @@ fi
 # Get the submodule directory name (for relative paths)
 SUBMODULE_NAME="$(basename "$SCRIPT_DIR")"
 
-# === 1. .claude/skills/bmad-* symlinks ===
+# === 1. .claude/skills symlinks ===
 TARGET_SKILLS_DIR="$ROOT_PROJECT/.claude/skills"
 mkdir -p "$TARGET_SKILLS_DIR"
 
 shopt -s nullglob
 
-# --- Validate source bmad-* directories exist ---
-SOURCE_BMAD_DIRS=("$SCRIPT_DIR"/.claude/skills/bmad-*)
-if [ ${#SOURCE_BMAD_DIRS[@]} -eq 0 ]; then
-    echo "Error: No bmad-* skill directories found in $SCRIPT_DIR/.claude/skills/"
+# Managed skill patterns: bmad-*, gds-*, wds, applying-fsd-architecture
+SKILL_GLOBS=("bmad-*" "gds-*")
+SKILL_EXACT=("wds" "applying-fsd-architecture")
+
+# --- Collect all source skill directories ---
+SOURCE_SKILL_DIRS=()
+for glob in "${SKILL_GLOBS[@]}"; do
+    SOURCE_SKILL_DIRS+=("$SCRIPT_DIR"/.claude/skills/$glob)
+done
+for exact in "${SKILL_EXACT[@]}"; do
+    if [ -d "$SCRIPT_DIR/.claude/skills/$exact" ]; then
+        SOURCE_SKILL_DIRS+=("$SCRIPT_DIR/.claude/skills/$exact")
+    fi
+done
+
+if [ ${#SOURCE_SKILL_DIRS[@]} -eq 0 ]; then
+    echo "Error: No skill directories found in $SCRIPT_DIR/.claude/skills/"
     exit 1
 fi
 
-# --- Clean up existing bmad-* symlinks only ---
+# --- Clean up existing managed symlinks ---
 REMOVED_COUNT=0
-for item in "$TARGET_SKILLS_DIR"/bmad-*; do
-    if [ -L "$item" ]; then
-        rm "$item"
+for glob in "${SKILL_GLOBS[@]}"; do
+    for item in "$TARGET_SKILLS_DIR"/$glob; do
+        if [ -L "$item" ]; then
+            rm "$item"
+            REMOVED_COUNT=$((REMOVED_COUNT + 1))
+        fi
+    done
+done
+for exact in "${SKILL_EXACT[@]}"; do
+    if [ -L "$TARGET_SKILLS_DIR/$exact" ]; then
+        rm "$TARGET_SKILLS_DIR/$exact"
         REMOVED_COUNT=$((REMOVED_COUNT + 1))
     fi
 done
 if [ "$REMOVED_COUNT" -gt 0 ]; then
-    echo "Removed $REMOVED_COUNT existing bmad-* symlinks"
+    echo "Removed $REMOVED_COUNT existing skill symlinks"
 fi
 
-# --- Create individual bmad-* symlinks ---
+# --- Create individual symlinks ---
 LINK_COUNT=0
-for item in "${SOURCE_BMAD_DIRS[@]}"; do
+for item in "${SOURCE_SKILL_DIRS[@]}"; do
     name="$(basename "$item")"
     ln -s "../../$SUBMODULE_NAME/.claude/skills/$name" "$TARGET_SKILLS_DIR/$name"
     LINK_COUNT=$((LINK_COUNT + 1))
