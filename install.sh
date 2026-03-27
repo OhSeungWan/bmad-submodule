@@ -48,13 +48,18 @@ if [ ${#SOURCE_SKILL_DIRS[@]} -eq 0 ]; then
     exit 1
 fi
 
-# --- Clean up existing managed symlinks ---
+# --- Clean up existing managed entries ---
 REMOVED_COUNT=0
+BACKED_UP_COUNT=0
 for glob in "${SKILL_GLOBS[@]}"; do
     for item in "$TARGET_SKILLS_DIR"/$glob; do
         if [ -L "$item" ]; then
             rm "$item"
             REMOVED_COUNT=$((REMOVED_COUNT + 1))
+        elif [ -d "$item" ]; then
+            mv "$item" "$item.bak"
+            BACKED_UP_COUNT=$((BACKED_UP_COUNT + 1))
+            echo "Warning: Backed up regular directory $(basename "$item") -> $(basename "$item").bak"
         fi
     done
 done
@@ -62,10 +67,17 @@ for exact in "${SKILL_EXACT[@]}"; do
     if [ -L "$TARGET_SKILLS_DIR/$exact" ]; then
         rm "$TARGET_SKILLS_DIR/$exact"
         REMOVED_COUNT=$((REMOVED_COUNT + 1))
+    elif [ -d "$TARGET_SKILLS_DIR/$exact" ]; then
+        mv "$TARGET_SKILLS_DIR/$exact" "$TARGET_SKILLS_DIR/$exact.bak"
+        BACKED_UP_COUNT=$((BACKED_UP_COUNT + 1))
+        echo "Warning: Backed up regular directory $exact -> $exact.bak"
     fi
 done
 if [ "$REMOVED_COUNT" -gt 0 ]; then
     echo "Removed $REMOVED_COUNT existing skill symlinks"
+fi
+if [ "$BACKED_UP_COUNT" -gt 0 ]; then
+    echo "Backed up $BACKED_UP_COUNT regular directories (renamed to .bak)"
 fi
 
 # --- Create individual symlinks ---
