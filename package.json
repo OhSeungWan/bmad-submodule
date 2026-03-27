@@ -1,6 +1,6 @@
 {
   "name": "rentre-bmad-setup",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "BMAD Framework submodule installer - one command setup",
   "bin": {
     "rentre-bmad-setup": "bin/cli.js"
