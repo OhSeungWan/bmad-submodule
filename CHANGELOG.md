@@ -3,6 +3,13 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [2.4.2] - 2026-03-28
+
+### ✨ 새 기능
+
+- add Unity MCP guidelines and asset pipeline skill to game dev agents
+
+
 ## [2.4.1] - 2026-03-27
 
 ### 🐛 버그 수정
