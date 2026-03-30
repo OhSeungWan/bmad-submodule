@@ -3,6 +3,13 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [2.5.0] - 2026-03-30
+
+### ✨ 새 기능
+
+- overhaul quality scan system, restructure builder and TEA modules
+
+
 ## [2.4.2] - 2026-03-28
 
 ### ✨ 새 기능
