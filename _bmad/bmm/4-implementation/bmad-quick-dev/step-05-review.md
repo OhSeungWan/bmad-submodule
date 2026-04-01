@@ -46,4 +46,4 @@ Launch three subagents without conversation context. If no sub-agents are availa
 
 ## NEXT
 
-Read fully and follow `./step-05-present.md`
+Read fully and follow `./step-06-present.md`
