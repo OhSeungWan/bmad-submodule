@@ -2,8 +2,7 @@
 
 Provides HTML-based visual information through a local brainstorm server instead of ASCII art or text diagrams when visual representation is needed.
 
-> This file is based on the superpowers v5.0.7 brainstorm server.
-> When updating, refer to the change detection checklist in `docs/superpowers/specs/2026-04-01-quick-dev-simplify-visual-companion-design.md`.
+> Based on superpowers v5.0.7 brainstorm server.
 
 ## When to Use
 
@@ -37,10 +36,10 @@ SCRIPT_DIR="{project-root}/_bmad/_tools/visual-companion"
 ```
 
 Save the following values from the JSON returned by the server:
-- `screen_dir` — directory to write HTML files
-- `state_dir` — events and server state directory
+- `SCREEN_DIR` — directory to write HTML files
+- `STATE_DIR` — events and server state directory
+- `SESSION_DIR` — parent directory of `SCREEN_DIR` (needed for server cleanup)
 - `url` — browser URL to share with the user
-- `port` — server port
 
 Instruct the user to open the URL: "Please open {url} in your browser."
 
@@ -124,4 +123,4 @@ Stop the server after the plan phase is complete (after Approve in step-02 CHECK
 "$SCRIPT_DIR/stop-server.sh" "$SESSION_DIR"
 ```
 
-`SESSION_DIR` is the parent directory of `screen_dir` from server startup. Since `--project-dir` was used, session files are preserved under `.superpowers/brainstorm/`.
+Since `--project-dir` was used, session files are preserved under `.superpowers/brainstorm/`.

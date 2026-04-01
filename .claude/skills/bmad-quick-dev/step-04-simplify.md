@@ -19,6 +19,8 @@ Scope:
 - All files changed since `{baseline_commit}`
 - If `{baseline_commit}` is missing or `NO_VCS`, use the list of files worked on in step-03
 
+If `/simplify` produces no suggestions or no files were changed, skip directly to NEXT.
+
 ### Apply Simplify Results
 
 Apply the changes suggested by simplify:
@@ -29,12 +31,12 @@ Apply the changes suggested by simplify:
 
 ### Self-Check
 
-Verify that existing functionality is not broken after applying simplify:
-- Run tests if they exist
-- Run type checks if available
-- Run build if available
+Verify that existing functionality is not broken after applying simplify. Run checks in order and stop on first failure:
+1. Run tests if they exist — if they fail, revert and skip remaining checks
+2. Run type checks if available — if they fail, revert and skip remaining checks
+3. Run build if available — if it fails, revert
 
-If issues are found, revert simplify changes and keep the original implementation.
+If any check fails, revert all simplify changes and keep the original implementation.
 
 ## NEXT
 
