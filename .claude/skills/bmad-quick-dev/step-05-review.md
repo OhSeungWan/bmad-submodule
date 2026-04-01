@@ -3,7 +3,7 @@ deferred_work_file: '{implementation_artifacts}/deferred-work.md'
 specLoopIteration: 1
 ---
 
-# Step 4: Review
+# Step 5: Review
 
 ## RULES
 
@@ -46,4 +46,4 @@ Launch three subagents without conversation context. If no sub-agents are availa
 
 ## NEXT
 
-Read fully and follow `./step-05-present.md`
+Read fully and follow `./step-06-present.md`

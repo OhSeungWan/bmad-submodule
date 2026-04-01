@@ -11,6 +11,10 @@ deferred_work_file: '{implementation_artifacts}/deferred-work.md'
 
 ## INSTRUCTIONS
 
+### Pre-flight
+
+If Visual Companion server is running (started during step-01 clarify), stop it now (see `./visual-companion.md` § Server Cleanup).
+
 ### Implement
 
 Implement the clarified intent directly.
