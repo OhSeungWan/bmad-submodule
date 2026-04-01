@@ -32,6 +32,15 @@ A specification should target a **single user-facing goal** within **900–1600 
 
 ## WORKFLOW ARCHITECTURE
 
+### Workflow Steps
+
+```
+step-01-clarify-and-route → step-02-plan → step-03-implement → step-04-simplify → step-05-review → step-06-present
+```
+
+Utility files:
+- `visual-companion.md` — 시각적 표현이 필요할 때 step-01/02에서 참조하는 로컬 brainstorm 서버 유틸리티
+
 This uses **step-file architecture** for disciplined execution:
 
 - **Micro-file Design**: Each step is self-contained and followed exactly

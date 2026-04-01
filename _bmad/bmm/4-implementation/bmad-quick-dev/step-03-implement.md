@@ -34,4 +34,4 @@ Before leaving this step, verify every task in the `## Tasks & Acceptance` secti
 
 ## NEXT
 
-Read fully and follow `./step-04-review.md`
+Read fully and follow `./step-04-simplify.md`
