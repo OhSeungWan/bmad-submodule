@@ -9,7 +9,7 @@ deferred_work_file: '{implementation_artifacts}/deferred-work.md'
 
 - YOU MUST ALWAYS SPEAK OUTPUT in your Agent communication style with the config `{communication_language}`
 - No intermediate approvals.
-- 시각적 표현이 필요한 경우(다이어그램, 모커프, 플로우차트, 아키텍처 등) 아스키아트/텍스트 다이어그램을 사용하지 않는다. 대신 `./visual-companion.md`를 읽고 Visual Companion 서버를 시작하여 HTML로 제공한다.
+- When visual representation is needed (diagrams, mockups, flowcharts, architecture, etc.), do NOT use ASCII art or text diagrams. Instead, read `./visual-companion.md` and start the Visual Companion server to deliver HTML-based visuals.
 
 ## INSTRUCTIONS
 
@@ -27,7 +27,7 @@ deferred_work_file: '{implementation_artifacts}/deferred-work.md'
 
 Present summary. If token count exceeded 1600 and user chose [K], include the token count and explain why it may be a problem. HALT and ask human: `[A] Approve` | `[E] Edit`
 
-- **A**: Rename `{wipFile}` to `{spec_file}`, set status `ready-for-dev`. Everything inside `<frozen-after-approval>` is now locked — only the human can change it. Display the finalized spec path to the user as a CWD-relative path (no leading `/`) so it is clickable in the terminal. If Visual Companion server is running, stop it now (see `./visual-companion.md` § 서버 정리). → Step 3.
+- **A**: Rename `{wipFile}` to `{spec_file}`, set status `ready-for-dev`. Everything inside `<frozen-after-approval>` is now locked — only the human can change it. Display the finalized spec path to the user as a CWD-relative path (no leading `/`) so it is clickable in the terminal. If Visual Companion server is running, stop it now (see `./visual-companion.md` § Server Cleanup). → Step 3.
 - **E**: Apply changes, then return to CHECKPOINT 1.
 
 

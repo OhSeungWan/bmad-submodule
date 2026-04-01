@@ -39,7 +39,7 @@ step-01-clarify-and-route → step-02-plan → step-03-implement → step-04-sim
 ```
 
 Utility files:
-- `visual-companion.md` — 시각적 표현이 필요할 때 step-01/02에서 참조하는 로컬 brainstorm 서버 유틸리티
+- `visual-companion.md` — Local brainstorm server utility referenced by step-01/02 when visual representation is needed
 
 This uses **step-file architecture** for disciplined execution:
 
