@@ -30,14 +30,14 @@
 ## Phase 2: 테스트 코드 구현 (implement-instructions.md)
 
 ### 코드 변환 검증 (Feature-Colocated 구조)
-- [ ] feature 폴더가 `tests/e2e/{feature-name}/`에 생성됨
+- [ ] feature 폴더가 `playwright/e2e/{feature-name}/`에 생성됨
 - [ ] 설계 문서의 모든 Spec 파일이 feature 폴더 내에 생성됨
 - [ ] POM 클래스가 `{feature}.page.ts`로 feature 폴더 내에 생성됨
-- [ ] 공통 테스트 데이터가 `_shared/test-data.ts`에 정의됨
+- [ ] 공통 테스트 데이터가 `support/test-data.ts`에 정의됨
 
 ### Fixture B 패턴 (feature별 분리)
 - [ ] Feature fixture가 `{feature}.fixture.ts`로 생성됨
-- [ ] Feature fixture가 `_shared/base.fixture.ts`를 확장함 (base에 직접 추가하지 않음)
+- [ ] Feature fixture가 `support/merged-fixtures.ts`를 확장함 (base에 직접 추가하지 않음)
 - [ ] Feature fixture에 POM + Mock이 함께 등록됨
 - [ ] Spec에서 feature fixture를 import함 (`import { test } from './{feature}.fixture'`)
 

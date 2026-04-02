@@ -21,7 +21,7 @@
   - **POM 설계** (§4): 클래스, 메서드, locator
   - **Spec 시나리오** (§5): 테스트 로직 (의사 코드)
   - **테스트 데이터** (§6): 상수 및 값
-  - **Fixture 확장** (§7): base.fixture.ts 변경
+  - **Fixture 확장** (§7): merged-fixtures.ts 변경
   - **data-testid 목록** (§8): 구현에 함께 적용할 사항
 
 ### 0-2. 워크트리 테스트 환경 확인
@@ -37,8 +37,8 @@ test -f .git && echo "worktree" || echo "main"
 **확인 사항:**
 - `playwright.config.ts` 존재 여부
 - `package.json`에 `@playwright/test` 의존성 및 `test:e2e` 스크립트 존재 여부
-- 기존 `tests/e2e/` 디렉토리 구조 (Feature-Colocated 패턴 여부)
-- 기존 `tests/e2e/_shared/base.fixture.ts` 존재 여부
+- 기존 `playwright/e2e/` 디렉토리 구조 (Feature-Colocated 패턴 여부)
+- 기존 `playwright/support/merged-fixtures.ts` 존재 여부
 - 기존 feature 폴더 목록 및 POM/fixture/mock 패턴
 - 충돌 없이 추가 가능한지 확인
 
@@ -52,10 +52,10 @@ test -f .git && echo "worktree" || echo "main"
 
 ### 1-1. 테스트 데이터 정의
 
-**공통 상수** (BASE_URL 등)는 `tests/e2e/_shared/test-data.ts`에 추가한다.
+**공통 상수** (BASE_URL 등)는 `playwright/support/test-data.ts`에 추가한다.
 **feature 전용 상수**는 feature fixture 파일 내에 정의하거나 별도 `test-data.ts`로 분리한다.
 
-- 기존 `_shared/test-data.ts`가 있으면 **추가**하는 방식
+- 기존 `support/test-data.ts`가 있으면 **추가**하는 방식
 - 설계 문서의 값을 그대로 사용
 
 ### 1-2. API Mock 데이터 구현 (설계 문서 §7이 있는 경우)
@@ -68,7 +68,7 @@ test -f .git && echo "worktree" || echo "main"
 **feature 폴더 내** `mocks/` 에 설계 문서 §7의 응답 데이터를 JSON으로 작성.
 
 ```
-tests/e2e/{feature-name}/mocks/
+playwright/e2e/{feature-name}/mocks/
 ├── {endpoint}-success.json     # 정상 응답
 ├── {endpoint}-error.json       # 에러 응답 (선택)
 └── {endpoint}-empty.json       # 빈 데이터 응답 (선택)
@@ -94,7 +94,7 @@ Mock은 **feature fixture 내부에** POM과 함께 정의한다 (별도 mock.fi
 **feature 폴더 내** `{feature}.page.ts`에 설계 문서 §4의 POM 클래스를 구현.
 
 ```
-tests/e2e/{feature-name}/{feature-name}.page.ts
+playwright/e2e/{feature-name}/{feature-name}.page.ts
 ```
 
 **구현 원칙:**
@@ -111,26 +111,26 @@ tests/e2e/{feature-name}/{feature-name}.page.ts
 
 ### 1-4. Feature Fixture 생성 (Fixture B 패턴)
 
-> **핵심 아키텍처**: `_shared/base.fixture` → `{feature}.fixture` → spec에서 import
+> **핵심 아키텍처**: `support/merged-fixtures` → `{feature}.fixture` → spec에서 import
 >
-> 각 feature는 자체 fixture 파일을 가지며, `_shared/base.fixture.ts`를 확장한다.
-> **base.fixture에 모든 POM/Mock을 쌓지 않는다** — feature가 늘어나면 비대해지고 불필요한 오버헤드 발생.
+> 각 feature는 자체 fixture 파일을 가지며, `support/merged-fixtures.ts`를 확장한다.
+> **merged-fixtures에 모든 POM/Mock을 쌓지 않는다** — feature가 늘어나면 비대해지고 불필요한 오버헤드 발생.
 
 **Fixture 체이닝 구조:**
 
 ```
-tests/e2e/_shared/base.fixture.ts      ← 공통 (viewport, 인증 등)
+playwright/support/merged-fixtures.ts            ← 공통 (viewport, 인증 등)
     ↑ extends
-tests/e2e/{feature}/{feature}.fixture.ts  ← feature 전용 (POM + Mock)
+playwright/e2e/{feature}/{feature}.fixture.ts    ← feature 전용 (POM + Mock)
     ↑ import
-tests/e2e/{feature}/*.spec.ts           ← spec 파일
+playwright/e2e/{feature}/*.spec.ts               ← spec 파일
 ```
 
 **Feature Fixture 패턴 예시:**
 
 ```typescript
-// tests/e2e/plp/plp.fixture.ts
-import { test as base } from '../_shared/base.fixture';
+// playwright/e2e/plp/plp.fixture.ts
+import { test as base } from '../../support/merged-fixtures';
 import { PlpPage } from './plp.page';
 import brandListSuccess from './mocks/brand-list-success.json';
 
@@ -167,7 +167,7 @@ export { expect } from '@playwright/test';
 **feature 폴더 내**에 설계 문서 §5의 시나리오를 실제 코드로 변환.
 
 ```
-tests/e2e/{feature-name}/{scenario}.spec.ts
+playwright/e2e/{feature-name}/{scenario}.spec.ts
 ```
 
 **변환 원칙:**
@@ -181,7 +181,7 @@ tests/e2e/{feature-name}/{scenario}.spec.ts
 **Spec 파일 import 패턴:**
 
 ```typescript
-// tests/e2e/plp/brand-filter.spec.ts
+// playwright/e2e/plp/brand-filter.spec.ts
 import { test, expect } from './plp.fixture';  // feature fixture에서 import
 
 test.describe('브랜드 필터', () => {
@@ -231,20 +231,20 @@ test.describe('브랜드 필터', () => {
 
 ```bash
 # feature 폴더 구조 확인
-ls -la tests/e2e/{feature-name}/
-ls -la tests/e2e/{feature-name}/mocks/
+ls -la playwright/e2e/{feature-name}/
+ls -la playwright/e2e/{feature-name}/mocks/
 
 # 공통 자산 확인
-ls -la tests/e2e/_shared/
+ls -la playwright/support/
 ```
 
 ### 2-2. 완료 체크
 
-- [ ] feature 폴더가 `tests/e2e/{feature-name}/`에 생성됨 (Feature-Colocated)
+- [ ] feature 폴더가 `playwright/e2e/{feature-name}/`에 생성됨 (Feature-Colocated)
 - [ ] 설계 문서의 모든 Spec 파일이 feature 폴더 내에 생성됨
 - [ ] POM 클래스가 `{feature}.page.ts`로 feature 폴더 내에 생성됨
-- [ ] Feature fixture가 `{feature}.fixture.ts`로 생성되고 `_shared/base.fixture`를 확장함
-- [ ] Feature fixture에 POM + Mock이 함께 등록됨 (base.fixture에 추가하지 않음)
+- [ ] Feature fixture가 `{feature}.fixture.ts`로 생성되고 `support/merged-fixtures`를 확장함
+- [ ] Feature fixture에 POM + Mock이 함께 등록됨 (merged-fixtures에 추가하지 않음)
 - [ ] Mock JSON이 `{feature}/mocks/`에 생성됨 (Mock 필요 시)
 - [ ] Spec에서 feature fixture를 import함 (`import { test } from './{feature}.fixture'`)
 - [ ] Spec에서 mock 호출이 `page.goto()` 이전에 위치함
@@ -269,8 +269,8 @@ ls -la tests/e2e/_shared/
 - 설계 문서의 locator 전략 그대로 적용
 - 기존 POM/fixture 재사용 우선
 - **Feature-Colocated 구조 준수**: POM, fixture, mock, spec을 feature 폴더 내에 응집
-- **Fixture B 패턴 준수**: `_shared/base.fixture` → `{feature}.fixture` → spec import
-- 공통 테스트 데이터는 `_shared/test-data.ts`, feature 전용은 fixture 내에 정의
+- **Fixture B 패턴 준수**: `support/merged-fixtures` → `{feature}.fixture` → spec import
+- 공통 테스트 데이터는 `support/test-data.ts`, feature 전용은 fixture 내에 정의
 - API Mock JSON은 `{feature}/mocks/` 내에, mock fixture는 feature fixture에 통합
 - Mock fixture 호출은 반드시 `page.goto()` **이전에** 수행
 - 한글로 테스트 이름 작성

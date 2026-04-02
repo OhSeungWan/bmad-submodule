@@ -23,7 +23,7 @@ Load config from `{project-root}/_bmad/bmm/config.yaml` and resolve:
 
 ### E2E Context Loading (선택)
 
-- 경로: `{project-root}/_bmad/_config/e2e-context.md` (고정 경로, 고정 이름)
+- 경로: `{project-root}/docs/e2e-context.md` (프로젝트별 관리)
 - **파일이 있으면**: 해당 설정으로 defaults 오버라이드
 - **파일이 없으면**: 아래 defaults 사용, 경고 없이 정상 진행
 
@@ -35,7 +35,7 @@ e2e-context.md가 없을 때 사용하는 기본값:
 |------|--------|
 | e2e_framework | playwright |
 | source_dirs | `["src", "app"]` (존재하는 경로만 사용) |
-| test_dir | `tests/e2e` |
+| test_dir | `playwright/e2e` |
 | test_structure | feature-colocated |
 | locator_priority | data-testid > role > css |
 | fixture_pattern | base → feature → spec |
@@ -44,9 +44,9 @@ e2e-context.md가 없을 때 사용하는 기본값:
 
 ### Paths
 
-- `test_dir` = `{project-root}/tests/e2e`
+- `test_dir` = `{project-root}/playwright/e2e`
 - `source_dirs` = `["{project-root}/src", "{project-root}/app"]`
-- `e2e_context_path` = `{project-root}/_bmad/_config/e2e-context.md`
+- `e2e_context_path` = `{project-root}/docs/e2e-context.md`
 - `validation` = `./checklist.md`
 
 ### Input File Patterns
@@ -86,7 +86,7 @@ e2e-context.md가 없을 때 사용하는 기본값:
 2. **implement** — 설계 문서 → 실제 테스트 코드 작성
    - 워크트리에서 실행 (기능 구현 전)
    - 입력: e2e-test-design-*.md
-   - 출력: tests/e2e/ 하위 파일들
+   - 출력: playwright/e2e/ 하위 파일들
 
 3. **verify** — 구현 완료 후 E2E 테스트 실행 및 리포트
    - 워크트리에서 실행 (기능 구현 완료 후)
@@ -127,7 +127,7 @@ e2e-context.md가 없을 때 사용하는 기본값:
     <check if="phase == implement">
       <action>./implement-instructions.md를 로드하고 그 안의 지시사항을 따른다</action>
       <action>입력: 설계 문서 (e2e-test-design-*.md)</action>
-      <action>출력: tests/e2e/ 하위 테스트 파일들</action>
+      <action>출력: playwright/e2e/ 하위 테스트 파일들</action>
       <action>컨텍스트: 워크트리에서 실행 (기능 구현 전, TDD)</action>
     </check>
 

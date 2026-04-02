@@ -37,10 +37,10 @@ npx playwright --version
 
 ```bash
 # Feature-Colocated 구조 확인
-ls tests/e2e/*/
-find tests/e2e/ -name "*.spec.ts"
-find tests/e2e/ -name "*.page.ts"
-find tests/e2e/ -name "*.fixture.ts"
+ls playwright/e2e/*/
+find playwright/e2e/ -name "*.spec.ts"
+find playwright/e2e/ -name "*.page.ts"
+find playwright/e2e/ -name "*.fixture.ts"
 ```
 
 - 테스트 파일이 없으면 `implement-instructions.md` 단계를 먼저 수행하도록 안내
@@ -53,7 +53,7 @@ find tests/e2e/ -name "*.fixture.ts"
 ### 1-1. 실행
 
 ```bash
-npx playwright test tests/e2e/ --project=chromium --reporter=list
+npx playwright test playwright/e2e/ --project=chromium --reporter=list
 ```
 
 ### 1-2. 결과 분류
@@ -116,7 +116,7 @@ ls test-results/
 ### 실패 상세
 
 #### ❌ [테스트 이름]
-- **Spec 파일**: tests/e2e/xxx.spec.ts:NN
+- **Spec 파일**: playwright/e2e/xxx.spec.ts:NN
 - **대응 AC**: AC N
 - **기대 동작**: (설계 문서 기반)
 - **실제 동작**: (관찰된 결과)
@@ -167,7 +167,7 @@ ls test-results/
 ### 4-2. 실패 테스트만 재실행
 
 ```bash
-npx playwright test tests/e2e/ --project=chromium --grep "실패 테스트 이름"
+npx playwright test playwright/e2e/ --project=chromium --grep "실패 테스트 이름"
 ```
 
 ### 4-3. 반복
@@ -222,10 +222,10 @@ Tech-Spec의 `## E2E Test Design` 섹션을 `## E2E Test Results`로 갱신:
 
 ```bash
 # 전체 실행
-npx playwright test tests/e2e/ --project=chromium --reporter=list
+npx playwright test playwright/e2e/ --project=chromium --reporter=list
 
 # Spec별 개별 실행
-npx playwright test tests/e2e/xxx.spec.ts --project=chromium
+npx playwright test playwright/e2e/xxx.spec.ts --project=chromium
 ```
 
 ### 검증 항목 요약
