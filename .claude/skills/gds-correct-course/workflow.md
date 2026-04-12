@@ -15,7 +15,7 @@ description: 'Manage significant changes during sprint execution. Use when the u
 
 ### Configuration Loading
 
-Load config from `{project-root}/_bmad/gds/config.yaml` and resolve:
+Load config from `{module_config}` and resolve:
 
 - `project_name`, `user_name`
 - `communication_language`, `document_output_language`
@@ -31,7 +31,7 @@ Load config from `{project-root}/_bmad/gds/config.yaml` and resolve:
 
 ### Paths
 
-- `installed_path` = `{project-root}/_bmad/gds/workflows/4-production/gds-correct-course`
+- `installed_path` = `{skill_root}`
 - `checklist` = `{installed_path}/checklist.md`
 - `default_output_file` = `{planning_artifacts}/sprint-change-proposal-{date}.md`
 

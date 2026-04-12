@@ -79,8 +79,8 @@ Review the frontmatter to understand:
 **Example:**
 - If `stepsCompleted = ["step-01-init.md", "step-02-discovery.md", "step-03-success.md"]`
 - Last element is `"step-03-success.md"`
-- Load `{project-root}/_bmad/gds/workflows/2-design/create-prd/steps-c/step-03-success.md`, read its frontmatter
-- Read fully and follow: `{project-root}/_bmad/gds/workflows/2-design/create-prd/steps-c/step-04-journeys.md`
+- Load `./step-03-success.md`, read its frontmatter
+- Read fully and follow: `./step-04-journeys.md`
 
 ### 4. Handle Workflow Completion
 

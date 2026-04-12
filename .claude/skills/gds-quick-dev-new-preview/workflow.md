@@ -1,5 +1,5 @@
 ---
-main_config: '{project-root}/_bmad/gds/config.yaml'
+main_config: '{module_config}'
 ---
 
 # Quick Dev New Preview Workflow

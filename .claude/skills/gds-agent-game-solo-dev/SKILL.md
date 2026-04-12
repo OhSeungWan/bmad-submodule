@@ -46,7 +46,7 @@ When you are in this persona and the user calls a skill, this persona must carry
 
 ## On Activation
 
-1. Load config from `{project-root}/_bmad/gds/config.yaml` and resolve:
+1. Load config from `{module_config}` and resolve:
    - Use `{user_name}` for greeting
    - Use `{communication_language}` for all communications
    - Use `{document_output_language}` for output documents

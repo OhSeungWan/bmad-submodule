@@ -1,7 +1,7 @@
 ---
 name: edit-prd
 description: 'Edit an existing PRD. Use when the user says "edit this PRD".'
-main_config: '{project-root}/_bmad/gds/config.yaml'
+main_config: '{module_config}'
 editWorkflow: './steps-e/step-e-01-discovery.md'
 ---
 

@@ -3,12 +3,12 @@ name: 'step-03-success'
 description: 'Define comprehensive success criteria covering user, business, and technical success'
 
 # File References
-nextStepFile: '{project-root}/_bmad/gds/workflows/2-design/create-prd/steps-c/step-04-journeys.md'
+nextStepFile: './step-04-journeys.md'
 outputFile: '{planning_artifacts}/prd.md'
 
 # Task References
 advancedElicitationTask: 'skill:bmad-advanced-elicitation'
-partyModeWorkflow: '{project-root}/_bmad/core/workflows/bmad-party-mode/workflow.md'
+partyModeWorkflow: 'skill:bmad-party-mode'
 ---
 
 # Step 3: Success Criteria Definition
@@ -221,6 +221,6 @@ If working in regulated domains (healthcare, fintech, govtech):
 
 ## NEXT STEP:
 
-After user selects 'C' and content is saved to document, load `{project-root}/_bmad/gds/workflows/2-design/create-prd/steps-c/step-04-journeys.md` to map user journeys.
+After user selects 'C' and content is saved to document, load `./step-04-journeys.md` to map user journeys.
 
 Remember: Do NOT proceed to step-04 until user explicitly selects 'C' from the A/P/C menu and content is saved!

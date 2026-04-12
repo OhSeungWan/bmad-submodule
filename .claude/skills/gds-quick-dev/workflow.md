@@ -25,7 +25,7 @@ This uses **step-file architecture** for focused execution:
 
 ### Configuration Loading
 
-Load config from `{project-root}/_bmad/gds/config.yaml` and resolve:
+Load config from `{module_config}` and resolve:
 
 - `user_name`, `communication_language`, `game_dev_experience`
 - `output_folder`, `planning_artifacts`,  `implementation_artifacts`
@@ -34,16 +34,16 @@ Load config from `{project-root}/_bmad/gds/config.yaml` and resolve:
 
 ### Paths
 
-- `installed_path` = `{project-root}/_bmad/gds/workflows/gds-quick-flow/gds-quick-dev`
+- `installed_path` = `{skill_root}`
 - `project_context` = `**/project-context.md` (load if exists)
-- `project_levels` = `{project-root}/_bmad/gds/workflows/workflow-status/project-levels.yaml`
+- `project_levels` = `skill:gds-workflow-status/project-levels.yaml`
 
 ### Related Workflows
 
-- `quick_spec_workflow` = `{project-root}/_bmad/gds/workflows/bmad-quick-flow/quick-spec/workflow.md`
-- `workflow_init` = `{project-root}/_bmad/gds/workflows/workflow-status/init/workflow.yaml`
-- `party_mode_exec` = `{project-root}/_bmad/core/workflows/party-mode/workflow.md`
-- `advanced_elicitation` = `{project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml`
+- `quick_spec_workflow` = `skill:gds-quick-spec`
+- `workflow_init` = `skill:gds-workflow-status`
+- `party_mode_exec` = `skill:bmad-party-mode`
+- `advanced_elicitation` = `skill:bmad-advanced-elicitation`
 
 ---
 

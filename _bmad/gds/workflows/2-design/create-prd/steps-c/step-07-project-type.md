@@ -3,7 +3,7 @@ name: 'step-07-project-type'
 description: 'Conduct project-type specific discovery using CSV-driven guidance'
 
 # File References
-nextStepFile: '{project-root}/_bmad/gds/workflows/2-design/create-prd/steps-c/step-08-scoping.md'
+nextStepFile: './step-08-scoping.md'
 outputFile: '{planning_artifacts}/prd.md'
 
 # Data Files
@@ -11,7 +11,7 @@ projectTypesCSV: '../data/project-types.csv'
 
 # Task References
 advancedElicitationTask: 'skill:bmad-advanced-elicitation'
-partyModeWorkflow: '{project-root}/_bmad/core/workflows/bmad-party-mode/workflow.md'
+partyModeWorkflow: 'skill:bmad-party-mode'
 ---
 
 # Step 7: Project-Type Deep Dive

@@ -3,7 +3,7 @@ name: 'step-14-complete'
 description: 'Document out of scope items, capture assumptions, and provide handoff guidance'
 
 # Path Definitions
-workflow_path: '{project-root}/_bmad/gds/workflows/2-design/gds-create-gdd'
+workflow_path: '{installed_path}'
 
 # File References
 thisStepFile: './step-14-complete.md'
@@ -12,8 +12,8 @@ outputFile: '{output_folder}/gdd.md'
 epicsFile: '{output_folder}/epics.md'
 
 # Workflow References
-narrativeWorkflow: '{project-root}/_bmad/gds/workflows/2-design/gds-create-narrative/workflow.yaml'
-architectureWorkflow: '{project-root}/_bmad/gds/workflows/3-technical/gds-game-architecture/workflow.yaml'
+narrativeWorkflow: 'skill:gds-create-narrative'
+architectureWorkflow: 'skill:gds-game-architecture'
 ---
 
 # Step 14: Complete & Handoff

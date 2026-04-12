@@ -3,12 +3,12 @@ name: 'step-08-scoping'
 description: 'Define MVP boundaries and prioritize features across development phases'
 
 # File References
-nextStepFile: '{project-root}/_bmad/gds/workflows/2-design/create-prd/steps-c/step-09-functional.md'
+nextStepFile: './step-09-functional.md'
 outputFile: '{planning_artifacts}/prd.md'
 
 # Task References
 advancedElicitationTask: 'skill:bmad-advanced-elicitation'
-partyModeWorkflow: '{project-root}/_bmad/core/workflows/bmad-party-mode/workflow.md'
+partyModeWorkflow: 'skill:bmad-party-mode'
 ---
 
 # Step 8: Scoping Exercise - MVP & Future Features

@@ -1,7 +1,7 @@
 ---
 name: create-prd
 description: '(Optional) Create a PRD for use with external tools like bmad-assist. Uses the GDD as a base if available, otherwise creates from scratch. Use when the user says "create a PRD" or "generate PRD from GDD"'
-main_config: '{project-root}/_bmad/gds/config.yaml'
+main_config: '{module_config}'
 nextStep: './steps-c/step-01-init.md'
 ---
 

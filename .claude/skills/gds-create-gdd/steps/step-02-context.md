@@ -3,7 +3,7 @@ name: 'step-02-context'
 description: 'Load game context from brief and determine the game type'
 
 # Path Definitions
-workflow_path: '{project-root}/_bmad/gds/workflows/2-design/gds-create-gdd'
+workflow_path: '{installed_path}'
 
 # File References
 thisStepFile: './step-02-context.md'
@@ -16,8 +16,8 @@ gameTypesCSV: '{workflow_path}/game-types.csv'
 gameTypesFolder: '{workflow_path}/game-types'
 
 # Task References
-advancedElicitationTask: '{project-root}/_bmad/core/workflows/advanced-elicitation/workflow.xml'
-partyModeWorkflow: '{project-root}/_bmad/core/workflows/party-mode/workflow.md'
+advancedElicitationTask: 'skill:bmad-advanced-elicitation'
+partyModeWorkflow: 'skill:bmad-party-mode'
 ---
 
 # Step 2: Game Context & Type

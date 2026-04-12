@@ -22,7 +22,7 @@ description: 'Creates a dedicated story file with all the context the agent will
 
 ### Configuration Loading
 
-Load config from `{project-root}/_bmad/gds/config.yaml` and resolve:
+Load config from `{module_config}` and resolve:
 
 - `project_name`, `user_name`
 - `communication_language`, `document_output_language`
@@ -52,6 +52,7 @@ Load config from `{project-root}/_bmad/gds/config.yaml` and resolve:
 | architecture | Architecture (fallback - epics file should have relevant sections) | whole: `{planning_artifacts}/*architecture*.md`, sharded: `{planning_artifacts}/*architecture*/*.md` | SELECTIVE_LOAD |
 | ux | UX design (fallback - epics file should have relevant sections) | whole: `{planning_artifacts}/*ux*.md`, sharded: `{planning_artifacts}/*ux*/*.md` | SELECTIVE_LOAD |
 | epics | Enhanced epics+stories file with BDD and source hints | whole: `{planning_artifacts}/*epic*.md`, sharded: `{planning_artifacts}/*epic*/*.md` | SELECTIVE_LOAD |
+| project_context | Project-wide rules, conventions, MCP configs, and third-party framework requirements | `**/project-context.md` | FULL_LOAD |
 
 ---
 
@@ -240,6 +241,18 @@ Load config from `{project-root}/_bmad/gds/config.yaml` and resolve:
   all learnings that could impact current story implementation</action>
   </check>
 
+  <!-- Project context analysis -->
+  <check if="{project_context} was loaded and is not empty">
+    <action>Analyze {project_context} for story-relevant rules and constraints:</action>
+    **PROJECT CONTEXT EXTRACTION:**
+    - Third-party frameworks and libraries required by the project
+    - MCP server configurations and integrations to use
+    - Coding conventions and patterns to follow
+    - Project-wide constraints (e.g., specific APIs, deployment targets)
+    - Any rules that apply to this story's implementation domain
+    <action>Store extracted project rules as {{project_rules}} for embedding in the story file</action>
+  </check>
+
   <!-- Git intelligence for previous work patterns -->
   <check
     if="previous story exists AND git repository detected">
@@ -337,9 +350,15 @@ Load config from `{project-root}/_bmad/gds/config.yaml` and resolve:
     <template-output file="{default_output_file}">latest_tech_information</template-output>
   </check>
 
-  <!-- Project context reference -->
-  <template-output
-    file="{default_output_file}">project_context_reference</template-output>
+  <!-- Project context rules - embed extracted rules from project-context.md -->
+  <check if="{{project_rules}} is not empty">
+    <template-output file="{default_output_file}">project_context_reference</template-output>
+    <action>Populate the Project Context Rules section with ALL extracted {{project_rules}} including:
+      - Required third-party frameworks and how they apply to this story
+      - MCP integrations the developer must use
+      - Project-wide conventions and constraints
+      - Any domain-specific rules relevant to this story's tasks</action>
+  </check>
 
   <!-- Final status update -->
   <template-output file="{default_output_file}">

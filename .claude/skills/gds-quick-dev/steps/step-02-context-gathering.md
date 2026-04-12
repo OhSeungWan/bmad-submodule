@@ -2,7 +2,7 @@
 name: 'step-02-context-gathering'
 description: 'Quick context gathering for direct mode - identify files, patterns, dependencies'
 
-workflow_path: '{project-root}/_bmad/gds/workflows/gds-quick-flow/gds-quick-dev'
+workflow_path: '{installed_path}'
 thisStepFile: './step-02-context-gathering.md'
 nextStepFile: './step-03-execute.md'
 ---

@@ -2,7 +2,7 @@
 name: 'step-06-resolve-findings'
 description: 'Handle review findings interactively, apply fixes, update tech-spec with final status'
 
-workflow_path: '{project-root}/_bmad/gds/workflows/gds-quick-flow/gds-quick-dev'
+workflow_path: '{installed_path}'
 thisStepFile: './step-06-resolve-findings.md'
 ---
 

@@ -3,7 +3,7 @@ name: 'step-01b-continue'
 description: 'Resume an interrupted GDD workflow from the last completed step'
 
 # Path Definitions
-workflow_path: '{project-root}/_bmad/gds/workflows/2-design/gds-create-gdd'
+workflow_path: '{installed_path}'
 
 # File References
 thisStepFile: './step-01b-continue.md'

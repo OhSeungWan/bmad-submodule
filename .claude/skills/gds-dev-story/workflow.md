@@ -17,7 +17,7 @@
 
 ### Configuration Loading
 
-Load config from `{project-root}/_bmad/gds/config.yaml` and resolve:
+Load config from `{module_config}` and resolve:
 
 - `project_name`, `user_name`
 - `communication_language`, `document_output_language`
@@ -177,10 +177,20 @@ Load config from `{project-root}/_bmad/gds/config.yaml` and resolve:
     <critical>Load all available context to inform implementation</critical>
 
     <action>Load {project_context} for coding standards and project-wide patterns (if exists)</action>
+    <check if="{project_context} was loaded and is not empty">
+      <action>Extract actionable rules from {project_context}:
+        - Required third-party frameworks and libraries (MUST use these, not alternatives)
+        - MCP server integrations to leverage during implementation
+        - Coding conventions and naming patterns
+        - Project-wide constraints and mandatory patterns
+      </action>
+      <action>Store as {{active_project_rules}} — these override default implementation choices</action>
+    </check>
     <action>Parse sections: Story, Acceptance Criteria, Tasks/Subtasks, Dev Notes, Dev Agent Record, File List, Change Log, Status</action>
     <action>Load comprehensive context from story file's Dev Notes section</action>
+    <action>Check story's "Project Context Rules" section in Dev Notes for pre-extracted project rules</action>
     <action>Extract developer guidance from Dev Notes: architecture requirements, previous learnings, technical specifications</action>
-    <action>Use enhanced story context to inform implementation decisions and approaches</action>
+    <action>Use enhanced story context AND {{active_project_rules}} to inform implementation decisions</action>
     <output>✅ **Context Loaded**
       Story and project context available for implementation
     </output>
@@ -279,6 +289,7 @@ Load config from `{project-root}/_bmad/gds/config.yaml` and resolve:
     <!-- REFACTOR PHASE -->
     <action>Improve code structure while keeping tests green</action>
     <action>Ensure code follows architecture patterns and coding standards from Dev Notes</action>
+    <action>Apply {{active_project_rules}} — use required frameworks, MCP integrations, and conventions from project-context.md</action>
 
     <action>Document technical approach and decisions in Dev Agent Record → Implementation Plan</action>
 

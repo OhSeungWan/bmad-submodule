@@ -1,7 +1,7 @@
 ---
 name: validate-prd
 description: 'Validate a PRD against standards. Use when the user says "validate this PRD" or "run PRD validation"'
-main_config: '{project-root}/_bmad/gds/config.yaml'
+main_config: '{module_config}'
 validateWorkflow: './steps-v/step-v-01-discovery.md'
 ---
 

@@ -15,7 +15,7 @@ description: 'Generate sprint status tracking from epics. Use when the user says
 
 ### Configuration Loading
 
-Load config from `{project-root}/_bmad/gds/config.yaml` and resolve:
+Load config from `{module_config}` and resolve:
 
 - `project_name`, `user_name`
 - `communication_language`, `document_output_language`
@@ -26,7 +26,7 @@ Load config from `{project-root}/_bmad/gds/config.yaml` and resolve:
 
 ### Paths
 
-- `installed_path` = `{project-root}/_bmad/gds/workflows/4-production/gds-sprint-planning`
+- `installed_path` = `{skill_root}`
 - `template` = `{installed_path}/sprint-status-template.yaml`
 - `checklist` = `{installed_path}/checklist.md`
 - `tracking_system` = `file-system`

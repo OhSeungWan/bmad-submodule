@@ -1,13 +1,13 @@
 ---
 name: quick-spec
 description: 'Very quick process to create implementation-ready quick specs for small changes or features. Use when the user says "create a quick spec" or "generate a quick tech spec"'
-main_config: '{project-root}/_bmad/gds/config.yaml'
+main_config: '{module_config}'
 web_bundle: true
 
 # Checkpoint handler references
 advanced_elicitation: 'skill:gds-advanced-elicitation'
-party_mode_exec: '{project-root}/_bmad/core/workflows/bmad-party-mode/workflow.md'
-quick_dev_workflow: '{project-root}/_bmad/gds/workflows/gds-quick-flow/gds-quick-dev/workflow.md'
+party_mode_exec: 'skill:bmad-party-mode'
+quick_dev_workflow: 'skill:gds-quick-dev'
 ---
 
 # Quick-Spec Workflow
@@ -77,4 +77,4 @@ Load and read full config from `{main_config}` and resolve:
 
 ### 2. First Step Execution
 
-Read fully and follow: `{project-root}/_bmad/gds/workflows/gds-quick-flow/gds-quick-spec/steps/step-01-understand.md` to begin the workflow.
+Read fully and follow: `./step-01-understand.md` to begin the workflow.
