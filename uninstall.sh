@@ -2,7 +2,8 @@
 
 # BMAD Claude Skills Uninstaller
 # This script removes symlinks from the root project:
-# 1. .claude/skills/{bmad-*,gds-*,wds,applying-fsd-architecture} (individual directory symlinks)
+# 1. .claude/skills/{bmad-*,gds-*,wds-*,applying-fsd-architecture} (individual directory symlinks)
+#    Legacy "wds" (singular) is also removed for backward-compat with older installs
 # 2. _bmad
 # 3. post-checkout hook BMAD section
 
@@ -46,8 +47,8 @@ REMOVED=0
 
 shopt -s nullglob
 
-# Glob patterns: bmad-*, gds-*
-for item in "$ROOT_PROJECT/.claude/skills"/bmad-* "$ROOT_PROJECT/.claude/skills"/gds-*; do
+# Glob patterns: bmad-*, gds-*, wds-*
+for item in "$ROOT_PROJECT/.claude/skills"/bmad-* "$ROOT_PROJECT/.claude/skills"/gds-* "$ROOT_PROJECT/.claude/skills"/wds-*; do
     if [ -L "$item" ]; then
         rm "$item"
         REMOVED=$((REMOVED + 1))

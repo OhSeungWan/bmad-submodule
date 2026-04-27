@@ -28,8 +28,9 @@ mkdir -p "$TARGET_SKILLS_DIR"
 
 shopt -s nullglob
 
-# Managed skill patterns: bmad-*, gds-*, wds, applying-fsd-architecture
-SKILL_GLOBS=("bmad-*" "gds-*")
+# Managed skill patterns: bmad-*, gds-*, wds-*, applying-fsd-architecture
+# Note: legacy "wds" (singular) kept in EXACT for backward-compat cleanup of older installs
+SKILL_GLOBS=("bmad-*" "gds-*" "wds-*")
 SKILL_EXACT=("wds" "applying-fsd-architecture")
 
 # --- Collect all source skill directories ---
@@ -91,6 +92,29 @@ done
 shopt -u nullglob
 
 echo "Created $LINK_COUNT symlinks in $TARGET_SKILLS_DIR"
+
+# === 1b. Legacy cleanup: .claude/commands/bmad-* symlinks pointing into submodule ===
+# Migration: pre-v2.1.0 installs created symlinks under .claude/commands/. These are
+# replaced by .claude/skills/. Only remove links that target this submodule — preserves
+# any custom commands the user may have created.
+LEGACY_COMMANDS_DIR="$ROOT_PROJECT/.claude/commands"
+LEGACY_REMOVED=0
+if [ -d "$LEGACY_COMMANDS_DIR" ]; then
+    shopt -s nullglob
+    for item in "$LEGACY_COMMANDS_DIR"/bmad-* "$LEGACY_COMMANDS_DIR/bmad"; do
+        if [ -L "$item" ]; then
+            target="$(readlink "$item")"
+            if [[ "$target" == *"$SUBMODULE_NAME"* ]]; then
+                rm "$item"
+                LEGACY_REMOVED=$((LEGACY_REMOVED + 1))
+            fi
+        fi
+    done
+    shopt -u nullglob
+fi
+if [ "$LEGACY_REMOVED" -gt 0 ]; then
+    echo "Removed $LEGACY_REMOVED legacy commands symlinks (pre-v2.1.0)"
+fi
 
 # === 2. _bmad symlink ===
 SOURCE_BMAD="$SCRIPT_DIR/_bmad"

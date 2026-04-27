@@ -1,63 +1,74 @@
 installation:
-  version: 6.3.0
+  version: 6.5.0
   installDate: 2026-02-05T23:33:04.101Z
-  lastUpdated: 2026-04-12T06:45:20.921Z
+  lastUpdated: 2026-04-27T07:58:57.649Z
 modules:
   - name: core
-    version: 6.3.0
+    version: 6.5.0
     installDate: 2026-02-05T23:33:03.141Z
-    lastUpdated: 2026-04-12T06:45:20.868Z
+    lastUpdated: 2026-04-27T07:58:57.554Z
     source: built-in
     npmPackage: null
     repoUrl: null
   - name: bmm
-    version: 6.3.0
+    version: 6.5.0
     installDate: 2026-02-05T23:32:56.539Z
-    lastUpdated: 2026-04-12T06:45:20.868Z
+    lastUpdated: 2026-04-27T07:58:57.554Z
     source: built-in
     npmPackage: null
     repoUrl: null
   - name: bmb
-    version: 1.5.0
+    version: v1.7.0
     installDate: 2026-02-05T23:32:58.355Z
-    lastUpdated: 2026-04-12T06:45:20.876Z
+    lastUpdated: 2026-04-27T07:58:57.568Z
     source: external
     npmPackage: bmad-builder
     repoUrl: https://github.com/bmad-code-org/bmad-builder
+    channel: stable
+    sha: 86033fc9aeae2ca6d52c7cdb675c1f4bf17fc1c1
   - name: cis
-    version: 0.1.9
+    version: v0.2.0
     installDate: 2026-02-05T23:32:59.937Z
-    lastUpdated: 2026-04-12T06:45:20.882Z
+    lastUpdated: 2026-04-27T07:58:57.578Z
     source: external
     npmPackage: bmad-creative-intelligence-suite
     repoUrl: https://github.com/bmad-code-org/bmad-module-creative-intelligence-suite
+    channel: stable
+    sha: 14a63b893c07173b7a6cfe0fb6a9a72ba51d3cf1
   - name: gds
-    version: 0.2.4
+    version: v0.4.0
     installDate: 2026-02-05T23:33:01.664Z
-    lastUpdated: 2026-04-12T06:45:20.890Z
+    lastUpdated: 2026-04-27T07:58:57.590Z
     source: external
     npmPackage: bmad-game-dev-studio
     repoUrl: https://github.com/bmad-code-org/bmad-module-game-dev-studio
+    channel: stable
+    sha: 07ef779abaafb21fe3a8d80d57cf0b4dc9801d60
   - name: tea
-    version: 1.7.2
+    version: v1.15.1
     installDate: 2026-02-05T23:33:03.093Z
-    lastUpdated: 2026-04-12T06:45:20.896Z
+    lastUpdated: 2026-04-27T07:58:57.601Z
     source: external
     npmPackage: bmad-method-test-architecture-enterprise
     repoUrl: https://github.com/bmad-code-org/bmad-method-test-architecture-enterprise
+    channel: stable
+    sha: 7c94bdc6e3d2c8c3cad09eb0a32a42fade0e9079
   - name: dae
     version: null
     installDate: 2026-02-05T23:33:03.105Z
-    lastUpdated: 2026-04-12T06:45:20.908Z
+    lastUpdated: 2026-04-27T07:58:57.624Z
     source: unknown
     npmPackage: null
     repoUrl: null
   - name: wds
-    version: 0.3.1
+    version: v0.1.0
     installDate: 2026-03-06T08:48:15.900Z
-    lastUpdated: 2026-04-12T06:45:20.921Z
+    lastUpdated: 2026-04-27T07:58:57.649Z
     source: community
     npmPackage: bmad-method-wds-expansion
     repoUrl: https://github.com/bmad-code-org/bmad-method-wds-expansion
+    channel: stable
+    sha: 0c9ebf3769e1a20797893376318b595bfa64626b
+    registryApprovedTag: v0.1.0
 ides:
   - claude-code
