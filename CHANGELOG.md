@@ -5,9 +5,13 @@
 
 ## [2.6.1] - 2026-04-27
 
+### ✨ 새 기능
+
+- BMAD 프레임워크 v6.5.0 업데이트 - customize.toml 기반 신규 커스터마이징 시스템, bmad-customize 스킬 추가, manifest/workflow 구조 정리
+
 ### 🐛 버그 수정
 
-- BMAD v6.3.0 wds 다중 스킬(wds-* 12개) 호환성 - install.sh / uninstall.sh / .gitignore 패턴 갱신
+- wds 다중 스킬(wds-* 12개) 호환성 - install.sh / uninstall.sh / .gitignore 패턴 갱신 (v6.3.0의 wds 분리 이후 미반영분)
 - pre-v2.1.0 `.claude/commands/bmad-*` 레거시 심링크 자동 정리 (target 가드로 사용자 커스텀 보호)
 - 레거시 `.claude/skills/wds/` 디렉토리 제거
 
