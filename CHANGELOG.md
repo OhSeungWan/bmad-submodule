@@ -3,6 +3,15 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [2.6.1] - 2026-04-27
+
+### 🐛 버그 수정
+
+- BMAD v6.3.0 wds 다중 스킬(wds-* 12개) 호환성 - install.sh / uninstall.sh / .gitignore 패턴 갱신
+- pre-v2.1.0 `.claude/commands/bmad-*` 레거시 심링크 자동 정리 (target 가드로 사용자 커스텀 보호)
+- 레거시 `.claude/skills/wds/` 디렉토리 제거
+
+
 ## [2.6.0] - 2026-04-12
 
 ### ✨ 새 기능
