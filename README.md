@@ -1,6 +1,6 @@
 # BMAD Framework Submodule
 
-![Version](https://img.shields.io/badge/version-2.6.0-blue.svg)
+![Version](https://img.shields.io/badge/version-2.6.1-blue.svg)
 ![npm](https://img.shields.io/npm/v/rentre-bmad-setup.svg)
 ![BMAD](https://img.shields.io/badge/BMAD-6.3.0-orange.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
@@ -14,7 +14,7 @@ BMAD 프레임워크를 Git Submodule로 관리하여 **팀별, 프로젝트별�
 
 | 항목              | 버전         |
 | ----------------- | ------------ |
-| Submodule Version | v2.6.0 |
+| Submodule Version | v2.6.1 |
 | BMAD Framework    | 6.3.0  |
 
 > [Changelog](./CHANGELOG.md)에서 변경 이력을 확인하세요.
