@@ -3,6 +3,19 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [2.7.0] - 2026-05-07
+
+### ✨ 새 기능
+
+- BMad UX/Dev 에이전트에 Figma MCP 핸드오프 규약 추가
+  - Sally(`bmad-agent-ux-designer`): 신규 team override. Figma URL 수신 시 plugin:figma:figma MCP로 디자인을 직접 읽고, 산출물(UX 스펙·시나리오·핸드오프 노트)에 화면·컴포넌트마다 specific nodeId가 포함된 Figma URL을 박아 dev 측 재호출이 가능하도록 핸드오프 계약 명시
+  - Amelia(`bmad-agent-dev`): 기존 figma fact 정리(중복 제거 + nodeId 보존 강화 + playwright 시각 테스트 부분 트림). 업스트림 스토리·UX 스펙 또는 사용자가 직접 제공한 Figma URL을 권위 있는 시각 소스로 다루고 `figma:figma-implement-design` 스킬을 우선 호출하는 규칙, UI성 메뉴(QD/DS/CS) dispatch 직전 Figma 인풋 보유 여부 선제 확인 규칙 신규 fact로 추가
+
+### 🔧 기타 변경
+
+- Serena `project.yml` 업스트림 최신 기본값으로 갱신 — 지원 언어 목록(ansible/crystal/haxe/hlsl/json/lean4/luau/msl/ocaml/python_ty/solidity/systemverilog) 추가, 신규 키 `added_modes` / `additional_workspace_folders` 노출
+
+
 ## [2.6.1] - 2026-04-27
 
 ### ✨ 새 기능
