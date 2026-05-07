@@ -3,6 +3,17 @@
 이 프로젝트의 모든 주요 변경사항을 기록합니다.
 형식은 [Keep a Changelog](https://keepachangelog.com/ko/1.1.0/)를 따릅니다.
 
+## [2.8.0] - 2026-05-07
+
+### ✨ 새 기능
+
+- dev 에이전트(Amelia)에 토스 FE 클린코드 4축 원칙 추가 — `principles` 필드에 응집도·단일 책임·추상화·클린코드 정의를 짧은 신조 형태로 등록하여 모든 dev 워크플로(QD/DS/CS/CR 등)에서 일관 적용
+
+### 🔧 기타 변경
+
+- BMad 프레임워크 업스트림 동기화 및 wds 모듈 슬림화 — wds `data/agent-guides`(saga/freya), `data/design-system`, `data/presentations`, `skills/*.md` 일괄 정리. 각 모듈 `config.yaml`/`module-help.csv`/`_config/*` 갱신, bmad-create-architecture / bmad-create-epics-and-stories 스킬 검증 단계 문구 다듬기
+
+
 ## [2.7.0] - 2026-05-07
 
 ### ✨ 새 기능
