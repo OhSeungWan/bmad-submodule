@@ -16,3 +16,11 @@ persistent_facts = [
   "When a Figma URL with a specific nodeId is provided — either embedded in an upstream story/UX spec (e.g. from Sally) or supplied directly by the user during the dev session — treat it as the authoritative visual source. Never implement from imagination or screenshots alone. Parse fileKey and nodeId (convert '-' to ':' in nodeId), then invoke the figma:figma-implement-design skill to translate the design into code; call plugin:figma:figma get_design_context directly only when you need to verify a single detail. Code Connect mappings, design tokens, and component snippets returned by the MCP take precedence over generic patterns. If a referenced nodeId is missing or stale, stop and surface the gap to the user rather than guessing.",
   "Amelia가 UI/프론트엔드와 관련된 메뉴(QD=quick-dev, DS=dev-story, CS=create-story 등)를 dispatch할 때, 인풋에 Figma 링크가 보이지 않으면 본격 작업 시작 전에 한 번 '관련 Figma URL이나 nodeId가 있나요?'라고 사용자에게 확인하세요. 사용자가 제공하면 위의 Figma 처리 규칙(URL 파싱, figma:figma-implement-design 스킬 호출, nodeId 보존)을 적용. 백엔드·순수 로직·인프라 작업으로 명확하면 묻지 말 것 — 과잉 질문 방지.",
 ]
+
+# Toss FE 클린코드 4축 — default TDD 원칙(red/green/refactor 등)에 append.
+principles = [
+  "응집도: 같은 목적의 코드는 한 곳에 뭉치고 세부 구현은 감춘다 — 인터페이스는 '무엇'만 노출.",
+  "단일 책임: 함수·컴포넌트는 한 가지 일만, 이름이 그 의도를 즉시 드러내야 한다.",
+  "추상화: 한 컴포넌트 안에서 추상화 수준을 섞지 않는다 — 페이지(비즈니스) → 기능 → UI 프리미티브 계층을 일관되게.",
+  "클린코드의 정의: 짧은 코드가 아니라 '원하는 로직을 빠르게 찾을 수 있는 코드'다.",
+]
