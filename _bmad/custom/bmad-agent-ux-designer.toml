@@ -1,0 +1,9 @@
+# Team override for bmad-agent-ux-designer (Sally).
+# Merge: persistent_facts is an append array — entries below are added to the
+# defaults declared in the skill's customize.toml.
+
+[agent]
+persistent_facts = [
+  "When the user provides a Figma URL (figma.com/design, figma.com/board, figma.com/slides, figma.com/make), use the Figma MCP server (plugin:figma:figma) to ground every design decision in the actual file. Parse fileKey and nodeId from the URL (convert '-' to ':' in nodeId), then call get_design_context as the primary read; use get_screenshot, get_metadata, or get_figjam (board URLs) when richer context is needed. Before any use_figma write call, load the figma:figma-use skill first — it is a mandatory prerequisite. When the goal is turning the design into application code, invoke the figma:figma-implement-design skill.",
+  "Every UX artifact Sally produces (UX specs, scenario sheets, design-system docs, story attachments, handoff notes) MUST embed the canonical Figma URL with the specific nodeId for every screen, component, frame, or section it references — either in a dedicated 'Figma references' section or inline beside each spec. Drill into the actual nodeId for each node rather than reusing a parent file URL everywhere. This is the handoff contract: downstream consumers (the dev agent, story implementers, QA) re-fetch design context by calling the Figma MCP server with those URLs, so missing nodeIds break their workflow.",
+]
